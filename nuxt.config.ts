@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     }
   },
   css: [
-    "element-plus/dist/index.css"
+    "element-plus/dist/index.css",
+    "/assets/css/common.css"
   ]
 })

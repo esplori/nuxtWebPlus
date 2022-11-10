@@ -10,18 +10,18 @@
           >
             <a :href="item.path" target="_blank">{{ item.name }}</a>
           </el-menu-item>
-          <el-submenu
+          <el-sub-menu
             v-for="(item, id) in hasChildren"
             :key="id"
             :index="String(id)"
           >
-            <template slot="title">
+            <template #title>
               {{ item.name }}
             </template>
             <el-menu-item v-for="(it, idx) in item.children" :key="String(idx)">
               <a :href="it.path" target="_blank">{{ it.name }}</a>
             </el-menu-item>
-          </el-submenu>
+          </el-sub-menu>
           <el-menu-item>
             <a href="/tbk" target="_blank">优乐购</a>
           </el-menu-item>
