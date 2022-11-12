@@ -123,7 +123,7 @@ export default {
     align-items: center;
     .menu{
       width: 100%;
-      display: flex;
+      // display: flex;
       align-items: center;
       .el-menu-item{
         font-size: 1.2rem;

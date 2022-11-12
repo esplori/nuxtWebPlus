@@ -13,5 +13,15 @@ export default defineNuxtConfig({
   css: [
     "element-plus/dist/index.css",
     "/assets/css/common.css"
-  ]
+  ],
+  vite: {
+    server: {
+      proxy: {
+        '/bootService': {
+          // target: 'http://localhost:8091/'
+          target: 'http://admin.dsiab.com/',
+        }
+      }
+    }
+  }
 })
