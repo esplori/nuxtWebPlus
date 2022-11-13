@@ -59,6 +59,7 @@ import listBody from "@/components/common/pageListBody.vue"
 import nuxtPagination from "@/components/common/nuxtPagination.vue"
 import { reactive } from "vue"
 import { toReactive } from "@vueuse/shared";
+import { getListApi } from "@/pages/post/index"
 const state = reactive({
   siteInfo: {
     beianNo: '',
@@ -90,9 +91,14 @@ const state = reactive({
   ],
   homeList: []
 })
-// 通过异步请求回来的数据都会存储在页面 payload 中。意味着，可能会存在没有用在你的组件的数据也加载到了 payload 中。我们强烈推荐你只选取必须使用在组件上的数据
-let { data } = toReactive(await useFetch("http://admin.dsiab.com/bootService/pages/getList/1"));
-state.homeList = data.data
+
+const getList = async () => {
+  // 通过异步请求回来的数据都会存储在页面 payload 中。意味着，可能会存在没有用在你的组件的数据也加载到了 payload 中。我们强烈推荐你只选取必须使用在组件上的数据
+  let { data } = toReactive(await useFetch(getListApi)) as any;
+  state.homeList = data.data
+}
+getList()
+
 
 //   mounted() {
 //     // 判断是否在服务端

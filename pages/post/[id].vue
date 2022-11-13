@@ -1,0 +1,408 @@
+<template>
+  <div id="post-id">
+    <div class="home-body">
+      <div class="left-body">
+        <div>
+          <h1 class="detail-post-title">{{ state.detailData.title }}</h1>
+          <div class="post-info">
+            <div class="head-info">
+              <div class="title">
+                <span class="userName">
+                  {{ state.detailData.nickname || state.detailData.createBy }}</span>
+              </div>
+              <div class="other-info">
+                <span class="createDate"> {{ state.detailData.createDate }}</span>
+                <span>阅读: {{ state.detailData.views }} </span>
+                <span v-if="state.detailData.wordsNum">字数: {{ state.detailData.wordsNum }} </span>
+              </div>
+            </div>
+          </div>
+          <div class="_utrtw8kq5so"></div>
+          <div v-html="state.detailData.content" class="detail-post-content"></div>
+          <div class="_cwvxpd9dl8s"></div>
+        </div>
+        <div>
+          <div class="tags" v-if="state.detailData.keywords">
+            标签：<a :href="'/post/tags/' + item" v-for="(item, index) in state.detailData.keywords.split(',')"
+              :key="index" target="_blank">{{ item }}</a>
+          </div>
+          <div class="copy-desc">
+            <div>
+              如若转载请注明原文及出处：https://www.dsiab.com/post/{{ state.postId }}
+            </div>
+            <div>
+              本站文章由javascript技术分享原创和收集，内容如有问题，请联系站长删除。
+            </div>
+          </div>
+        </div>
+        <recommendRead :list="state.recommendPostList"></recommendRead>
+        <!-- <comments></comments> -->
+      </div>
+    </div>
+
+    <el-dialog custom-class="custom-dialog-class" :visible.sync="state.dialogVisible" :show-close="false" width="50%">
+      <img :src="state.imgUrl" alt="" id="bigImg" />
+    </el-dialog>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { getDetailApi, getRecommendPostBySameTagsApi } from "@/pages/post/index"
+import { reactive } from "vue"
+import { toReactive } from "@vueuse/shared";
+import recommendRead from "@/components/post/recommendRead.vue"
+// import comments from "@/components/post/comments.vue"
+const route = useRoute()
+let state = reactive({
+  detailData: {
+    title: "",
+    nickname: "",
+    createBy: "",
+    createDate: "",
+    views: "",
+    wordsNum: "",
+    content: "",
+    keywords: "",
+    id: ""
+  },
+  postId: "",
+  dialogVisible: false,
+  imgUrl: "",
+  recommendPostList: []
+})
+
+state.postId = route.params.id as any
+
+const getList = async () => {
+  // 通过异步请求回来的数据都会存储在页面 payload 中。意味着，可能会存在没有用在你的组件的数据也加载到了 payload 中。我们强烈推荐你只选取必须使用在组件上的数据
+  let { data } = toReactive(await useFetch(getDetailApi + route.params.id)) as any;
+  state.detailData = data.data.result
+}
+
+const getRecomList = async () => {
+  // 通过异步请求回来的数据都会存储在页面 payload 中。意味着，可能会存在没有用在你的组件的数据也加载到了 payload 中。我们强烈推荐你只选取必须使用在组件上的数据
+  let { data } = toReactive(await useFetch(getRecommendPostBySameTagsApi + "?id=" + route.params.id)) as any;
+  state.recommendPostList = data.data
+}
+
+getList()
+getRecomList()
+
+// import "highlight.js/styles/monokai-sublime.css";
+// export default {
+//   components: {
+//     homeHeader: () => import("@/components/common/homeHeader.vue"),
+//     comments: () => import("@/components/common/comments.vue"),
+//     RecommendRead: () => import("@/components/common/recommendRead.vue"),
+//   },
+//   data() {
+//     return {
+//       data: 0,
+//       recommandList: [],
+//       cateList: [],
+//       dialogVisible: false,
+//       imgUrl: "",
+//     };
+//   },
+//   /**
+//    * 设置标题及页面关键字
+//    */
+//   head() {
+//     return {
+//       title: this.detailData.title + "-javascript技术分享",
+//       meta: [
+//         {
+//           hid: "description",
+//           name: "description",
+//           content: this.detailData.title,
+//         },
+//         {
+//           hid: "keywords",
+//           name: "keywords",
+//           content: this.detailData.keywords || this.detailData.title,
+//         },
+//       ],
+//     };
+//   },
+//   /**
+//    * 请求接口，可同时请求多个接口，详情在服务端请求，分类跟推荐接口在浏览器调用
+//    */
+//   async asyncData({ $axios, route, error }) {
+//     let [detail] = await Promise.all([getDetailApi(route.params.id)]);
+
+//     if (detail.code === 1) {
+//       error({ statusCode: 500, message: "server page" });
+//       return false;
+//     }
+//     let result = {
+//       detailData: detail.data.result,
+//       postId: route.params.id,
+//       contentAll: detail.data.result.content,
+//     };
+//     return result;
+//   },
+//   methods: {
+//     addImgEvent() {
+//       window.addEventListener("click", (e) => {
+//         let target = e.target;
+//         if (target.tagName === "IMG") {
+//           this.imgUrl = target.src;
+//           this.dialogVisible = true;
+//         }
+//       });
+//     },
+//     /**
+//      * 查询推荐
+//      */
+//     async getRecomList() {
+//       let res = await getRecomListApi4Brower({ type: "all" });
+//       if (res) {
+//         this.recommandList = res.data;
+//       }
+//     },
+//     /**
+//      * 获取分类
+//      */
+//     async getCate() {
+//       let res = await getCateApi4Brower({});
+//       if (res) {
+//         this.cateList = res.data.result;
+//       }
+//     },
+//     /**
+//      * 图片懒加载
+//      */
+//     lazyLoad() {
+//       let imgs = document.querySelectorAll("img");
+
+//       //用来判断bound.top<=clientHeight的函数，返回一个bool值
+
+//       function isIn(el) {
+//         let bound = el.getBoundingClientRect();
+
+//         let clientHeight = window.innerHeight;
+
+//         return bound.top <= clientHeight;
+//       }
+
+//       //检查图片是否在可视区内，如果不在，则加载
+
+//       function check() {
+//         Array.from(imgs).forEach(function (el) {
+//           if (isIn(el)) {
+//             loadImg(el);
+//           }
+//         });
+//       }
+
+//       function loadImg(el) {
+//         if (!el.src) {
+//           var source = el.dataset.originalSrc;
+//           el.src = source;
+//           // 解决其他开启网站防盗链功能
+//           el.referrerPolicy = "no-referrer";
+//         }
+//       }
+
+//       window.onload = window.onscroll = function () {
+//         //onscroll()在滚动条滚动的时候触发
+//         check();
+//       };
+//     },
+//   },
+//   mounted() {
+//     // 判断是否在服务端
+//     if (process.client) {
+//       this.lazyLoad();
+//       // 在浏览器端调接口，需要服务端做反向代理
+//       // 查推荐
+//       this.getRecomList();
+//       // 查分类
+//       this.getCate();
+//       // 添加图片放大功能
+//       this.addImgEvent();
+//       // 底部广告
+//       (window.slotbydup = window.slotbydup || []).push({
+//         id: "u6324927",
+//         container: "_cwvxpd9dl8s",
+//         async: true,
+//       });
+//     }
+
+//     // 顶部广告
+//     (window.slotbydup = window.slotbydup || []).push({
+//       id: "u6324930",
+//       container: "_utrtw8kq5so",
+//       async: true,
+//     });
+//   },
+// };
+</script>
+
+<style lang="less">
+// 截图图片样式错乱问题
+#post-id {
+  .image-container-fill {
+    padding-bottom: 0 !important;
+  }
+
+  .detail-post-content {
+    blockquote {
+      background: #f5f5f5 !important;
+      padding: 10px !important;
+      margin: 0 !important;
+    }
+  }
+
+  .detail-post-content p {
+    font-size: 1.2rem;
+    // text-indent: 2rem;
+    padding: 0 0 20px 0;
+  }
+
+  #bigImg {
+    width: 100%;
+  }
+
+  .el-dialog.custom-dialog-class .el-dialog__body {
+    padding: 0;
+  }
+
+  .el-dialog.custom-dialog-class .el-dialog__header {
+    padding: 0;
+  }
+}
+</style>
+<style lang="less" scoped>
+@media (max-width: 760px) {
+  ._cwvxpd9dl8s {
+    display: none;
+  }
+
+  ._utrtw8kq5so {
+    display: none;
+  }
+}
+
+#post-id {
+
+  .home-body {
+    display: flex;
+    justify-content: space-between;
+
+    .left-body {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(210, 211, 216, 0.3);
+
+      .detail-post-title {
+        color: #141414;
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+      }
+
+      .post-info {
+        // border-top: 1px dashed #ddd;
+        // border-bottom: 1px dashed #ddd;
+        margin: 10px 0;
+        font-size: 14px;
+        color: #020202;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        span {
+          margin-right: 10px;
+        }
+
+        .avatar {
+          display: flex;
+        }
+
+        .profile-photo {
+          display: inline-block;
+          width: 46px;
+          height: 46px;
+          border-radius: 50%;
+          background: url("https://source.dsiab.com/upload/bb4f38bd-160a-4e89-9697-2733231a8f84.jpg") no-repeat;
+          background-size: cover;
+        }
+
+        .head-info {
+          padding: 0 10px 0 0;
+
+          .other-info {
+            font-size: 14px;
+            color: #969696;
+          }
+
+          .userName {
+            font-size: 14px;
+            font-weight: bold;
+          }
+
+          .createDate {
+            font-size: 14px;
+            color: #969696;
+          }
+        }
+      }
+
+      .detail-post-content {
+        padding: 10px 0;
+        font-size: 14px;
+        // line-height: 32px;
+        margin-bottom: 24px;
+        margin-top: 15px;
+        text-align: justify;
+        color: #4a4a4a;
+        font-weight: 400;
+        word-break: break-word;
+        white-space: normal;
+        overflow-x: auto;
+
+      }
+
+      .copy-desc {
+        padding: 20px 10px;
+        background: #f5f5f5;
+        word-break: break-all;
+        border-radius: 5px;
+
+        div {
+          font-size: 1rem;
+        }
+      }
+
+      .tags {
+        font-size: 1.2rem;
+        padding: 20px 0;
+
+        a {
+          margin-right: 10px;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    // .right-sidebar {
+    //   max-width: 385px;
+    // }
+    @media screen and(max-width: 1024px) {
+      // .right-sidebar {
+      //   display: none;
+      // }
+    }
+
+    .side-bar {
+      padding: 20px;
+      background: #fff;
+      // box-shadow: 0 1px 3px rgba(27, 95, 160, 0.1);
+    }
+  }
+}
+</style>

@@ -21,7 +21,7 @@ export default {
   mounted() {
     if (process.client) {
       // 添加统计
-      this.initWebStat();
+      // this.initWebStat();
     }
   },
   computed:{
