@@ -1,6 +1,6 @@
 import preFix from '@/plugins/baseUrl'
 
-export const getListApi = `${preFix}/pages/getList/1`
+export const getListApi = `${preFix}/pages/getList/`
 export const getDetailApi = `${preFix}/pages/getDetail/`
 export const getRecommendPostBySameTagsApi = `${preFix}/pages/getRecommendBySameTags/`
 

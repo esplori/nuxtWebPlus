@@ -22,8 +22,8 @@
                   <img :src="state.carouselList[state.carouselList.length - 2].imgUrl" alt=""
                     class="small-carousel-img" />
                   <div class="sml-car-title">
-                    <a target="_blank" :href="state.carouselList[carouselList.length - 2].url">{{
-                        state.carouselList[carouselList.length - 2].desc
+                    <a target="_blank" :href="state.carouselList[state.carouselList.length - 2].url">{{
+                        state.carouselList[state.carouselList.length - 2].desc
                     }}</a>
                   </div>
                 </div>
@@ -89,12 +89,16 @@ const state = reactive({
       url: "",
     },
   ],
-  homeList: []
+  homeList: {
+    result: [],
+    total: 0
+  },
+  page: 1
 })
 
 const getList = async () => {
   // 通过异步请求回来的数据都会存储在页面 payload 中。意味着，可能会存在没有用在你的组件的数据也加载到了 payload 中。我们强烈推荐你只选取必须使用在组件上的数据
-  let { data } = toReactive(await useFetch(getListApi)) as any;
+  let { data } = toReactive(await useFetch(getListApi + '1')) as any;
   state.homeList = data.data
 }
 getList()
