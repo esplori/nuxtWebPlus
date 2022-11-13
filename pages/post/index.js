@@ -3,6 +3,7 @@ import preFix from '@/plugins/baseUrl'
 export const getListApi = `${preFix}/pages/getList/`
 export const getDetailApi = `${preFix}/pages/getDetail/`
 export const getRecommendPostBySameTagsApi = `${preFix}/pages/getRecommendBySameTags/`
+export const getListByCateApi = `${preFix}/pages/getList/cate/`
 
 // // 通过分类查列表
 // export async function getListByCateApi(params, data) {
