@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="home-container">
     <div class="home-body">
       <div class="left-body">
         <div class="recommand">
@@ -145,7 +145,7 @@ getList()
 </script>
 
 <style lang="less" scoped>
-.container {
+.home-container {
   width: 100%;
 
   .home-body {
