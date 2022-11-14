@@ -57,9 +57,9 @@
 <script lang="ts" setup>
 import listBody from "@/components/common/pageListBody.vue"
 import nuxtPagination from "@/components/common/nuxtPagination.vue"
-import { reactive } from "vue"
+import { reactive, onMounted } from "vue"
 import { toReactive } from "@vueuse/shared";
-import { getListApi } from "@/pages/post/index"
+import { getListApi, getSiteInfoApi } from "@/pages/post/index"
 const state = reactive({
   siteInfo: {
     beianNo: '',
@@ -102,46 +102,25 @@ const getList = async () => {
   state.homeList = data.data
 }
 getList()
-
-
-//   mounted() {
-//     // 判断是否在服务端
-//     if (process.client) {
-//       // 在浏览器端调接口，需要服务端做反向代理
-//       // 查推荐
-//       this.getCate();
-//       this.getSiteInfo();
-//       // 广告代码
-//       (window.slotbydup = window.slotbydup || []).push({
-//         id: "u6611132",
-//         container: "_lrzdvi6yazm",
-//         async: true,
-//       });
-//     }
-//   },
-//   methods: {
-//     /**
-//      * 查询分类
-//      */
-//     async getCate() {
-//       let res = await getCateApi4Brower({});
-//       if (res) {
-//         this.cateList = res.data.result.slice(0, 8);
-//       }
-//     },
-//     /**
-//      * 查询轮播图
-//      */
-//     async getSiteInfo() {
-//       let res = await getSiteInfoApi({});
-//       if (res) {
-//         this.siteInfo = res.data
-//         this.carouselList = JSON.parse(res.data.carouselUrl);
-//         localStorage.setItem("siteInfo",JSON.stringify(this.siteInfo))
-//       }
-//     },
-//   },
-// };
+onMounted(() => {
+  if (process.client) {
+    // 在浏览器端调接口，需要服务端做反向代理
+    // 广告代码
+    (window.slotbydup = window.slotbydup || []).push({
+      id: "u6611132",
+      container: "_lrzdvi6yazm",
+      async: true,
+    });
+  }
+})
+const getSiteInfo = async () => {
+  let { data } = toReactive(await useFetch(getSiteInfoApi, { method: 'post' })) as any;
+  debugger
+  state.siteInfo = data.data
+  state.carouselList = JSON.parse(data.data.carouselUrl);
+  localStorage.setItem("siteInfo", JSON.stringify(state.siteInfo))
+}
+getSiteInfo()
 </script>
 
 <style lang="less" scoped>

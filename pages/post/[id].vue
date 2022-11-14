@@ -48,7 +48,7 @@
 
 <script lang="ts" setup>
 import { getDetailApi, getRecommendPostBySameTagsApi } from "@/pages/post/index"
-import { reactive } from "vue"
+import { reactive, onMounted } from "vue"
 import { toReactive } from "@vueuse/shared";
 import recommendRead from "@/components/post/recommendRead.vue"
 // import comments from "@/components/post/comments.vue"
@@ -88,6 +88,21 @@ const getRecomList = async () => {
 getList()
 getRecomList()
 
+
+onMounted(() => {
+  // 顶部广告
+  (window.slotbydup = window.slotbydup || []).push({
+    id: "u6324930",
+    container: "_utrtw8kq5so",
+    async: true,
+  });
+  // 底部广告
+  (window.slotbydup = window.slotbydup || []).push({
+    id: "u6324927",
+    container: "_cwvxpd9dl8s",
+    async: true,
+  });
+})
 // import "highlight.js/styles/monokai-sublime.css";
 // export default {
 //   components: {

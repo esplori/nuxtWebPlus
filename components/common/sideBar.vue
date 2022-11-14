@@ -3,8 +3,11 @@
     <ul>
       <li>
         <div class="search">
-          <el-input placeholder="请输入关键字" v-model="state.searchWords"></el-input>
-          <el-button @click="search">搜索</el-button>
+          <el-input placeholder="请输入关键字" v-model="state.searchWords">
+            <template #append>
+              <el-button :icon="Search" @click="search" />
+            </template>
+          </el-input>
         </div>
       </li>
       <li>
@@ -29,11 +32,11 @@
       <li>
         <div class="module">
           <div class="cate">推荐阅读</div>
-          <el-tabs v-model="state.activeName" @tab-click="handleClick">
+          <!-- <el-tabs v-model="state.activeName" @tab-click="handleClick">
             <el-tab-pane label="最近30天" name="30"></el-tab-pane>
             <el-tab-pane label="本年度" name="365"></el-tab-pane>
             <el-tab-pane label="总排行" name="all"></el-tab-pane>
-          </el-tabs>
+          </el-tabs> -->
           <ul>
             <li v-for="(item, index) in state.recommandList" :key="index">
               <div class="title">
@@ -74,13 +77,14 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { reactive } from "vue"
+import { Search } from '@element-plus/icons-vue'
+import { reactive, onMounted } from "vue"
 import { toReactive } from "@vueuse/shared";
 import { getRecomListApi, getCateApi, getTagsApi, getTopicListApi, } from "@/pages/post/index";
 import { ElMessage } from "element-plus"
 const state = reactive({
   searchWords: "",
-  activeName: "all",
+  activeName: "30",
   recommandList: [],
   cateList: [],
   tagsList: [],
@@ -138,23 +142,29 @@ const randomRgbColor = () => {
   return colorList[Math.floor(Math.random() * (max - min + 1) + min)];
 }
 
-// (window.slotbydup = window.slotbydup || []).push({
-//       id: "u6324348",
-//       container: "_oi1z2s14bx",
-//       async: true,
-//     });
-//     // side 2
-//     (window.slotbydup = window.slotbydup || []).push({
-//       id: "u6324827",
-//       container: "_clzacg58dkb",
-//       async: true,
-//     });
-//     // 监听键盘enter键，回车就执行搜索
-//     window.addEventListener("keypress", (key) => {
-//       if (key.code === "Enter") {
-//         this.search();
-//       }
-//     });
+onMounted(() => {
+  if (process.client) {
+    (window.slotbydup = window.slotbydup || []).push({
+      id: "u6324348",
+      container: "_oi1z2s14bx",
+      async: true,
+    });
+    // side 2
+    (window.slotbydup = window.slotbydup || []).push({
+      id: "u6324827",
+      container: "_clzacg58dkb",
+      async: true,
+    });
+    // 监听键盘enter键，回车就执行搜索
+    window.addEventListener("keypress", (key) => {
+      if (key.code === "Enter") {
+        this.search();
+      }
+    });
+  }
+})
+
+
 
 
 

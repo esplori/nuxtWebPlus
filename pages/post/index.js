@@ -9,6 +9,7 @@ export const getRecomListApi = `${preFix}/pages/getRecomList/`
 export const getCateApi = `${preFix}/pages/getCate`
 export const getTagsApi = `${preFix}/pages/getTags`
 export const getTopicListApi = `${preFix}/admin/getTopicList`
+export const getSiteInfoApi = `${preFix}/pages/getBasicSiteInfo`
 
 // // 通过分类查列表
 // export async function getListByCateApi(params, data) {
