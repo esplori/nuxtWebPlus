@@ -118,7 +118,6 @@ const getSiteInfo = async () => {
   debugger
   state.siteInfo = data.data
   state.carouselList = JSON.parse(data.data.carouselUrl);
-  localStorage.setItem("siteInfo", JSON.stringify(state.siteInfo))
 }
 getSiteInfo()
 </script>
