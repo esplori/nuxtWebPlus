@@ -54,7 +54,7 @@
       </li>
       <li>
         <div class="module category">
-          <div class="cate">分类</div>
+          <div class="cate">分类推荐</div>
           <ul>
             <li v-for="(item, index) in state.cateList" :key="index">
               <a :href="'/post/category/' + item.id">{{ item.name }}</a>
@@ -216,8 +216,8 @@ onMounted(() => {
     .cate {
       padding: 10px 0;
       border-bottom: 1px solid #eaeeef;
-      font-weight: 600;
-      font-size: 20px;
+      // font-weight: 600;
+      font-size: 1.6rem;
       color: #2c2e3b;
     }
   }
@@ -261,6 +261,7 @@ onMounted(() => {
     display: inline-block;
     width: 50%;
     border-bottom: 1px dotted #f5f5f5;
+    font-size: 1.2rem;
   }
 
   .module.tags {

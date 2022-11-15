@@ -11,14 +11,14 @@
             </div>
 
             <div class="home-post-excerpt">
-              {{ item.content }}
+              {{ delHtmlTag(item.content) }}
             </div>
             <div class="home-post-info">
-              <span class="create-date el-icon-date">
+              <span class="create-date">
                 {{ item.createDate }}
               </span>
-              <span class="views el-icon-view"> 阅读({{ item.views }}) </span>
-              <span class="cate-name el-icon-tickets" v-show="item.cateName">
+              <span class="views"> 阅读({{ item.views }}) </span>
+              <span class="cate-name" v-show="item.cateName">
                 <a :href="'/post/category/' + item.cate">
                   {{ item.cateName || "" }}</a
                 >
@@ -37,6 +37,7 @@
 const props = defineProps({
   list: { type: Array, default: [] }
 })
+import { delHtmlTag } from "@/assets/js/utils";
 </script>
 <style lang="less">
 @media (max-width: 575.98px) {
@@ -57,8 +58,7 @@ const props = defineProps({
       }
       .home-post-title a {
         color: #424242;
-        // font-weight: bold;
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         text-overflow: ellipsis;
       }
       .home-post-title a:hover {
@@ -68,7 +68,7 @@ const props = defineProps({
       .home-post-excerpt {
         padding: 10px 0;
         line-height: 22px;
-        font-size: 1rem;
+        font-size: 1.2rem;
         color: #8c8c8c;
         text-overflow: ellipsis;
         overflow: hidden;
