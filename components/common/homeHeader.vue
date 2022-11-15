@@ -5,38 +5,36 @@
         <el-menu mode="horizontal">
           <el-menu-item
             v-for="(item, index) in noChildren"
-            :key="index"
-            :index="String(index)"
+            :index="String(item.name)"
           >
             <a :href="item.path" target="_blank">{{ item.name }}</a>
           </el-menu-item>
           <el-sub-menu
             v-for="(item, id) in hasChildren"
-            :key="id"
             :index="String(id)"
           >
             <template #title>
               {{ item.name }}
             </template>
-            <el-menu-item v-for="(it, idx) in item.children" :key="String(idx)">
+            <el-menu-item v-for="(it, idx) in item.children" :index="String(it.name)">
               <a :href="it.path" target="_blank">{{ it.name }}</a>
             </el-menu-item>
           </el-sub-menu>
-          <el-menu-item>
+          <el-menu-item index="tbk">
             <a href="/tbk" target="_blank">优乐购</a>
           </el-menu-item>
-          <el-menu-item>
+          <el-menu-item index="games">
             <a href="https://source.dsiab.com/games/index.html" target="_blank">在线游戏</a>
           </el-menu-item>
-          <el-menu-item>
+          <el-menu-item index="about">
             <a href="/post/13">关于</a>
           </el-menu-item>
-          <el-menu-item>
+          <el-menu-item index="updateLog">
             <a href="https://gitee.com/wilkwo/nuxt-web/releases" target="_blank"
               >更新日志</a
             >
           </el-menu-item>
-          <el-menu-item>
+          <el-menu-item index="login">
             <a href="http://admin.dsiab.com/#/login" target="_blank"
               >登录</a
             >
