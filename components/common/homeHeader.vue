@@ -88,7 +88,7 @@ export default {
             { name: "网络文学", path: "https://www.dsiab.com/post/category/160" },
           ],
         },
-        { name: "大事记", path: "/bigEvents" },
+        { name: "大事记", path: "/post/category/126" },
       ],
     };
   },

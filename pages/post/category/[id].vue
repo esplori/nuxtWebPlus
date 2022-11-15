@@ -8,12 +8,8 @@
         <p class="devide"></p>
         <listBody :list="state.homeList.result"></listBody>
         <div class="home-pagination">
-          <nuxtPagination
-            :pageSize="10"
-            :total="state.homeList.total"
-            :currentPage="state.page"
-            :prePath="state.prePath"
-          ></nuxtPagination>
+          <nuxtPagination :pageSize="10" :total="state.homeList.total" :currentPage="state.page"
+            :prePath="state.prePath"></nuxtPagination>
         </div>
       </div>
     </div>
@@ -42,6 +38,15 @@ const getList = async () => {
   let url = getListByCateApi + route.params.id + '/page/' + (route.params.page || 1)
   let { data } = toReactive(await useFetch(url)) as any;
   state.homeList = data.data
+
+  useHead({
+    title: state.homeList.result[0].cateName + "-javascript技术分享",
+    meta: [
+      { name: 'description', content: state.homeList.result[0].cateName + "-javascript技术分享" },
+      { name: 'keywords', content: state.homeList.result[0].cateName || "" }
+    ]
+  })
+
 }
 getList()
 </script>
@@ -49,13 +54,16 @@ getList()
 <style lang="less" scoped>
 .cate-id {
   width: 100%;
+
   .home-body {
     display: flex;
     justify-content: space-between;
+
     .left-body {
       width: 100%;
       background: #fff;
       box-shadow: 0 0 20px rgba(210, 211, 216, 0.3);
+
       .home-pagination {
         padding: 20px;
         background: #fff;

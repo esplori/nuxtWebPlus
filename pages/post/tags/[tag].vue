@@ -29,6 +29,14 @@ let state = reactive({
   page: 1,
   prePath: "/post/tags/" + route.params.tag + "/"
 })
+
+useHead({
+    title: route.params.tag + "-javascript技术分享",
+    meta: [
+      { name: 'description', content: route.params.tag + "-javascript技术分享" },
+      { name: 'keywords', content: route.params.tag || "" }
+    ]
+  })
 // 显示当前页码
 state.page = parseInt(route.params.page as any || 1)
 const getList = async () => {

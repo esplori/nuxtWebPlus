@@ -39,6 +39,13 @@
 import { getListApi } from "./api";
 import { reactive } from "vue"
 import { toReactive } from "@vueuse/shared";
+useHead({
+    title: "网站导航-javascript技术分享",
+    meta: [
+      { name: 'description', content: "网站导航-javascript技术分享" },
+      { name: 'keywords', content: "网站导航" }
+    ]
+  })
 setPageLayout('no-side')
 const state = reactive({
   list: [
