@@ -45,8 +45,8 @@
                 </a>
               </div>
               <div class="excerpt">
-                <span class="views el-icon-date"> {{ item.createDate }}</span>
-                <span class="views el-icon-view"> 阅读({{ item.views }})</span>
+                <span class="views"> {{ item.createDate }}</span>
+                <span class="views"> 阅读({{ item.views }})</span>
               </div>
             </li>
           </ul>
@@ -205,6 +205,7 @@ onMounted(() => {
         padding: 20px;
         position: absolute;
         bottom: 0;
+        font-size: 1.2rem;
         left: 0;
         background: #000;
         color: #fff;
@@ -236,6 +237,7 @@ onMounted(() => {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      font-size: 1.2rem;
     }
 
     .excerpt {

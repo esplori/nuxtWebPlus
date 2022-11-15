@@ -79,6 +79,7 @@ export default {
     li {
       display: inline-block;
       margin-left: 20px;
+      font-size: 1.4rem;
       &.actived {
         a {
           color: #409eff;
