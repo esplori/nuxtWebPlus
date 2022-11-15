@@ -1,11 +1,8 @@
 <template>
-  <div class="cus-nuxt-router">
+  <div class="cus-nuxt-router-no-side">
     <commonHeader></commonHeader>
     <div class="router-box">
-      <div class="layout-nuxt-router">
-        <slot  />
-      </div>
-      <sideBar class="layouts-sideBar"></sideBar>
+      <slot />
     </div>
     <commonfooter></commonfooter>
   </div>
@@ -13,22 +10,18 @@
 <script setup lang="ts">
 import commonHeader from "@/components/common/homeHeader.vue";
 import commonfooter from "@/components/common/homeFooter.vue";
-import sideBar from "@/components/common/sideBar.vue";
+// import sideBar from "@/components/common/sideBar.vue";
 </script>
 <style lang="less" scoped>
-.cus-nuxt-router {
+.cus-nuxt-router-no-side {
   .router-box {
     max-width: 1200px;
     margin: 10px auto;
     display: flex;
     justify-content: space-between;
 
-    .layout-nuxt-router {
-      max-width: 820px;
-    }
-
-    .layouts-sideBar {
-      width: 385px;
+    .layout-nuxt-router-no-side {
+      width: 100%;
     }
   }
 
