@@ -17,8 +17,6 @@ import commonfooter from "@/components/common/homeFooter.vue";
   .router-box {
     max-width: 1200px;
     margin: 10px auto;
-    display: flex;
-    justify-content: space-between;
 
     .layout-nuxt-router-no-side {
       width: 100%;

@@ -3,7 +3,7 @@
     <commonHeader></commonHeader>
     <div class="router-box">
       <div class="layout-nuxt-router">
-        <slot  />
+        <slot></slot>
       </div>
       <sideBar class="layouts-sideBar"></sideBar>
     </div>
@@ -18,12 +18,14 @@ import sideBar from "@/components/common/sideBar.vue";
 <style lang="less" scoped>
 .cus-nuxt-router {
   .router-box {
+    width:100%;
     max-width: 1200px;
     margin: 10px auto;
     display: flex;
     justify-content: space-between;
 
     .layout-nuxt-router {
+      width: 100%;
       max-width: 820px;
     }
 
