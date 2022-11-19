@@ -11,9 +11,8 @@
 
 ### 项目介绍：
 
-- 主要技术: nuxtjs 3.0 、element-plus
+- 主要技术: [nuxtjs 3.0](https://nuxt.com/docs/getting-started/introduction) 、[element-plus](https://element-plus.gitee.io/zh-CN/)
 
-- 主要使用插件： axios、 less 
 
 
 ### 关联项目
@@ -34,7 +33,7 @@
 
 ### 选择nuxtjs的原因：
 
-- nuxt开发的项目能被搜索引擎收录,能进行seo。
+- nuxt开发的项目能被搜索引擎收录，能进行seo。
 
 - 上手简单，语法跟vue基本一致，部分写法有差异，只需要将文件按目录新建好，nuxt会自动生成对应路由。
 
@@ -49,7 +48,6 @@
 github: git clone https://gitee.com/wilkwo/nuxt-web-plus.git
 
 
-
 # 安装依赖
 $ npm install
 
@@ -57,11 +55,9 @@ $ npm install
 $ npm run dev
 
 # 部署到服务器，先build，再执行start启动
-
 $ npm run build
 
 # 生成静态项目
-
 $ npm run generate
 ```
 
