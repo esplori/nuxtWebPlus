@@ -12,7 +12,7 @@ import { renderToString } from 'file://C:/workspace/nuxt-web-plus/node_modules/v
 import { parseURL, withQuery, joinURL } from 'file://C:/workspace/nuxt-web-plus/node_modules/ufo/dist/index.mjs';
 import destr from 'file://C:/workspace/nuxt-web-plus/node_modules/destr/dist/index.mjs';
 import { snakeCase } from 'file://C:/workspace/nuxt-web-plus/node_modules/scule/dist/index.mjs';
-import { createFetch as createFetch$1, Headers } from 'file://C:/workspace/nuxt-web-plus/node_modules/ohmyfetch/dist/node.mjs';
+import { createFetch as createFetch$1, Headers } from 'file://C:/workspace/nuxt-web-plus/node_modules/ofetch/dist/node.mjs';
 import { createCall, createFetch } from 'file://C:/workspace/nuxt-web-plus/node_modules/unenv/runtime/fetch/index.mjs';
 import { createHooks } from 'file://C:/workspace/nuxt-web-plus/node_modules/hookable/dist/index.mjs';
 import { hash } from 'file://C:/workspace/nuxt-web-plus/node_modules/ohash/dist/index.mjs';
@@ -402,16 +402,16 @@ function normalizeError(error) {
 const errorHandler = (async function errorhandler(error, event) {
   const { stack, statusCode, statusMessage, message } = normalizeError(error);
   const errorObject = {
-    url: event.req.url,
+    url: event.node.req.url,
     statusCode,
     statusMessage,
     message,
     stack: statusCode !== 404 ? `<pre>${stack.map((i) => `<span class="stack${i.internal ? " internal" : ""}">${i.text}</span>`).join("\n")}</pre>` : "",
     data: error.data
   };
-  event.res.statusCode = errorObject.statusCode !== 200 && errorObject.statusCode || 500;
+  event.node.res.statusCode = errorObject.statusCode !== 200 && errorObject.statusCode || 500;
   if (errorObject.statusMessage) {
-    event.res.statusMessage = errorObject.statusMessage;
+    event.node.res.statusMessage = errorObject.statusMessage;
   }
   if (error.unhandled || error.fatal) {
     const tags = [
@@ -424,12 +424,12 @@ const errorHandler = (async function errorhandler(error, event) {
     console.error(tags, errorObject.message + "\n" + stack.map((l) => "  " + l.text).join("  \n"));
   }
   if (isJsonRequest(event)) {
-    event.res.setHeader("Content-Type", "application/json");
-    event.res.end(JSON.stringify(errorObject));
+    event.node.res.setHeader("Content-Type", "application/json");
+    event.node.res.end(JSON.stringify(errorObject));
     return;
   }
-  const isErrorPage = event.req.url?.startsWith("/__nuxt_error");
-  const res = !isErrorPage ? await useNitroApp().localFetch(withQuery("/__nuxt_error", errorObject), {
+  const isErrorPage = event.node.req.url?.startsWith("/__nuxt_error");
+  const res = !isErrorPage ? await useNitroApp().localFetch(withQuery(joinURL(useRuntimeConfig().app.baseURL, "/__nuxt_error"), errorObject), {
     headers: getRequestHeaders(event),
     redirect: "manual"
   }).catch(() => null) : null;
@@ -438,20 +438,20 @@ const errorHandler = (async function errorhandler(error, event) {
     {
       errorObject.description = errorObject.message;
     }
-    event.res.setHeader("Content-Type", "text/html;charset=UTF-8");
-    event.res.end(template(errorObject));
+    event.node.res.setHeader("Content-Type", "text/html;charset=UTF-8");
+    event.node.res.end(template(errorObject));
     return;
   }
   for (const [header, value] of res.headers.entries()) {
     setResponseHeader(event, header, value);
   }
   if (res.status && res.status !== 200) {
-    event.res.statusCode = res.status;
+    event.node.res.statusCode = res.status;
   }
   if (res.statusText) {
-    event.res.statusMessage = res.statusText;
+    event.node.res.statusMessage = res.statusText;
   }
-  event.res.end(await res.text());
+  event.node.res.end(await res.text());
 });
 
 const _lazy_h3HWrj = () => Promise.resolve().then(function () { return renderer$1; });
@@ -534,6 +534,10 @@ server.listen(listenAddress, () => {
   process.on("uncaughtException", (err) => console.error("[nitro] [dev] [uncaughtException]", err));
 }
 
+const appRootId = "__nuxt";
+
+const appRootTag = "div";
+
 function buildAssetsURL(...path) {
   return joinURL(publicAssetsURL(), useRuntimeConfig().app.buildAssetsDir, ...path);
 }
@@ -545,6 +549,7 @@ function publicAssetsURL(...path) {
 globalThis.__buildAssetsURL = buildAssetsURL;
 globalThis.__publicAssetsURL = publicAssetsURL;
 const getClientManifest = () => import('file://C:/workspace/nuxt-web-plus/.nuxt/dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
+const getStaticRenderedHead = () => Promise.resolve().then(function () { return _virtual__headStatic$1; }).then((r) => r.default || r);
 const getServerEntry = () => import('file://C:/workspace/nuxt-web-plus/.nuxt/dist/server/server.mjs').then((r) => r.default || r);
 const getSSRRenderer = lazyCachedFunction(async () => {
   const manifest = await getClientManifest();
@@ -566,7 +571,7 @@ const getSSRRenderer = lazyCachedFunction(async () => {
     if (process.env.NUXT_VITE_NODE_OPTIONS) {
       renderer.rendererContext.updateManifest(await getClientManifest());
     }
-    return `<div id="__nuxt">${html}</div>`;
+    return `<${appRootTag} id="${appRootId}">${html}</${appRootTag}>`;
   }
   return renderer;
 });
@@ -574,7 +579,7 @@ const getSPARenderer = lazyCachedFunction(async () => {
   const manifest = await getClientManifest();
   const options = {
     manifest,
-    renderToString: () => '<div id="__nuxt"></div>',
+    renderToString: () => `<${appRootTag} id="${appRootId}"></${appRootTag}>`,
     buildAssetsURL
   };
   const renderer = createRenderer(() => () => {
@@ -591,7 +596,7 @@ const getSPARenderer = lazyCachedFunction(async () => {
       data: {},
       state: {}
     };
-    ssrContext.renderMeta = ssrContext.renderMeta ?? (() => ({}));
+    ssrContext.renderMeta = ssrContext.renderMeta ?? getStaticRenderedHead;
     return Promise.resolve(result);
   };
   return {
@@ -601,36 +606,31 @@ const getSPARenderer = lazyCachedFunction(async () => {
 });
 const PAYLOAD_URL_RE = /\/_payload(\.[a-zA-Z0-9]+)?.js(\?.*)?$/;
 const renderer = defineRenderHandler(async (event) => {
-  const ssrError = event.req.url?.startsWith("/__nuxt_error") ? getQuery(event) : null;
-  if (ssrError && event.req.socket.readyState !== "readOnly") {
+  const ssrError = event.node.req.url?.startsWith("/__nuxt_error") ? getQuery(event) : null;
+  if (ssrError && event.node.req.socket.readyState !== "readOnly") {
     throw createError("Cannot directly render error page!");
   }
-  let url = ssrError?.url || event.req.url;
+  let url = ssrError?.url || event.node.req.url;
   const isRenderingPayload = PAYLOAD_URL_RE.test(url);
   if (isRenderingPayload) {
     url = url.substring(0, url.lastIndexOf("/")) || "/";
-    event.req.url = url;
+    event.node.req.url = url;
   }
   const routeOptions = getRouteRules(event);
   const ssrContext = {
     url,
     event,
     runtimeConfig: useRuntimeConfig(),
-    noSSR: !!event.req.headers["x-nuxt-no-ssr"] || routeOptions.ssr === false || (false),
+    noSSR: !!event.node.req.headers["x-nuxt-no-ssr"] || routeOptions.ssr === false || (false),
     error: !!ssrError,
     nuxt: void 0,
     payload: ssrError ? { error: ssrError } : {}
   };
   const renderer = ssrContext.noSSR ? await getSPARenderer() : await getSSRRenderer();
-  const _rendered = await renderer.renderToString(ssrContext).catch((err) => {
-    if (!ssrError) {
-      throw ssrContext.payload?.error || err;
-    }
+  const _rendered = await renderer.renderToString(ssrContext).catch((error) => {
+    throw !ssrError && ssrContext.payload?.error || error;
   });
   await ssrContext.nuxt?.hooks.callHook("app:rendered", { ssrContext });
-  if (!_rendered) {
-    return void 0;
-  }
   if (ssrContext.payload?.error && !ssrError) {
     throw ssrContext.payload.error;
   }
@@ -651,7 +651,7 @@ const renderer = defineRenderHandler(async (event) => {
       ssrContext.styles
     ]),
     bodyAttrs: normalizeChunks([renderedMeta.bodyAttrs]),
-    bodyPreprend: normalizeChunks([
+    bodyPrepend: normalizeChunks([
       renderedMeta.bodyScriptsPrepend,
       ssrContext.teleports?.body
     ]),
@@ -668,8 +668,8 @@ const renderer = defineRenderHandler(async (event) => {
   await nitroApp.hooks.callHook("render:html", htmlContext, { event });
   const response = {
     body: renderHTMLDocument(htmlContext),
-    statusCode: event.res.statusCode,
-    statusMessage: event.res.statusMessage,
+    statusCode: event.node.res.statusCode,
+    statusMessage: event.node.res.statusMessage,
     headers: {
       "Content-Type": "text/html;charset=UTF-8",
       "X-Powered-By": "Nuxt"
@@ -702,14 +702,14 @@ function renderHTMLDocument(html) {
   return `<!DOCTYPE html>
 <html ${joinAttrs(html.htmlAttrs)}>
 <head>${joinTags(html.head)}</head>
-<body ${joinAttrs(html.bodyAttrs)}>${joinTags(html.bodyPreprend)}${joinTags(html.body)}${joinTags(html.bodyAppend)}</body>
+<body ${joinAttrs(html.bodyAttrs)}>${joinTags(html.bodyPrepend)}${joinTags(html.body)}${joinTags(html.bodyAppend)}</body>
 </html>`;
 }
 function renderPayloadResponse(ssrContext) {
   return {
     body: `export default ${devalue(splitPayload(ssrContext).payload)}`,
-    statusCode: ssrContext.event.res.statusCode,
-    statusMessage: ssrContext.event.res.statusMessage,
+    statusCode: ssrContext.event.node.res.statusCode,
+    statusMessage: ssrContext.event.node.res.statusMessage,
     headers: {
       "content-type": "text/javascript;charset=UTF-8",
       "x-powered-by": "Nuxt"
@@ -727,5 +727,12 @@ function splitPayload(ssrContext) {
 const renderer$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
   'default': renderer
+});
+
+const _virtual__headStatic = {"headTags":"<meta charset=\"utf-8\">\n<title>javascript技术分享</title>\n<meta name=\"viewport\" content=\"width=500, initial-scale=1,width=device-width\">\n<meta name=\"description\" content=\"书写心得,分享感悟\">\n<meta name=\"keywords\" content=\"javascript技术分享,js技术,vuejs,web前端,前端开发,前端面试,web开发,dsiab,个人博客,前端博客\">","bodyTags":"","bodyTagsOpen":"","htmlAttrs":"","bodyAttrs":""};
+
+const _virtual__headStatic$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  'default': _virtual__headStatic
 });
 //# sourceMappingURL=index.mjs.map

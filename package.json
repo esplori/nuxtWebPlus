@@ -10,6 +10,6 @@
   "devDependencies": {
     "element-plus": "^2.2.20",
     "less": "^4.1.3",
-    "nuxt": "3.0.0-rc.13"
+    "nuxt": "^3.0.0"
   }
 }

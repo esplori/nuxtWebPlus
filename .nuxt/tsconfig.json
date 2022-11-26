@@ -81,5 +81,8 @@
   "include": [
     "./nuxt.d.ts",
     "../**/*"
+  ],
+  "exclude": [
+    "../dist"
   ]
 }
