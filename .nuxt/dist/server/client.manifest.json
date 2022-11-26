@@ -6,10 +6,10 @@
     "module": true,
     "resourceType": "script"
   },
-  "/Users/wilkwo/qdd/workspace/nuxt-web-plus/node_modules/nuxt/dist/app/entry.mjs": {
+  "C:/workspace/nuxt-web-plus/node_modules/nuxt/dist/app/entry.mjs": {
     "resourceType": "script",
     "module": true,
     "isEntry": true,
-    "file": "/Users/wilkwo/qdd/workspace/nuxt-web-plus/node_modules/nuxt/dist/app/entry.mjs"
+    "file": "C:/workspace/nuxt-web-plus/node_modules/nuxt/dist/app/entry.mjs"
   }
 }
