@@ -1,76 +1,52 @@
 <template>
   <div class="nuxt-pagination">
-    <ul v-show="pageList.length > 1">
-      <li
-        v-for="(item, index) in pageList"
-        :key="index"
-        :class="{ actived: currentPage === item }"
-      >
-        <a :href="prePath + item">{{ item }}</a>
+    <ul>
+      <li v-for="(item, index) in pageList" :key="index" :class="{ actived: propsState.currentPage === item }">
+        <a :href="propsState.prePath + item">{{ item }}</a>
       </li>
     </ul>
   </div>
 </template>
-<script>
-export default {
-  props: {
-    total: {
-      type: Number,
-      default() {
-        return 0;
-      },
-    },
-    currentPage: {
-      type: Number,
-      default() {
-        return 1;
-      },
-    },
-    pageSize: {
-      type: Number,
-      default() {
-        return 10;
-      },
-    },
-    prePath: {
-      type: String,
-      default() {
-        return "";
-      },
-    },
+<script lang="ts" setup>
+import { computed } from "vue"
+let propsState = defineProps({
+  total: {
+    type: Number,default: 0
   },
-  computed: {
-    pageList() {
-      let totalPage = Math.ceil(this.total / this.pageSize);
-      let list = []
-      if (totalPage > 5) {
-        let left1 = this.currentPage - 1 <= 0 ? "" : this.currentPage - 1;
-        let left2 = this.currentPage - 2 <= 0 ? "" : this.currentPage - 2;
-        list = [
-          left2,
-          left1,
-          this.currentPage
-        ]
-        if (this.currentPage <=totalPage) {
-          if (this.currentPage + 1 <=totalPage) {
-            list = list.concat([this.currentPage + 1])
-          }
-          if (this.currentPage + 2 <=totalPage) {
-            list = list.concat([this.currentPage + 2,])
-          }
-        } else{
-          return
-        }
-        return list;
-      } else {
-        for (let index = 0; index < totalPage; index++) {
-          list.push(index + 1);
-        }
-        return list;
+  currentPage: {type: Number,default: 1},
+  pageSize: {type: Number,default: 10},
+  prePath: {type: String,default: ""}
+})
+
+let pageList = computed(() => {
+  let totalPage = Math.ceil(propsState.total / propsState.pageSize);
+  let list = []
+  if (totalPage > 5) {
+    let left1 = propsState.currentPage - 1 <= 0 ? "" : propsState.currentPage - 1;
+    let left2 = propsState.currentPage - 2 <= 0 ? "" : propsState.currentPage - 2;
+    list = [
+      left2,
+      left1,
+      propsState.currentPage
+    ]
+    if (propsState.currentPage <= totalPage) {
+      if (propsState.currentPage + 1 <= totalPage) {
+        list = list.concat([propsState.currentPage + 1])
       }
-    },
-  },
-};
+      if (propsState.currentPage + 2 <= totalPage) {
+        list = list.concat([propsState.currentPage + 2,])
+      }
+    } else {
+      return
+    }
+    return list;
+  } else {
+    for (let index = 0; index < totalPage; index++) {
+      list.push(index + 1);
+    }
+    return list;
+  }
+})
 </script>
 
 <style lang="less">
@@ -80,6 +56,7 @@ export default {
       display: inline-block;
       margin-left: 20px;
       font-size: 1.4rem;
+
       &.actived {
         a {
           color: #409eff;

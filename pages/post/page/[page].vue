@@ -8,7 +8,6 @@
             :pageSize="10"
             :total="state.homeList.total"
             :currentPage="state.page"
-            @pageChange="handleCurrentChange"
           ></nuxtPagination>
         </div>
       </div>
@@ -39,10 +38,6 @@ const getList = async () => {
   state.homeList = data.data
 }
 getList()
-
-const handleCurrentChange = (page:String) =>{
-  window.location.href = "/page/" + page;
-}
 
 </script>
 
