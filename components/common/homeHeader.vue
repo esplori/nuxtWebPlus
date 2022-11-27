@@ -51,7 +51,7 @@ export default {
       activeIndex: "",
       menList: [
         { name: "首页", path: "/" },
-        { name: "网站导航", path: "/navigation" },
+        { name: "网站导航", path: "/nav" },
         {
           name: "前端教程",
           path: "",
