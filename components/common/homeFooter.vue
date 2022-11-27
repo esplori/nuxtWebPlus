@@ -11,7 +11,8 @@
 <script lang="ts" setup>
 useHead({
   script: [
-      { src: 'https://cpro.baidustatic.com/cpro/ui/cm.js' }
+      { src: 'https://cpro.baidustatic.com/cpro/ui/cm.js' },
+      { src: 'https://source.dsiab.com/plugins/webstatistics.js' },
     ]
 })
 // export default {

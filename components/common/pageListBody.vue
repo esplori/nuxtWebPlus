@@ -34,10 +34,11 @@
   </div>
 </template>
 <script lang="ts" setup>
+import { delHtmlTag } from "@/assets/js/utils";
 const props = defineProps({
   list: { type: Array, default: [] }
 })
-import { delHtmlTag } from "@/assets/js/utils";
+
 </script>
 <style lang="less">
 @media (max-width: 575.98px) {
