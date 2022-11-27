@@ -115,7 +115,6 @@ onMounted(() => {
 })
 const getSiteInfo = async () => {
   let { data } = toReactive(await useFetch(getSiteInfoApi, { method: 'post' })) as any;
-  debugger
   state.siteInfo = data.data
   state.carouselList = JSON.parse(data.data.carouselUrl);
 }

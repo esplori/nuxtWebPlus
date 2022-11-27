@@ -158,7 +158,7 @@ onMounted(() => {
     // 监听键盘enter键，回车就执行搜索
     window.addEventListener("keypress", (key) => {
       if (key.code === "Enter") {
-        this.search();
+        search();
       }
     });
   }
