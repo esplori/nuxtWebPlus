@@ -10,7 +10,7 @@
 </template>
   
 <script lang="ts" setup>
-import { getToppicListApi } from "./api";
+import { getTopicDetailList } from "./api";
 import { toReactive } from "@vueuse/shared";
 const route = useRoute()
 
@@ -20,7 +20,7 @@ let state = reactive({
 
 const getList = async () => {
     // 通过异步请求回来的数据都会存储在页面 payload 中。意味着，可能会存在没有用在你的组件的数据也加载到了 payload 中。我们强烈推荐你只选取必须使用在组件上的数据
-    let { data } = toReactive(await useFetch(getToppicListApi, { method: 'post', body: { topicId: route.params.id } })) as any;
+    let { data } = toReactive(await useFetch(getTopicDetailList, { method: 'get', params: { topicId: route.params.id } })) as any;
     state.list = data.data.result
 }
 getList()

@@ -3,99 +3,10 @@ import preFix from '@/plugins/baseUrl'
 export const getListApi = `${preFix}/pages/getList/`
 export const getDetailApi = `${preFix}/pages/getDetail/`
 export const getRecommendPostBySameTagsApi = `${preFix}/pages/getRecommendBySameTags/`
-export const getListByCateApi = `${preFix}/pages/getList/cate/`
-export const getListByTagsApi = `${preFix}/pages/getList/tags/`
+export const getListByCateApi = `${preFix}/pages/getListByCatePage`
+export const getListByTagsApi = `${preFix}/pages/getListByTagsPage`
 export const getRecomListApi = `${preFix}/pages/getRecomList/`
 export const getCateApi = `${preFix}/pages/getCate`
 export const getTagsApi = `${preFix}/pages/getTags`
-export const getTopicListApi = `${preFix}/admin/getTopicList`
+export const getTopicListApi = `${preFix}/pages/getTopicList`
 export const getSiteInfoApi = `${preFix}/pages/getBasicSiteInfo`
-
-// // 通过分类查列表
-// export async function getListByCateApi(params, data) {
-//   if (!params.page) {
-//     params.page = 1
-//   }
-//   let url = baseUrl + '/pages/getList/cate/' + params.cate + '/page/' + params.page || 1
-//   const options = {}
-//   return get(url, data, options)
-// }
-// // 大事记，浏览器端渲染
-// export async function getListByCateApi4Brower(params, data) {
-//   if (!params.page) {
-//     params.page = 1
-//   }
-//   let url = '/bootService/pages/getList/cate/' + params.cate + '/page/' + params.page || 1
-//   const options = {}
-//   return get(url, data, options)
-// }
-// // 通过关键字查询列表
-// export async function getListByTagsApi(params, data) {
-//   if (!params.page) {
-//     params.page = 1
-//   }
-//   let url = baseUrl + '/pages/getList/tags/' + encodeURI(params.tag) + '/page/' + params.page || 1
-//   const options = {}
-//   return get(url, data, options)
-// }
-// // 查看推荐列表,浏览器渲染
-// export async function getRecomListApi4Brower(data) {
-//   const url = '/bootService/pages/getRecomList/' + data.type
-//   const options = {}
-//   return post(url, data, options)
-// }
-// // 查看详情
-// export async function getDetailApi(id, data) {
-//   const url = baseUrl + '/pages/getDetail/' + id
-//   const options = {}
-//   return get(url, data, options)
-// }
-// //  查看分类列表，用来查询分类名称
-// export async function getCateApi(id, data) {
-//   const url = baseUrl + '/pages/getCate'
-//   const options = {}
-//   return get(url, data, options)
-// }
-// //  查看分类列表,浏览器渲染
-// export async function getCateApi4Brower(id, data) {
-//   const url = '/bootService/pages/getCate'
-//   const options = {}
-//   return get(url, data, options)
-// }
-// // 获取所有标签，浏览器渲染
-// export async function getTagsApi4Brower(id, data) {
-//   const url = '/bootService/pages/getTags'
-//   const options = {}
-//   return get(url, data, options)
-// }
-// // 添加评论，浏览器渲染
-// export async function insertCommentApi(data) {
-//   const url = '/bootService/admin/getInsertComment'
-//   const options = {}
-//   return post(url, data, options)
-// }
-// // 获取评论，浏览器渲染
-// export async function getCommentApi(data) {
-//   const url = '/bootService/pages/getComment'
-//   const options = {}
-//   return get(url, data, options)
-// }
-// // 获取站点信息，主要用来查询轮播图等
-// export async function getSiteInfoApi(data) {
-//   const url = '/bootService/pages/getBasicSiteInfo'
-//   const options = {}
-//   return post(url, data, options)
-// }
-
-// // 获取专题数据
-// export async function getTopicListApi(data) {
-//   const url = '/bootService/admin/getTopicList'
-//   const options = {}
-//   return get(url, data, options)
-// }
-// // 单篇文章推荐列表
-// export async function getRecommendBySameTagsApi(data) {
-//   const url = "/bootService/pages/getRecommendBySameTags"
-//   const options = {}
-//   return get(url, data, options)
-// }

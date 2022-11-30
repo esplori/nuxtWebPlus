@@ -93,7 +93,7 @@ const state = reactive({
 
 const getRecomList = async (activeName: any) => {
   let url = getRecomListApi + activeName
-  let { data } = toReactive(await useFetch(url, { method: "post" })) as any;
+  let { data } = toReactive(await useFetch(url, { method: "get" })) as any;
   state.recommandList = data.data
 }
 getRecomList(state.activeName)

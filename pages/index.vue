@@ -114,7 +114,7 @@ onMounted(() => {
   }
 })
 const getSiteInfo = async () => {
-  let { data } = toReactive(await useFetch(getSiteInfoApi, { method: 'post' })) as any;
+  let { data } = toReactive(await useFetch(getSiteInfoApi, { method: 'get' })) as any;
   state.siteInfo = data.data
   state.carouselList = JSON.parse(data.data.carouselUrl);
 }

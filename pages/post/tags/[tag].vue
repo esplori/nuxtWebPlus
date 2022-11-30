@@ -40,50 +40,10 @@ useHead({
 // 显示当前页码
 state.page = parseInt(route.params.page as any || 1)
 const getList = async () => {
-  let url = getListByTagsApi + encodeURI(route.params.tag) + '/page/' + (route.params.page || 1)
-  let { data } = toReactive(await useFetch(url)) as any;
+  let { data } = toReactive(await useFetch(getListByTagsApi,{method: "get",params:{tag: encodeURI(route.params.tag as any),page: (route.params.page || 1)}} )) as any;
   state.homeList = data.data
 }
 getList()
-// import { getListByTagsApi } from "../index";
-// export default {
-//   components: {
-//     listBody: () => import("@/components/home/pageListBody.vue"),
-//     nuxtPagination: () => import("@/components/common/nuxtPagination.vue"),
-//   },
-//   head() {
-//     return {
-//       title: `${this.tag}-javascript技术分享`,
-//       meta: [
-//         {
-//           hid: "description",
-//           name: "description",
-//           content: `${this.tag}`,
-//         },
-//         {
-//           hid: "keywords",
-//           name: "keywords",
-//           content: `${this.tag}`,
-//         },
-//       ],
-//     };
-//   },
-//   async asyncData({ route }) {
-//     let [homeList] = await Promise.all([
-//       getListByTagsApi({ tag: route.params.id, page: route.params.page || 1 }),
-//     ]);
-//     return {
-//       homeList: homeList.data,
-//       page: parseInt(route.params.page || 1),
-//       tag: route.params.id,
-//     };
-//   },
-//   computed: {
-//     prePath() {
-//       return "/post/tags/" + this.tag + "/";
-//     },
-//   },
-// };
 </script>
 
 <style lang="less" scoped>

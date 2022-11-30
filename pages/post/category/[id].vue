@@ -35,8 +35,7 @@ let state = reactive({
 state.page = parseInt(route.params.page as any || 1)
 
 const getList = async () => {
-  let url = getListByCateApi + route.params.id + '/page/' + (route.params.page || 1)
-  let { data } = toReactive(await useFetch(url)) as any;
+  let { data } = toReactive(await useFetch(getListByCateApi,{method:"get",params:{cate: route.params.id, page:  (route.params.page || 1)}})) as any;
   state.homeList = data.data
 
   useHead({

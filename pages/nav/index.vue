@@ -50,7 +50,7 @@ const state = reactive({
   tabPosition: "left",
 })
 const getSiteInfo = async () => {
-  let { data } = toReactive(await useFetch(getListApi, { method: 'post' })) as any;
+  let { data } = toReactive(await useFetch(getListApi, { method: 'get' })) as any;
   state.list = data.data
 }
 getSiteInfo()
