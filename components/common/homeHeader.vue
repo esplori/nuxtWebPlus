@@ -26,9 +26,9 @@
           <el-menu-item index="updateLog">
             <a href="https://gitee.com/wilkwo/nuxt-web/releases" target="_blank">更新日志</a>
           </el-menu-item>
-          <el-menu-item index="login">
+          <!-- <el-menu-item index="login">
             <a href="http://admin.dsiab.com/#/login" target="_blank">登录</a>
-          </el-menu-item>
+          </el-menu-item> -->
         </el-menu>
       </div>
     </div>
