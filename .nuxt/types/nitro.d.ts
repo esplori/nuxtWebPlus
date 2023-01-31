@@ -2,10 +2,14 @@
 declare module 'nitropack' {
   type Awaited<T> = T extends PromiseLike<infer U> ? Awaited<U> : T
   interface InternalApi {
-    '/__nuxt_error': Awaited<ReturnType<typeof import('../../node_modules/nuxt/dist/core/runtime/nitro/renderer').default>>
+    '/__nuxt_error': {
+      'default': Awaited<ReturnType<typeof import('../../node_modules/nuxt/dist/core/runtime/nitro/renderer').default>>
+    }
   }
 }
 declare global {
+  const __buildAssetsURL: typeof import('C:/workspace/nuxt-web-plus/node_modules/nuxt/dist/core/runtime/nitro/paths')['buildAssetsURL']
+  const __publicAssetsURL: typeof import('C:/workspace/nuxt-web-plus/node_modules/nuxt/dist/core/runtime/nitro/paths')['publicAssetsURL']
   const appendHeader: typeof import('h3')['appendHeader']
   const appendHeaders: typeof import('h3')['appendHeaders']
   const appendResponseHeader: typeof import('h3')['appendResponseHeader']
@@ -41,6 +45,8 @@ declare global {
   const getRequestHeaders: typeof import('h3')['getRequestHeaders']
   const getResponseHeader: typeof import('h3')['getResponseHeader']
   const getResponseHeaders: typeof import('h3')['getResponseHeaders']
+  const getResponseStatus: typeof import('h3')['getResponseStatus']
+  const getResponseStatusText: typeof import('h3')['getResponseStatusText']
   const getRouteRules: typeof import('C:/workspace/nuxt-web-plus/node_modules/nitropack/dist/runtime')['getRouteRules']
   const getRouterParam: typeof import('h3')['getRouterParam']
   const getRouterParams: typeof import('h3')['getRouterParams']
@@ -56,9 +62,11 @@ declare global {
   const promisifyNodeListener: typeof import('h3')['promisifyNodeListener']
   const proxyRequest: typeof import('h3')['proxyRequest']
   const readBody: typeof import('h3')['readBody']
+  const readMultipartFormData: typeof import('h3')['readMultipartFormData']
   const readRawBody: typeof import('h3')['readRawBody']
   const send: typeof import('h3')['send']
   const sendError: typeof import('h3')['sendError']
+  const sendNoContent: typeof import('h3')['sendNoContent']
   const sendProxy: typeof import('h3')['sendProxy']
   const sendRedirect: typeof import('h3')['sendRedirect']
   const sendStream: typeof import('h3')['sendStream']
@@ -67,6 +75,7 @@ declare global {
   const setHeaders: typeof import('h3')['setHeaders']
   const setResponseHeader: typeof import('h3')['setResponseHeader']
   const setResponseHeaders: typeof import('h3')['setResponseHeaders']
+  const setResponseStatus: typeof import('h3')['setResponseStatus']
   const toEventHandler: typeof import('h3')['toEventHandler']
   const toNodeListener: typeof import('h3')['toNodeListener']
   const useBase: typeof import('h3')['useBase']
