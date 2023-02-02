@@ -23,7 +23,7 @@
                     class="small-carousel-img" />
                   <div class="sml-car-title">
                     <a target="_blank" :href="state.carouselList[state.carouselList.length - 2].url">{{
-                        state.carouselList[state.carouselList.length - 2].desc
+                      state.carouselList[state.carouselList.length - 2].desc
                     }}</a>
                   </div>
                 </div>
@@ -32,7 +32,7 @@
                     class="small-carousel-img" />
                   <div class="sml-car-title">
                     <a target="_blank" :href="state.carouselList[state.carouselList.length - 1].url">{{
-                        state.carouselList[state.carouselList.length - 1].desc
+                      state.carouselList[state.carouselList.length - 1].desc
                     }}</a>
                   </div>
                 </div>
@@ -60,6 +60,13 @@ import nuxtPagination from "@/components/common/nuxtPagination.vue"
 import { reactive, onMounted } from "vue"
 import { toReactive } from "@vueuse/shared";
 import { getListApi, getSiteInfoApi } from "@/pages/post/index"
+useHead({
+  title: "javascript技术分享",
+  meta: [
+    { name: 'description', content: "书写心得,分享感悟" },
+    { name: 'keywords', content: "javascript技术分享,js技术,vuejs,web前端,前端开发,前端面试,web开发,dsiab,个人博客,前端博客" }
+  ]
+})
 const state = reactive({
   siteInfo: {
     beianNo: '',
