@@ -107,7 +107,7 @@ const hasChildren = computed(() => {
         font-size: 1.2rem;
       }
 
-      .el-submenu__title {
+      .el-sub-menu__title {
         font-size: 1.2rem;
       }
 

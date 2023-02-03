@@ -39,9 +39,9 @@ const getList = async () => {
   state.homeList = data.data
 
   useHead({
-    title: state.homeList.result[0].cateName + "-javascript技术分享",
+    title: state.homeList.result[0].cateName + " - javascript技术分享",
     meta: [
-      { name: 'description', content: state.homeList.result[0].cateName + "-javascript技术分享" },
+      { name: 'description', content: state.homeList.result[0].cateName + " - javascript技术分享" },
       { name: 'keywords', content: state.homeList.result[0].cateName || "" }
     ]
   })

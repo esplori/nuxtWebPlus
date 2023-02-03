@@ -33,9 +33,9 @@ definePageMeta({
   layout: 'no-side',
 });
 useHead({
-  title: "网站导航-javascript技术分享",
+  title: "网站导航 - javascript技术分享",
   meta: [
-    { name: 'description', content: "网站导航-javascript技术分享" },
+    { name: 'description', content: "网站导航 - javascript技术分享" },
     { name: 'keywords', content: "网站导航" }
   ]
 })
