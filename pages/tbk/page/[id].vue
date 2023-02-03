@@ -17,9 +17,9 @@ import { toReactive } from "@vueuse/shared";
 import nuxtPagination from "@/components/common/nuxtPagination.vue"
 import tbkBody from "@/components/tbk/tbkBody.vue"
 useHead({
-    title: "优乐购-javascript技术分享",
+    title: "优乐购 - javascript技术分享",
     meta: [
-      { name: 'description', content: "优乐购-javascript技术分享" },
+      { name: 'description', content: "优乐购 - javascript技术分享" },
       { name: 'keywords', content: "优乐购" }
     ]
   })

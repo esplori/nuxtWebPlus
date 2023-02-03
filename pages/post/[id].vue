@@ -79,9 +79,9 @@ const getList = async () => {
   state.detailData = data.data.result
 
   useHead({
-    title: state.detailData.title + "-javascript技术分享",
+    title: state.detailData.title + " - javascript技术分享",
     meta: [
-      { name: 'description', content: state.detailData.title + "-javascript技术分享" },
+      { name: 'description', content: state.detailData.title + " - javascript技术分享" },
       { name: 'keywords', content: state.detailData.keywords || state.detailData.title }
     ]
   })

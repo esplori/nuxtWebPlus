@@ -17,7 +17,13 @@ const route = useRoute()
 let state = reactive({
     list: [{ name: "", postId: "" }]
 })
-
+useHead({
+    title: "专题" + " - javascript技术分享",
+    meta: [
+      { name: 'description', content: "专题" + " - javascript技术分享" },
+      { name: 'keywords', content: "专题"  }
+    ]
+  })
 const getList = async () => {
     // 通过异步请求回来的数据都会存储在页面 payload 中。意味着，可能会存在没有用在你的组件的数据也加载到了 payload 中。我们强烈推荐你只选取必须使用在组件上的数据
     let { data } = toReactive(await useFetch(getTopicDetailList, { method: 'get', params: { topicId: route.params.id } })) as any;

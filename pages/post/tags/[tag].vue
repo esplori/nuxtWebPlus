@@ -31,9 +31,9 @@ let state = reactive({
 })
 
 useHead({
-    title: route.params.tag + "-javascript技术分享",
+    title: route.params.tag + " - javascript技术分享",
     meta: [
-      { name: 'description', content: route.params.tag + "-javascript技术分享" },
+      { name: 'description', content: route.params.tag + " - javascript技术分享" },
       { name: 'keywords', content: route.params.tag || "" }
     ]
   })
