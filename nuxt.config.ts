@@ -21,6 +21,7 @@ export default defineNuxtConfig({
         '/bootService': {
           // target: 'http://localhost:8091/'
           target: 'http://admin.dsiab.com/',
+          changeOrigin: true
         }
       }
     }
