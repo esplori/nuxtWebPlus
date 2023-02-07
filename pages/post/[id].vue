@@ -54,7 +54,7 @@ import recommendRead from "@/components/post/recommendRead.vue"
 import { useRoute } from "vue-router"
 // import comments from "@/components/post/comments.vue"
 // 引入highlightjs代碼高亮插件
-// import 'highlight.js/styles/monokai-sublime.css'
+import 'highlight.js/styles/monokai-sublime.css'
 import hl from "highlight.js"
 
 const route = useRoute()
