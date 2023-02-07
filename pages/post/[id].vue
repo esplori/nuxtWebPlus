@@ -51,7 +51,12 @@ import { getDetailApi, getRecommendPostBySameTagsApi } from "@/pages/post/index"
 import { reactive, onMounted } from "vue"
 import { toReactive } from "@vueuse/shared";
 import recommendRead from "@/components/post/recommendRead.vue"
+import { useRoute } from "vue-router"
 // import comments from "@/components/post/comments.vue"
+// 引入highlightjs代碼高亮插件
+// import 'highlight.js/styles/monokai-sublime.css'
+import hl from "highlight.js"
+
 const route = useRoute()
 let state = reactive({
   detailData: {
@@ -77,7 +82,6 @@ const getList = async () => {
   // 通过异步请求回来的数据都会存储在页面 payload 中。意味着，可能会存在没有用在你的组件的数据也加载到了 payload 中。我们强烈推荐你只选取必须使用在组件上的数据
   let { data } = toReactive(await useFetch(getDetailApi + route.params.id)) as any;
   state.detailData = data.data.result
-
   useHead({
     title: state.detailData.title + " - javascript技术分享",
     meta: [
@@ -100,7 +104,9 @@ getRecomList()
 
 onMounted(() => {
   if (process.client) {
-    // 顶部广告
+    // 代码高亮插件需要在浏览器端加载完成再调用
+    hl.highlightAll()
+      // 顶部广告
     (window.slotbydup = window.slotbydup || []).push({
       id: "u6324930",
       container: "_utrtw8kq5so",
