@@ -21,6 +21,12 @@ const props = defineProps({
 <style lang="less">
 .postRecommend {
   padding: 0 20px;
+  h3{
+    position: relative;
+    left: -20px;
+    font-size: 1.4rem;
+  }
+  
   ul {
     li {
       font-size: 1.2rem;
