@@ -54,8 +54,8 @@ import recommendRead from "@/components/post/recommendRead.vue"
 import { useRoute } from "vue-router"
 // import comments from "@/components/post/comments.vue"
 // 引入highlightjs代碼高亮插件
-import 'highlight.js/styles/monokai-sublime.css'
-import hl from "highlight.js"
+// import 'highlight.js/styles/monokai-sublime.css'
+import hljs from "highlight.js"
 
 const route = useRoute()
 let state = reactive({
@@ -89,7 +89,9 @@ const getList = async () => {
       { name: 'keywords', content: state.detailData.keywords || state.detailData.title }
     ]
   })
-
+  setTimeout(() =>{
+      hljs.highlightAll()
+  },200)
 }
 
 const getRecomList = async () => {
@@ -104,8 +106,6 @@ getRecomList()
 
 onMounted(() => {
   if (process.client) {
-    // 代码高亮插件需要在浏览器端加载完成再调用
-    hl.highlightAll()
       // 顶部广告
     (window.slotbydup = window.slotbydup || []).push({
       id: "u6324930",
