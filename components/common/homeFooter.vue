@@ -14,6 +14,7 @@ useHead({
   script: [
     { src: 'https://cpro.baidustatic.com/cpro/ui/cm.js' },
     { src: 'https://source.dsiab.com/plugins/webstatistics.js' },
+    // { src: 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js' },
   ]
 })
 
