@@ -8,7 +8,7 @@
             </div>
             <div class="item-info">
                 <div>
-                    <a class="item-title">{{ state.item.title }}</a>
+                    <h1 class="item-title">{{ state.item.title }}</h1> 
                 </div>
                 <div class="reserve_price">
                     原价：<span class="rmbicon">¥</span><span class="line-through">{{ state.item.reserve_price }}</span>

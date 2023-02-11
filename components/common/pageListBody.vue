@@ -71,7 +71,7 @@ const props = defineProps({
       .home-post-excerpt {
         padding: 10px 0;
         line-height: 22px;
-        font-size: 1rem;
+        font-size: 1.2rem;
         color: #8c8c8c;
         text-overflow: ellipsis;
         overflow: hidden;
