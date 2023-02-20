@@ -45,8 +45,8 @@
                 </a>
               </div>
               <div class="excerpt">
-                <span class="views"> {{ item.createDate }}</span>
-                <span class="views"> 阅读({{ item.views }})</span>
+                <span class="views"> 发布时间：{{ item.createDate }}</span>
+                <span class="views"> 阅读：{{ item.views }}</span>
               </div>
             </li>
           </ul>
