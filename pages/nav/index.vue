@@ -4,7 +4,7 @@
       <el-row :gutter="10">
         <el-col :span="24">
           <div class="left-body">
-            <el-tabs :tab-position="state.tabPosition" style="height: 100%">
+            <el-tabs :tab-position="state.tabPosition" type="border-card" style="height: 100vh">
               <el-tab-pane :label="item.name" v-for="(item, index) in state.list" :key="index">
                 <div class="child-cate">
                   <div class="cate-item" v-for="(it, ix) in item.children" :key="ix">
