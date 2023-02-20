@@ -23,8 +23,8 @@
         </div>
         <div>
           <div class="tags" v-if="state.detailData.keywords">
-            标签：<a :href="'/post/tags/' + item" v-for="(item, index) in state.detailData.keywords.split(',')"
-              :key="index" target="_blank">{{ item }}</a>
+            标签：<a :href="'/post/tags/' + item" v-for="(item, index) in state.detailData.keywords.split(',')" :key="index"
+              target="_blank">{{ item }}</a>
           </div>
           <div class="copy-desc">
             <div>
@@ -39,10 +39,6 @@
         <!-- <comments></comments> -->
       </div>
     </div>
-
-    <el-dialog custom-class="custom-dialog-class" :visible.sync="state.dialogVisible" :show-close="false" width="50%">
-      <img :src="state.imgUrl" alt="" id="bigImg" />
-    </el-dialog>
   </div>
 </template>
 
@@ -71,8 +67,6 @@ let state = reactive({
     id: ""
   },
   postId: "",
-  dialogVisible: false,
-  imgUrl: "",
   recommendPostList: []
 })
 
@@ -89,9 +83,9 @@ const getList = async () => {
       { name: 'keywords', content: state.detailData.keywords || state.detailData.title }
     ]
   })
-  setTimeout(() =>{
-      hljs.highlightAll()
-  },200)
+  setTimeout(() => {
+    hljs.highlightAll()
+  }, 200)
 }
 
 const getRecomList = async () => {
@@ -106,7 +100,7 @@ getRecomList()
 
 onMounted(() => {
   if (process.client) {
-      // 顶部广告
+    // 顶部广告
     (window.slotbydup = window.slotbydup || []).push({
       id: "u6324930",
       container: "_utrtw8kq5so",
@@ -120,160 +114,15 @@ onMounted(() => {
     });
   }
 })
-// import "highlight.js/styles/monokai-sublime.css";
-// export default {
-//   components: {
-//     homeHeader: () => import("@/components/common/homeHeader.vue"),
-//     comments: () => import("@/components/common/comments.vue"),
-//     RecommendRead: () => import("@/components/common/recommendRead.vue"),
-//   },
-//   data() {
-//     return {
-//       data: 0,
-//       recommandList: [],
-//       cateList: [],
-//       dialogVisible: false,
-//       imgUrl: "",
-//     };
-//   },
-//   /**
-//    * 设置标题及页面关键字
-//    */
-//   head() {
-//     return {
-//       title: this.detailData.title + "-javascript技术分享",
-//       meta: [
-//         {
-//           hid: "description",
-//           name: "description",
-//           content: this.detailData.title,
-//         },
-//         {
-//           hid: "keywords",
-//           name: "keywords",
-//           content: this.detailData.keywords || this.detailData.title,
-//         },
-//       ],
-//     };
-//   },
-//   /**
-//    * 请求接口，可同时请求多个接口，详情在服务端请求，分类跟推荐接口在浏览器调用
-//    */
-//   async asyncData({ $axios, route, error }) {
-//     let [detail] = await Promise.all([getDetailApi(route.params.id)]);
-
-//     if (detail.code === 1) {
-//       error({ statusCode: 500, message: "server page" });
-//       return false;
-//     }
-//     let result = {
-//       detailData: detail.data.result,
-//       postId: route.params.id,
-//       contentAll: detail.data.result.content,
-//     };
-//     return result;
-//   },
-//   methods: {
-//     addImgEvent() {
-//       window.addEventListener("click", (e) => {
-//         let target = e.target;
-//         if (target.tagName === "IMG") {
-//           this.imgUrl = target.src;
-//           this.dialogVisible = true;
-//         }
-//       });
-//     },
-//     /**
-//      * 查询推荐
-//      */
-//     async getRecomList() {
-//       let res = await getRecomListApi4Brower({ type: "all" });
-//       if (res) {
-//         this.recommandList = res.data;
-//       }
-//     },
-//     /**
-//      * 获取分类
-//      */
-//     async getCate() {
-//       let res = await getCateApi4Brower({});
-//       if (res) {
-//         this.cateList = res.data.result;
-//       }
-//     },
-//     /**
-//      * 图片懒加载
-//      */
-//     lazyLoad() {
-//       let imgs = document.querySelectorAll("img");
-
-//       //用来判断bound.top<=clientHeight的函数，返回一个bool值
-
-//       function isIn(el) {
-//         let bound = el.getBoundingClientRect();
-
-//         let clientHeight = window.innerHeight;
-
-//         return bound.top <= clientHeight;
-//       }
-
-//       //检查图片是否在可视区内，如果不在，则加载
-
-//       function check() {
-//         Array.from(imgs).forEach(function (el) {
-//           if (isIn(el)) {
-//             loadImg(el);
-//           }
-//         });
-//       }
-
-//       function loadImg(el) {
-//         if (!el.src) {
-//           var source = el.dataset.originalSrc;
-//           el.src = source;
-//           // 解决其他开启网站防盗链功能
-//           el.referrerPolicy = "no-referrer";
-//         }
-//       }
-
-//       window.onload = window.onscroll = function () {
-//         //onscroll()在滚动条滚动的时候触发
-//         check();
-//       };
-//     },
-//   },
-//   mounted() {
-//     // 判断是否在服务端
-//     if (process.client) {
-//       this.lazyLoad();
-//       // 在浏览器端调接口，需要服务端做反向代理
-//       // 查推荐
-//       this.getRecomList();
-//       // 查分类
-//       this.getCate();
-//       // 添加图片放大功能
-//       this.addImgEvent();
-//       // 底部广告
-//       (window.slotbydup = window.slotbydup || []).push({
-//         id: "u6324927",
-//         container: "_cwvxpd9dl8s",
-//         async: true,
-//       });
-//     }
-
-//     // 顶部广告
-//     (window.slotbydup = window.slotbydup || []).push({
-//       id: "u6324930",
-//       container: "_utrtw8kq5so",
-//       async: true,
-//     });
-//   },
-// };
 </script>
 
 <style lang="less">
-// 截图图片样式错乱问题
 #post-id {
+  a {
+    text-decoration: underline !important;
+    ;
+  }
+
   .image-container-fill {
     padding-bottom: 0 !important;
   }
@@ -317,7 +166,6 @@ onMounted(() => {
 }
 
 #post-id {
-
   .home-body {
     display: flex;
     justify-content: space-between;
