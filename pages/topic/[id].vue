@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="home-body">
-            <h2>专题</h2>
+            <h2 style="border-bottom: 1px solid #f5f5f5;">专题</h2>
             <div v-for="(item, index) in state.list" :key="index">
                 <a :href="'/post/' + (item.postId)" target="_blank" class="post-item">{{ item.name }}</a>
             </div>
@@ -20,10 +20,10 @@ let state = reactive({
 useHead({
     title: "专题" + " - javascript技术分享",
     meta: [
-      { name: 'description', content: "专题" + " - javascript技术分享" },
-      { name: 'keywords', content: "专题"  }
+        { name: 'description', content: "专题" + " - javascript技术分享" },
+        { name: 'keywords', content: "专题" }
     ]
-  })
+})
 const getList = async () => {
     // 通过异步请求回来的数据都会存储在页面 payload 中。意味着，可能会存在没有用在你的组件的数据也加载到了 payload 中。我们强烈推荐你只选取必须使用在组件上的数据
     let { data } = toReactive(await useFetch(getTopicDetailList, { method: 'get', params: { topicId: route.params.id } })) as any;
@@ -39,9 +39,11 @@ getList()
 
     .home-body {
         .post-item {
-            text-decoration: underline;
-            color: #409EFF;
             font-size: 1.2rem;
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
 }
