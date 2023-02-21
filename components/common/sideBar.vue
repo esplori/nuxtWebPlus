@@ -202,7 +202,7 @@ onMounted(() => {
 
       .carousel-item-desc {
         width: 100%;
-        padding: 20px;
+        padding: 8px;
         position: absolute;
         bottom: 0;
         font-size: 1.2rem;
