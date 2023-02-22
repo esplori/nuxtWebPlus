@@ -90,9 +90,9 @@ getSiteInfo()
           .content {
             font-size: 12px;
             padding: 5px 0;
-            height: 60px;
-            display: flex;
-            align-items: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
         }
       }
