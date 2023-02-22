@@ -28,7 +28,7 @@
           </div>
           <div class="copy-desc">
             <div>
-              如若转载请注明原文及出处：https://www.dsiab.com/post/{{ state.postId }}
+              如若转载请注明原文及出处：<a :href="'https://www.dsiab.com/post/' + state.postId">https://www.dsiab.com/post/{{ state.postId }}</a>
             </div>
             <div>
               本站文章由javascript技术分享原创和收集，内容如有问题，请联系站长删除。
@@ -189,6 +189,7 @@ onMounted(() => {
         // border-top: 1px dashed #ddd;
         // border-bottom: 1px dashed #ddd;
         margin: 10px 0;
+        padding: 10px 0;
         font-size: 14px;
         color: #020202;
         display: flex;
@@ -217,7 +218,8 @@ onMounted(() => {
 
           .other-info {
             font-size: 14px;
-            color: #969696;
+            // color: #969696;
+            opacity: 0.65;
           }
 
           .userName {
@@ -227,7 +229,7 @@ onMounted(() => {
 
           .createDate {
             font-size: 14px;
-            color: #969696;
+            // color: #969696;
           }
         }
       }

@@ -241,13 +241,14 @@ onMounted(() => {
     }
 
     .excerpt {
-      color: #828a92;
+      // color: #828a92;
       font-size: 12px;
+      opacity: 0.65;
     }
 
     .views {
       font-size: 12px;
-      color: #999;
+      // color: #999;
     }
 
     .list-index {

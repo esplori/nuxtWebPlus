@@ -72,16 +72,17 @@ const props = defineProps({
         padding: 10px 0;
         line-height: 22px;
         font-size: 1rem;
-        color: #8c8c8c;
+        // color: #8c8c8c;
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
+        opacity: 0.65;
       }
       .home-post-info {
         padding: 5px 0;
         font-size: .8rem;
-        color: #8c8c8c;
-        // border-top: 1px dashed #ddd;
+        opacity: 0.65;
+        // color: #8c8c8c;
         border-bottom: 1px dashed #ddd;
         span {
           margin-right: 15px;
@@ -89,7 +90,6 @@ const props = defineProps({
         .cate-name a {
           font-weight: 400;
           line-height: 18px;
-          color: #8c8c8c;
         }
       }
       .post-item {
