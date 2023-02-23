@@ -14,16 +14,16 @@
               {{ delHtmlTag(item.content) }}
             </div>
             <div class="home-post-info">
-              
-              <span class="views"> 阅读({{ item.views }}) </span>
+              <span class="create-date">
+                发布时间：{{ item.createDate }}
+              </span>
+              <span class="views"> 阅读：{{ item.views }} </span>
               <span class="cate-name" v-show="item.cateName">
                 <a :href="'/post/category/' + item.cate">
-                  {{ item.cateName || "" }}</a
+                  分类：{{ item.cateName || "" }}</a
                 >
               </span>
-              <span class="create-date">
-                {{ item.createDate }}
-              </span>
+             
             </div>
           </div>
         </div>
@@ -61,7 +61,7 @@ const props = defineProps({
       .home-post-title a {
         color: #424242;
         font-size: 1.4rem;
-        line-height: 1rem;
+        line-height: 1.6rem;
         text-overflow: ellipsis;
       }
       .home-post-title a:hover {
@@ -71,25 +71,25 @@ const props = defineProps({
       .home-post-excerpt {
         padding: 10px 0;
         line-height: 22px;
-        font-size: 1.2rem;
-        color: #8c8c8c;
+        font-size: 1rem;
+        // color: #8c8c8c;
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
+        opacity: 0.65;
       }
       .home-post-info {
         padding: 5px 0;
         font-size: .8rem;
-        color: #8c8c8c;
-        // border-top: 1px dashed #ddd;
+        opacity: 0.65;
+        // color: #8c8c8c;
         border-bottom: 1px dashed #ddd;
         span {
-          margin-right: 10px;
+          margin-right: 15px;
         }
         .cate-name a {
           font-weight: 400;
           line-height: 18px;
-          color: #8c8c8c;
         }
       }
       .post-item {

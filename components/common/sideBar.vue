@@ -45,8 +45,8 @@
                 </a>
               </div>
               <div class="excerpt">
-                <span class="views"> {{ item.createDate }}</span>
-                <span class="views"> 阅读({{ item.views }})</span>
+                <span class="views"> 发布时间：{{ item.createDate }}</span>
+                <span class="views"> 阅读：{{ item.views }}</span>
               </div>
             </li>
           </ul>
@@ -202,7 +202,7 @@ onMounted(() => {
 
       .carousel-item-desc {
         width: 100%;
-        padding: 20px;
+        padding: 8px;
         position: absolute;
         bottom: 0;
         font-size: 1.2rem;
@@ -241,13 +241,14 @@ onMounted(() => {
     }
 
     .excerpt {
-      color: #828a92;
+      // color: #828a92;
       font-size: 12px;
+      opacity: 0.65;
     }
 
     .views {
       font-size: 12px;
-      color: #999;
+      // color: #999;
     }
 
     .list-index {

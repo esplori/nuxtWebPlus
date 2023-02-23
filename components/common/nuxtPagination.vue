@@ -55,7 +55,7 @@ let pageList = computed(() => {
     li {
       display: inline-block;
       margin-left: 20px;
-      font-size: 1.4rem;
+      font-size: 1.2rem;
 
       &.actived {
         a {

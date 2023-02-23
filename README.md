@@ -19,7 +19,7 @@
 
 * 后台管理项目： <a href="https://gitee.com/wilkwo/vueAdmin">vueAdmin</a>
 
-* 后台管理地址：http://admin.dsiab.com
+* 后台管理地址：https://admin.dsiab.com
 
 - 体验账号： test / test
   
@@ -42,21 +42,14 @@
 ### 如何启动应用
 
 ```bash
-
 # 下载代码
-
 github: git clone https://gitee.com/wilkwo/nuxt-web-plus.git
-
-
 # 安装依赖
 $ npm install
-
 # 本地启动在 localhost:3000
 $ npm run dev
-
 # 部署到服务器，先build，再执行start启动
 $ npm run build
-
 # 生成静态项目
 $ npm run generate
 ```
@@ -66,7 +59,6 @@ $ npm run generate
 * 如果要使用本地接口，请修改/plugins/baseUrl.js 文件中的baseUrl
   
 * 如果想要在浏览器端调用接口，请修改nuxt.config.js文件中的proxy, 将对应接口转发至本地服务即可
-
 
 ### 感谢赞赏
 

@@ -3,12 +3,13 @@
         <div class="home-body">
             <div class="tbk-item">
                 <div>
-                    <a :href="state.item.pict_url"><img :src="state.item.pict_url" alt="" width="197px" height="197px" /></a>
+                    <a :href="state.item.pict_url"><img :src="state.item.pict_url" alt="" width="197px"
+                            height="197px" /></a>
                 </div>
             </div>
             <div class="item-info">
                 <div>
-                    <h1 class="item-title">{{ state.item.title }}</h1> 
+                    <h1 class="item-title">{{ state.item.title }}</h1>
                 </div>
                 <div class="reserve_price">
                     原价：<span class="rmbicon">¥</span><span class="line-through">{{ state.item.reserve_price }}</span>
@@ -36,7 +37,7 @@ import tbkBody from "@/components/tbk/tbkBody.vue"
 const route = useRoute()
 let state = reactive({
     list: [],
-    item: {pict_url:"",title:""}
+    item: { pict_url: "", title: "" }
 })
 
 const getDetail = async () => {
@@ -45,17 +46,15 @@ const getDetail = async () => {
     state.item = data.data.result
 
     useHead({
-    title: state.item.title + " - javascript技术分享",
-    meta: [
-      { name: 'description', content: state.item.title +  " - javascript技术分享" },
-      { name: 'keywords', content: state.item.title  }
-    ]
-  })
+        title: state.item.title + " - javascript技术分享",
+        meta: [
+            { name: 'description', content: state.item.title + " - javascript技术分享" },
+            { name: 'keywords', content: state.item.title }
+        ]
+    })
 }
 
 getDetail()
-
-
 
 const getRecommend = async () => {
     // 通过异步请求回来的数据都会存储在页面 payload 中。意味着，可能会存在没有用在你的组件的数据也加载到了 payload 中。我们强烈推荐你只选取必须使用在组件上的数据
@@ -64,43 +63,6 @@ const getRecommend = async () => {
 }
 
 getRecommend()
-//   export default {
-//     components: {
-//       homeHeader: () => import("@/components/common/homeHeader.vue"),
-//       goodsBody: () => import("@/components/tbk/goodsBody.vue"),
-//     },
-//     data() {
-//       return {
-//         data: 0,
-//       };
-//     },
-//     head() {
-//       return {
-//         title: this.item.title || "优乐购",
-//         meta: [
-//           {
-//             hid: "description",
-//             name: "description",
-//             content: this.item.title || "优乐购",
-//           },
-//           {
-//             hid: "keywords",
-//             name: "keywords",
-//             content: this.item.title || "优乐购",
-//           },
-//         ],
-//       };
-//     },
-//     async asyncData({ $axios, route }) {
-//       let [res,recommend] = await Promise.all([getTbkDetailApi(route.params.id),getRecommendApi({})]);
-//       return {
-//         list: recommend.data.result,
-//         item: res.data.result,
-//       };
-//     },
-//     methods: {
-//     },
-//   };
 </script>
   
 <style lang="less" scoped>
@@ -110,7 +72,7 @@ getRecommend()
 
     .home-body {
         display: flex;
-        margin: 10px;
+        margin: 0 10px;
 
         .tbk-item:hover {
             border: 1px solid #ff5000;
@@ -120,7 +82,7 @@ getRecommend()
             display: inline-block;
             width: 235px;
             padding: 20px;
-            border: 1px solid #f4f4f4;
+            // border: 1px solid #f4f4f4;
         }
 
         .item-info {
@@ -132,9 +94,9 @@ getRecommend()
                 // line-height: 40px;
                 // overflow: hidden;
                 // margin: 8px 0;
-                font-weight: bold;
                 // color: #666;
-                font-size: 22px;
+                font-size: 1.6rem;
+                line-height: 2rem;
             }
 
             .reserve_price {
@@ -147,7 +109,7 @@ getRecommend()
             }
 
             .zk_final_price {
-                line-height: 80px;
+                line-height: 60px;
                 font-size: 28px;
                 color: #ff5000;
             }
