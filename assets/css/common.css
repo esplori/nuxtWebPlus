@@ -40,6 +40,7 @@ pre {
 
 pre code {
   white-space: pre-wrap;
+  border-radius: 8px;
 }
 
 /* 分类、标签通用样式 */
