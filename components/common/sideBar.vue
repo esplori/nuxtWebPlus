@@ -45,7 +45,7 @@
                 </a>
               </div>
               <div class="excerpt">
-                <span class="views"> 发布时间：{{ item.createDate }}</span>
+                <span class="views published-date"> 发布时间：{{ item.createDate }}</span>
                 <span class="views"> 阅读：{{ item.views }}</span>
               </div>
             </li>
@@ -277,6 +277,9 @@ onMounted(() => {
       line-height: 20px;
       font-size: 14px;
     }
+  }
+  .published-date{
+    margin-right: 10px;
   }
 }
 </style>
