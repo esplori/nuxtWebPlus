@@ -62,7 +62,7 @@
           </ul>
         </div>
       </li>
-      <li>
+      <!-- <li>
         <div class="module tags">
           <div class="cate">标签云</div>
           <ul>
@@ -72,7 +72,7 @@
             </li>
           </ul>
         </div>
-      </li>
+      </li> -->
     </ul>
   </div>
 </template>
@@ -110,7 +110,7 @@ const getTags = async () => {
   let { data } = toReactive(await useFetch(url, { method: "get" })) as any;
   state.tagsList = data.data.result
 }
-getTags()
+// getTags()
 
 const getTopicList = async () => {
   let url = getTopicListApi

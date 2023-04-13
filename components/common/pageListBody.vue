@@ -11,19 +11,18 @@
             </div>
 
             <div class="home-post-excerpt">
-              {{ delHtmlTag(item.content) }}
+              {{ delHtmlTag(item.content) }} ...
             </div>
             <div class="home-post-info">
-              <span class="create-date">
-                发布时间：{{ item.createDate }}
-              </span>
-              <span class="views"> 阅读：{{ item.views }} </span>
               <span class="cate-name" v-show="item.cateName">
                 <a :href="'/post/category/' + item.cate">
                   分类：{{ item.cateName || "" }}</a
                 >
               </span>
-             
+              <span class="views"> 阅读：{{ item.views }} </span>
+              <span class="create-date">
+                发布时间：{{ item.createDate }}
+              </span>
             </div>
           </div>
         </div>
@@ -73,10 +72,10 @@ const props = defineProps({
         line-height: 22px;
         font-size: 1rem;
         // color: #8c8c8c;
-        text-overflow: ellipsis;
+        // text-overflow: ellipsis;
         overflow: hidden;
-        white-space: nowrap;
-        opacity: 0.65;
+        // white-space: nowrap;
+        opacity: 0.5;
       }
       .home-post-info {
         padding: 5px 0;

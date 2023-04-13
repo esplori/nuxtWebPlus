@@ -31,7 +31,7 @@
               如若转载请注明原文及出处：<a :href="'https://www.dsiab.com/post/' + state.postId">https://www.dsiab.com/post/{{ state.postId }}</a>
             </div>
             <div>
-              本站文章由javascript技术分享原创和收集，内容如有问题，请联系站长删除。
+              本站文章由javascript技术分享原创和收集，内容引用如有问题请联系站长删除。
             </div>
           </div>
         </div>
