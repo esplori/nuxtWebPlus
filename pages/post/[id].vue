@@ -7,13 +7,15 @@
           <div class="post-info">
             <div class="head-info">
               <div class="title">
-                <span class="userName">
-                  {{ state.detailData.nickname || state.detailData.createBy }}</span>
+                <!-- <span class="userName">
+                  {{ state.detailData.nickname || state.detailData.createBy }}</span> -->
               </div>
               <div class="other-info">
-                <span class="createDate"> {{ state.detailData.createDate }}</span>
+                <span>作者: {{ state.detailData.nickname || state.detailData.createBy }} </span>
+                <span>分类: {{ state.detailData.cateName }} </span>
                 <span>阅读: {{ state.detailData.views }} </span>
                 <span v-if="state.detailData.wordsNum">字数: {{ state.detailData.wordsNum }} </span>
+                <span class="createDate">发布时间： {{ state.detailData.createDate }}</span>
               </div>
             </div>
           </div>
@@ -64,7 +66,8 @@ let state = reactive({
     wordsNum: "",
     content: "",
     keywords: "",
-    id: ""
+    id: "",
+    cateName: ""
   },
   postId: "",
   recommendPostList: []
@@ -197,7 +200,7 @@ onMounted(() => {
         align-items: center;
 
         span {
-          margin-right: 10px;
+          margin-right: 20px;
         }
 
         .avatar {
