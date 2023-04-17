@@ -32,6 +32,9 @@ const props = defineProps({
       font-size: 1.2rem;
       list-style-type: disc;
       padding: 2px 0;
+      a{
+        text-decoration: none !important;;
+      }
       &:hover {
         text-decoration: underline;
       }

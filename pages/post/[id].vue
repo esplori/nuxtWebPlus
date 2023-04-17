@@ -122,7 +122,7 @@ onMounted(() => {
 <style lang="less">
 #post-id {
   a {
-    text-decoration: underline !important;
+    text-decoration: underline;
     ;
   }
 
