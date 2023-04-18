@@ -2,7 +2,7 @@ import preFix from '@/plugins/baseUrl'
 
 export const getListApi = `${preFix}/pages/getList/`
 export const getDetailApi = `${preFix}/pages/getDetail/`
-export const getRecommendPostBySameTagsApi = `${preFix}/pages/getRecommendBySameTags/`
+export const getRecommendPostBySameTagsApi = `${preFix}/pages/getRecommendBySameTags`
 export const getListByCateApi = `${preFix}/pages/getListByCatePage`
 export const getListByTagsApi = `${preFix}/pages/getListByTagsPage`
 export const getRecomListApi = `${preFix}/pages/getRecomList/`
