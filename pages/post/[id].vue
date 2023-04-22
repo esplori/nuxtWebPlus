@@ -21,7 +21,7 @@
           </div>
           <div class="_utrtw8kq5so"></div>
           <div v-html="state.detailData.content" class="detail-post-content"></div>
-          <div class="_cwvxpd9dl8s"></div>
+          <!-- <div class="_cwvxpd9dl8s"></div> -->
         </div>
         <div>
           <div class="tags" v-if="state.detailData.keywords">
@@ -110,11 +110,11 @@ onMounted(() => {
       async: true,
     });
     // 底部广告
-    (window.slotbydup = window.slotbydup || []).push({
-      id: "u6324927",
-      container: "_cwvxpd9dl8s",
-      async: true,
-    });
+    // (window.slotbydup = window.slotbydup || []).push({
+    //   id: "u6324927",
+    //   container: "_cwvxpd9dl8s",
+    //   async: true,
+    // });
   }
 })
 </script>
