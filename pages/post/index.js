@@ -10,3 +10,4 @@ export const getCateApi = `${preFix}/pages/getCate`
 export const getTagsApi = `${preFix}/pages/getTags`
 export const getTopicListApi = `${preFix}/pages/getTopicList`
 export const getSiteInfoApi = `${preFix}/pages/getBasicSiteInfo`
+export const getInsertCommentApi = `/manage-service/admin/getInsertComment`

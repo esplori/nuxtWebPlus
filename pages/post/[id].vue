@@ -38,7 +38,7 @@
           </div>
         </div>
         <recommendRead :list="state.recommendPostList"></recommendRead>
-        <!-- <comments></comments> -->
+        <comments></comments>
       </div>
     </div>
   </div>
@@ -50,7 +50,7 @@ import { reactive, onMounted } from "vue"
 import { toReactive } from "@vueuse/shared";
 import recommendRead from "@/components/post/recommendRead.vue"
 import { useRoute } from "vue-router"
-// import comments from "@/components/post/comments.vue"
+import comments from "@/components/post/comments.vue"
 // 引入highlightjs代碼高亮插件
 import 'highlight.js/styles/stackoverflow-light.css'
 import hljs from "highlight.js"
