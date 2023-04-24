@@ -2,11 +2,14 @@
   <div class="comments">
     <h3>发表评论：</h3>
     <el-form :model="state.form" label-width="60px">
-      <el-form-item label="用户名">
-        <el-input v-model="state.form.username"></el-input>
+      <el-form-item label="昵称：">
+        <el-input v-model="state.form.username" placeholder="用于发表后名称显示"></el-input>
       </el-form-item>
-      <el-form-item label="内容">
-        <el-input type="textarea" :rows="5" v-model="state.form.content"></el-input>
+      <el-form-item label="邮箱：">
+        <el-input v-model="state.form.mail" placeholder="用于接收回复邮件"></el-input>
+      </el-form-item>
+      <el-form-item label="内容：">
+        <el-input type="textarea" :rows="5" v-model="state.form.content" placeholder="平等交流，理解尊重"></el-input>
       </el-form-item>
 
       <el-form-item>
@@ -38,17 +41,19 @@
 <script lang="ts" setup>
 import { reactive, onMounted } from "vue"
 import { toReactive } from "@vueuse/shared";
-import { getInsertCommentApi } from "@/pages/post/index"
+import { addCommentApi } from "@/pages/post/index"
 let state = reactive({
   form: {
     username: "",
     content: "",
+    mail:"",
+    postId: ""
   },
   commentsList: []
 })
 const submit = async () => {
   // 通过异步请求回来的数据都会存储在页面 payload 中。意味着，可能会存在没有用在你的组件的数据也加载到了 payload 中。我们强烈推荐你只选取必须使用在组件上的数据
-  await useFetch(getInsertCommentApi);
+  await useFetch(addCommentApi,{ method: 'post',body: state.form} );
 }
 </script>
 <style lang="less" scoped>

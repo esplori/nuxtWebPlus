@@ -17,11 +17,12 @@ export default defineNuxtConfig({
     "/assets/css/common.css"
   ],
   vite: {
+    logLevel: "info",
     server: {
       proxy: {
-        '/bootService': {
-          // target: 'http://localhost:8091/'
-          target: 'http://admin.dsiab.com/',
+        '/pages': {
+          target: 'http://localhost:8082',
+          // target: 'http://admin.dsiab.com/',
           changeOrigin: true
         }
       }
