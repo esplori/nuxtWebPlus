@@ -21,11 +21,7 @@
 
     <div class="commentsList" v-show="state.commentsList.length">
       <h4>文章评论：</h4>
-      <div
-        v-for="(item, index) in state.commentsList"
-        :key="index"
-        class="comment-item"
-      >
+      <div v-for="(item, index) in state.commentsList" :key="index" class="comment-item">
         <div>
           <i class="avatar"></i>
         </div>
@@ -39,32 +35,58 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { reactive, onMounted } from "vue"
+import { reactive, onMounted, watch } from "vue"
 import { toReactive } from "@vueuse/shared";
-import { addCommentApi } from "@/pages/post/index"
+import { addCommentApi, getCommentByPostIdApi } from "@/pages/post/index"
+import { useRoute } from "vue-router"
+import { ElMessage } from "element-plus"
+
+const route = useRoute()
 let state = reactive({
   form: {
     username: "",
     content: "",
-    mail:"",
-    postId: ""
+    mail: "",
+    postId: route.params.id
   },
-  commentsList: []
+  commentsList: [],
+  t: []
 })
+
+const getCommentList = async () => {
+  let { data } = await useFetch(getCommentByPostIdApi, { method: "get", params: { postId: state.form.postId } })
+  // 在浏览器端请求接口通过监听实现数据异步显示
+  watch(data, (newPosts: any) => {
+    state.commentsList = newPosts.data
+    // Because posts starts out null, you will not have access
+    // to its contents immediately, but you can watch it.
+  })
+}
 const submit = async () => {
   // 通过异步请求回来的数据都会存储在页面 payload 中。意味着，可能会存在没有用在你的组件的数据也加载到了 payload 中。我们强烈推荐你只选取必须使用在组件上的数据
-  await useFetch(addCommentApi,{ method: 'post',body: state.form} );
+  await useFetch(addCommentApi, { method: 'post', body: state.form }).then(res => {
+    ElMessage.success("提交成功");
+    getCommentList()
+  });
 }
+// 浏览器端请求接口
+if (process.client) {
+  getCommentList()
+}
+
+
 </script>
 <style lang="less" scoped>
 .comments {
   width: 100%;
   margin-top: 20px;
   padding: 20px;
+
   .commentsList {
     margin-top: 40px;
     background: #fff;
     border-top: 1px solid #f5f5f5;
+
     .comment-item {
       padding: 10px;
       margin-bottom: 10px;
@@ -72,16 +94,20 @@ const submit = async () => {
       display: flex;
       justify-content: flex-start;
       align-items: flex-start;
+
       .info {
         margin-left: 10px;
+
         .name {
           font-size: 16px;
           padding-bottom: 5px;
           font-weight: 600;
         }
+
         .createDate {
           font-size: 12px;
         }
+
         .content {
           padding: 10px 0;
           font-size: 14px;
