@@ -1,5 +1,5 @@
 <template>
-  <div class="postRecommend" v-if="props.list.length">
+  <div class="postRecommend" v-show="props.list.length">
     <h3>推荐阅读：</h3>
     <ul>
       <li v-for="(item, index) in props.list" :key="index">
@@ -15,7 +15,9 @@
 </template>
 <script lang="ts" setup>
 const props = defineProps({
-  list: { type: Array, default: [{id: "",uid:"",title:""}] }
+  list: { type: Array, default: () =>{
+    return []
+  } }
 })
 </script>
 <style lang="less">

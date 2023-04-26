@@ -21,7 +21,7 @@
           </div>
           <div class="_utrtw8kq5so"></div>
           <div v-html="state.detailData.content" class="detail-post-content"></div>
-          <div class="_cwvxpd9dl8s"></div>
+          <!-- <div class="_cwvxpd9dl8s"></div> -->
         </div>
         <div>
           <div class="tags" v-if="state.detailData.keywords">
@@ -38,7 +38,7 @@
           </div>
         </div>
         <recommendRead :list="state.recommendPostList"></recommendRead>
-        <!-- <comments></comments> -->
+        <comments></comments>
       </div>
     </div>
   </div>
@@ -50,7 +50,7 @@ import { reactive, onMounted } from "vue"
 import { toReactive } from "@vueuse/shared";
 import recommendRead from "@/components/post/recommendRead.vue"
 import { useRoute } from "vue-router"
-// import comments from "@/components/post/comments.vue"
+import comments from "@/components/post/comments.vue"
 // 引入highlightjs代碼高亮插件
 import 'highlight.js/styles/stackoverflow-light.css'
 import hljs from "highlight.js"
@@ -110,11 +110,11 @@ onMounted(() => {
       async: true,
     });
     // 底部广告
-    (window.slotbydup = window.slotbydup || []).push({
-      id: "u6324927",
-      container: "_cwvxpd9dl8s",
-      async: true,
-    });
+    // (window.slotbydup = window.slotbydup || []).push({
+    //   id: "u6324927",
+    //   container: "_cwvxpd9dl8s",
+    //   async: true,
+    // });
   }
 })
 </script>
@@ -189,8 +189,7 @@ onMounted(() => {
       }
 
       .post-info {
-        // border-top: 1px dashed #ddd;
-        // border-bottom: 1px dashed #ddd;
+        border-bottom: 1px dashed #ddd;
         margin: 10px 0;
         padding: 10px 0;
         font-size: 14px;
