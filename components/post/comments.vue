@@ -1,14 +1,14 @@
 <template>
   <div class="comments">
-    <h3>发表评论：</h3>
-    <el-form :model="state.form" label-width="60px">
-      <el-form-item label="昵称：">
+    <h3>发表评论<span style="color:gray;font-size: 1rem;">(审核通过后显示评论)</span>：</h3>
+    <el-form :model="state.form" label-width="70px" :rules="rules" ref="ruleFormRef">
+      <el-form-item label="昵称：" prop="username">
         <el-input v-model="state.form.username" placeholder="用于发表后名称显示"></el-input>
       </el-form-item>
-      <el-form-item label="邮箱：">
+      <el-form-item label="邮箱：" prop="mail">
         <el-input v-model="state.form.mail" placeholder="用于接收回复邮件"></el-input>
       </el-form-item>
-      <el-form-item label="内容：">
+      <el-form-item label="内容：" prop="content">
         <el-input type="textarea" :rows="5" v-model="state.form.content" placeholder="平等交流，理解尊重"></el-input>
       </el-form-item>
 
@@ -35,8 +35,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { reactive, onMounted, watch } from "vue"
-import { toReactive } from "@vueuse/shared";
+import { reactive, watch, ref } from "vue"
 import { addCommentApi, getCommentByPostIdApi } from "@/pages/post/index"
 import { useRoute } from "vue-router"
 import { ElMessage } from "element-plus"
@@ -50,8 +49,19 @@ let state = reactive({
     postId: route.params.id
   },
   commentsList: [],
-  t: []
 })
+const rules = reactive({
+  username: [
+    { required: true, message: '请输入昵称', trigger: 'blur' },
+  ],
+  mail: [
+    { required: true, message: '请输入邮箱', trigger: 'blur' },
+  ],
+  content: [
+    { required: true, message: '请输入内容', trigger: 'blur' },
+  ]
+})
+const ruleFormRef = ref()
 
 const getCommentList = async () => {
   let { data } = await useFetch(getCommentByPostIdApi, { method: "get", params: { postId: state.form.postId } })
@@ -63,6 +73,10 @@ const getCommentList = async () => {
   })
 }
 const submit = async () => {
+  if (!await ruleFormRef.value.validate()) {
+    return false
+  }
+
   // 通过异步请求回来的数据都会存储在页面 payload 中。意味着，可能会存在没有用在你的组件的数据也加载到了 payload 中。我们强烈推荐你只选取必须使用在组件上的数据
   await useFetch(addCommentApi, { method: 'post', body: state.form }).then(res => {
     ElMessage.success("提交成功");
