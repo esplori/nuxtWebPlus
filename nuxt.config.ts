@@ -20,10 +20,11 @@ export default defineNuxtConfig({
     logLevel: "info",
     server: {
       proxy: {
-        '/pages': {
+        '/portal-service': {
           target: 'http://localhost:8082',
           // target: 'http://admin.dsiab.com/',
-          changeOrigin: true
+          changeOrigin: true,
+          rewrite: path => path.replace('portal-service', '')
         }
       }
     }
