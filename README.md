@@ -21,7 +21,6 @@
 
 
 
-
 ### 选择nuxt的原因：
 
 - nuxt开发的项目能被搜索引擎收录，能进行seo。
@@ -34,7 +33,7 @@
 
 ```bash
 # 下载代码
-github: git clone https://gitee.com/wilkwo/nuxt-web-plus.git
+git clone https://gitee.com/wilkwo/nuxt-web-plus.git
 # 安装依赖
 $ npm install
 # 本地启动在 localhost:3000
