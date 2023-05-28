@@ -30,7 +30,8 @@
           </div>
           <div class="copy-desc">
             <div>
-              如若转载请注明原文及出处：<a :href="'https://www.dsiab.com/post/' + state.postId">https://www.dsiab.com/post/{{ state.postId }}</a>
+              如若转载请注明原文及出处：<a :href="'https://www.dsiab.com/post/' + state.postId">https://www.dsiab.com/post/{{
+                state.postId }}</a>
             </div>
             <div>
               本站文章由javascript技术分享原创和收集，内容引用如有问题请联系站长删除。
@@ -74,30 +75,32 @@ let state = reactive({
 })
 
 state.postId = route.params.id as any
-
-const getList = async () => {
-  // 通过异步请求回来的数据都会存储在页面 payload 中。意味着，可能会存在没有用在你的组件的数据也加载到了 payload 中。我们强烈推荐你只选取必须使用在组件上的数据
-  let { data } = toReactive(await useFetch(getDetailApi + route.params.id)) as any;
-  state.detailData = data.data.result
-  useHead({
-    title: state.detailData.title + " - javascript技术分享",
-    meta: [
-      { name: 'description', content: state.detailData.title + " - javascript技术分享" },
-      { name: 'keywords', content: state.detailData.keywords || state.detailData.title }
-    ]
-  })
-  setTimeout(() => {
-    hljs.highlightAll()
-  }, 200)
+// const getList = async () => {
+// 通过异步请求回来的数据都会存储在页面 payload 中。意味着，可能会存在没有用在你的组件的数据也加载到了 payload 中。我们强烈推荐你只选取必须使用在组件上的数据
+let { data } = toReactive(await useFetch(getDetailApi + route.params.id)) as any;
+// 查不到数据时显示404
+if (!data) {
+  throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
 }
+state.detailData = data.data.result
+useHead({
+  title: state.detailData.title + " - javascript技术分享",
+  meta: [
+    { name: 'description', content: state.detailData.title + " - javascript技术分享" },
+    { name: 'keywords', content: state.detailData.keywords || state.detailData.title }
+  ]
+})
+setTimeout(() => {
+  hljs.highlightAll()
+}, 200)
+// }
 
 const getRecomList = async () => {
   // 通过异步请求回来的数据都会存储在页面 payload 中。意味着，可能会存在没有用在你的组件的数据也加载到了 payload 中。我们强烈推荐你只选取必须使用在组件上的数据
   let { data } = toReactive(await useFetch(getRecommendPostBySameTagsApi + "?id=" + route.params.id)) as any;
   state.recommendPostList = data.data
 }
-
-getList()
+// getList()
 getRecomList()
 
 
