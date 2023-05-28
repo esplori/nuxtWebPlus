@@ -40,7 +40,7 @@
           <ul>
             <li v-for="(item, index) in state.recommandList" :key="index">
               <div class="title">
-                <a :href="'/post/' + (item.uid || item.id)" target="_blank">
+                <a :href="'/post/' + (item.uid || item.id)" target="_self">
                   <span class="list-index">{{ index + 1 }}</span>{{ item.title }}
                 </a>
               </div>
@@ -278,7 +278,8 @@ onMounted(() => {
       font-size: 14px;
     }
   }
-  .published-date{
+
+  .published-date {
     margin-left: 20px;
   }
 }

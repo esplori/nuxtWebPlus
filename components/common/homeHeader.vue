@@ -4,18 +4,18 @@
       <div class="menu">
         <el-menu mode="horizontal">
           <el-menu-item v-for="(item, index) in noChildren" :index="String(item.name)">
-            <a :href="item.path" target="_blank">{{ item.name }}</a>
+            <a :href="item.path" target="_self">{{ item.name }}</a>
           </el-menu-item>
           <el-sub-menu v-for="(item, id) in hasChildren" :index="String(id)">
             <template #title>
               {{ item.name }}
             </template>
             <el-menu-item v-for="(it, idx) in item.children" :index="String(it.name)">
-              <a :href="it.path" target="_blank">{{ it.name }}</a>
+              <a :href="it.path" target="_self">{{ it.name }}</a>
             </el-menu-item>
           </el-sub-menu>
           <el-menu-item index="tbk">
-            <a href="/tbk" target="_blank">优乐购</a>
+            <a href="/tbk" target="_self">优乐购</a>
           </el-menu-item>
           <el-menu-item index="games">
             <a href="https://source.dsiab.com/games/index.html" target="_blank">在线游戏</a>
