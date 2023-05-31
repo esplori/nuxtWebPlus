@@ -2,9 +2,11 @@
     <div class="container">
         <div class="home-body">
             <h2 style="border-bottom: 1px solid #f5f5f5;">专题</h2>
-            <div v-for="(item, index) in state.list" :key="index">
-                <a :href="'/post/' + (item.postId)" target="_blank" class="post-item">{{ item.name }}</a>
-            </div>
+            <ul class="topic-ul">
+                <li v-for="(item, index) in state.list" :key="index">
+                    <a :href="'/post/' + (item.postId)" target="_blank" class="post-item">{{ item.name }}</a>
+                </li>
+            </ul>
         </div>
     </div>
 </template>
@@ -43,6 +45,14 @@ getList()
 
             &:hover {
                 text-decoration: underline;
+            }
+        }
+
+        .topic-ul {
+            padding-left: 20px;
+
+            li {
+                list-style-type: decimal;
             }
         }
     }
