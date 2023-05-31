@@ -71,12 +71,12 @@ getSiteInfo()
         flex-wrap: wrap;
 
         .cate-item {
-          width: 24%;
+          width: 33%;
           font-size: 16px;
           padding: 10px;
           border-radius: 5px;
-          margin-right: 10px;
-          margin-bottom: 10px;
+          // margin-right: 10px;
+          // margin-bottom: 10px;
           // border: 1px solid #f5f5f5;
 
           .title {
