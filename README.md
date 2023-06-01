@@ -18,6 +18,7 @@
 
 - 官网：[https: //www.dsiab.com](https://www.dsiab.com)
 - 后台管理体验地址： https://admin.dsiab.com , 体验账号：test/test
+- 加qq群一起交流：514450699
 
 
 
