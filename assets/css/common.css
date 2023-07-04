@@ -32,15 +32,16 @@ body {
 /* 修改富文本编辑器添加代码后样式 */
 pre {
   border-radius: 5px;
-  padding: 10px;
+  padding: 5px;
   color: #333;
   background-color: #f8f8f8 !important;
   white-space: pre-wrap;
+  border: 1px dashed #ddd;
 }
 
 pre code {
   white-space: pre-wrap;
-  border-radius: 8px;
+  border-radius: 5px;
 }
 
 /* 分类、标签通用样式 */

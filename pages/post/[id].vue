@@ -124,9 +124,18 @@ onMounted(() => {
 
 <style lang="less">
 #post-id {
+  p {
+    img {
+      width: 70% !important;
+      margin: 20px auto;
+      display: block;
+      border: 1px dashed #ddd;
+      box-shadow: 10px 10px 10px indigo red;
+    }
+  }
+
   a {
     text-decoration: underline;
-    ;
   }
 
   .image-container-fill {
@@ -147,9 +156,6 @@ onMounted(() => {
     padding: 0 0 20px 0;
   }
 
-  #bigImg {
-    width: 100%;
-  }
 
   .el-dialog.custom-dialog-class .el-dialog__body {
     padding: 0;
