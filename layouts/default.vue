@@ -31,6 +31,7 @@ import sideBar from "@/components/common/sideBar.vue";
 
     .layouts-sideBar {
       width: 385px;
+      border-radius: 5px;
     }
   }
 

@@ -57,6 +57,7 @@ getList()
   .home-body {
     display: flex;
     justify-content: space-between;
+    border-radius: 5px;
 
     .left-body {
       width: 100%;

@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="home-body">
-            <h2 style="border-bottom: 1px solid #f5f5f5;">专题</h2>
+            <p class="topic-title">专题</p>
             <ul class="topic-ul">
                 <li v-for="(item, index) in state.list" :key="index">
                     <a :href="'/post/' + (item.postId)" target="_blank" class="post-item">{{ item.name }}</a>
@@ -40,8 +40,17 @@ getList()
     padding: 20px;
 
     .home-body {
+        border-radius: 5px;
+        .topic-title{
+            font-size: 1.6rem;
+            border-bottom: 1px solid #f2f2f2;
+            font-weight: bold;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
         .post-item {
             font-size: 1.2rem;
+            
 
             &:hover {
                 text-decoration: underline;
@@ -53,6 +62,7 @@ getList()
 
             li {
                 list-style-type: decimal;
+                padding: 5px 10px;
             }
         }
     }

@@ -190,6 +190,7 @@ onMounted(() => {
       background: #fff;
       padding: 20px;
       box-shadow: 0 0 20px rgba(210, 211, 216, 0.3);
+      border-radius: 5px;
 
       .detail-post-title {
         color: #141414;

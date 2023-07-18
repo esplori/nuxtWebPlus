@@ -58,6 +58,7 @@ getList()
       width: 100%;
       background: #fff;
       box-shadow: 0 1px 3px rgba(27, 95, 160, 0.1);
+      border-radius: 5px;
       .home-pagination {
         padding: 20px;
         background: #fff;

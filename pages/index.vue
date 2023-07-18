@@ -150,6 +150,7 @@ getSiteInfo()
       width: 100%;
       background: #fff;
       box-shadow: 0 0 20px rgba(210, 211, 216, 0.3);
+      border-radius: 5px;
 
       .recommand {
         display: flex;
