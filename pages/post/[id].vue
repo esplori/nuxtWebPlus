@@ -124,14 +124,11 @@ onMounted(() => {
 
 <style lang="less">
 #post-id {
-  p {
-    img {
-      width: 70% !important;
-      margin: 20px auto;
-      display: block;
-      border: 1px dashed #ddd;
-      box-shadow: 10px 10px 10px indigo red;
-    }
+  img {
+    width: 70% !important;
+    margin: 20px auto;
+    display: block;
+    border: 1px dashed #ddd;
   }
 
   a {
@@ -266,6 +263,7 @@ onMounted(() => {
         background: #f5f5f5;
         word-break: break-all;
         border-radius: 5px;
+        border:1px dashed #ddd;
 
         div {
           font-size: 1rem;
