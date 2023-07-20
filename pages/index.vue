@@ -46,8 +46,8 @@
         <h2 class="big-title common-big-title">综合资讯</h2>
         <listBody :list="state.homeList.result"></listBody>
         <div class="home-pagination">
-          <nuxtPagination :pageSize="10" :total="state.homeList.total" :currentPage="state.page"
-            :prePath="'/post/page/'"></nuxtPagination>
+          <nuxtPagination :pageSize="10" :total="state.homeList.total" :currentPage="state.page" :prePath="'/post/page/'">
+          </nuxtPagination>
         </div>
       </div>
     </div>
@@ -76,26 +76,7 @@ const state = reactive({
     siteName: '',
     siteUrl: ''
   },
-  carouselList: [
-    {
-      imgUrl:
-        "http://source.dsiab.com/upload/0913ca3e-fb3c-4120-98fe-62bd86cf9b42.jpeg",
-      desc: "",
-      url: "",
-    },
-    {
-      imgUrl:
-        "http://source.dsiab.com/upload/5b3e8856-d0aa-4130-8150-fface4bf3c3b.jpeg",
-      desc: "",
-      url: "",
-    },
-    {
-      imgUrl:
-        "http://source.dsiab.com/upload/aa7f6f40-a451-4cb8-9a79-408d33488c84.jpeg",
-      desc: "",
-      url: "",
-    },
-  ],
+  carouselList: [],
   homeList: {
     result: [],
     total: 0
@@ -108,7 +89,7 @@ const getList = async () => {
   let { data } = toReactive(await useFetch(getListApi + '1')) as any;
   state.homeList = data.data
 }
-getList()
+
 onMounted(() => {
   if (process.client) {
     // 在浏览器端调接口，需要服务端做反向代理
@@ -125,7 +106,9 @@ const getSiteInfo = async () => {
   state.siteInfo = data.data
   state.carouselList = JSON.parse(data.data.carouselUrl);
 }
+// 查询轮播
 getSiteInfo()
+getList()
 </script>
 
 <style lang="less" scoped>
