@@ -129,6 +129,8 @@ onMounted(() => {
     margin: 20px auto;
     display: block;
     border: 1px dashed #ddd;
+    box-shadow: 5px 6px 20px #c4bebd;
+    border-radius: 10px;
   }
 
   a {
