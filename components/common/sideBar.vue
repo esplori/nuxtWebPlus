@@ -52,7 +52,7 @@
           </ul>
         </div>
       </li>
-      <li>
+      <!-- <li>
         <div class="module category">
           <div class="cate">分类推荐</div>
           <ul>
@@ -61,7 +61,7 @@
             </li>
           </ul>
         </div>
-      </li>
+      </li> -->
       <!-- <li>
         <div class="module tags">
           <div class="cate">标签云</div>
