@@ -10,8 +10,20 @@
 
 
 ### 项目介绍：
+ 本项目基于[Nuxt3](https://nuxt.com/)创建,nuxt3为vue3为服务器端的实现，不同于vue单页面的是nuxt3可被搜索引擎爬取收录，可作为门户网站使用（如掘金/爱奇艺官网使用的就是Nuxt）。
 
-- 主要技术: [nuxtjs 3.0](https://nuxt.com/docs/getting-started/introduction) 、[element-plus](https://element-plus.gitee.io/zh-CN/)
+### 主要技术栈:
+
+ [nuxtjs 3.0](https://nuxt.com/docs/getting-started/introduction) 、[element-plus](https://element-plus.gitee.io/zh-CN/) 、typescript 、 less
+
+### 主要功能/页面：
+
+- 文章列表
+- 文章详情
+- 文章推荐
+- 文章评论
+- 文章专题
+- 网站导航
 
 ### 演示地址
 
@@ -21,14 +33,19 @@
 - 加qq群一起交流：514450699
 
 
-
-### 选择nuxt的原因：
+### nuxt优势：
 
 - nuxt开发的项目能被搜索引擎收录，能进行seo。
 
 - 上手简单，语法跟vue基本一致。
 
 - 能正常接入统计跟广告代码。
+
+### 使用nuxt的网站
+- [掘金](https://juejin.cn/)
+- [爱奇艺](https://www.iqiyi.com/)
+
+tip: 通过浏览器检查功能可以看到[id="__nuxt"]元素
 
 ### 如何启动应用
 
@@ -45,9 +62,10 @@ $ npm run build
 $ npm run generate
 ```
 ### 注意
-- 默认调用官网接口，数据跟官网同步
+
+- 项目默认调用官网接口，数据跟官网同步
   
-- 如果要使用本地接口，请修改/plugins/baseUrl.js 文件中的baseUrl
+- 如果要使用本地接口，请修改/plugins/baseUrl.js 文件中的baseUrl为自己服务地址
 
 ### 感谢赞赏
 
