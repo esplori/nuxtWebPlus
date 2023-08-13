@@ -42,6 +42,12 @@
         <comments></comments>
       </div>
     </div>
+
+    <div id="imageList" style="position: absolute;top: 9999px;left: -9999px;">
+      <el-image style="width: 100px; height: 100px;" :src="state.srcUrl" :zoom-rate="1.2"
+        :preview-src-list="state.srcList" :initial-index="4" fit="cover" />
+    </div>
+
   </div>
 </template>
 
@@ -71,7 +77,9 @@ let state = reactive({
     cateName: ""
   },
   postId: "",
-  recommendPostList: []
+  recommendPostList: [],
+  srcUrl: "",
+  srcList: []
 })
 
 state.postId = route.params.id as any
@@ -93,16 +101,42 @@ useHead({
 setTimeout(() => {
   hljs.highlightAll()
 }, 200)
-// }
 
 const getRecomList = async () => {
   // 通过异步请求回来的数据都会存储在页面 payload 中。意味着，可能会存在没有用在你的组件的数据也加载到了 payload 中。我们强烈推荐你只选取必须使用在组件上的数据
   let { data } = toReactive(await useFetch(getRecommendPostBySameTagsApi + "?id=" + route.params.id)) as any;
   state.recommendPostList = data.data
 }
-// getList()
-getRecomList()
+const initImagePreview = () => {
+  // 监听点击事件
+  window.addEventListener("click", (e) => {
+    // 阻止事件冒泡
+    e.stopPropagation()
+    // 获取点击的元素
+    let target = e.target as HTMLElement
+    // 如果点击的元素是图片，且自定义字段不为预览中的图片
+    if (target.tagName == 'IMG' && target.dataset.clickFlag != 'Y') {
+      // 图片预览
+      state.srcUrl = target.src
+      state.srcList = [target.src]
+      // 设置定时器，每200毫秒检查一次图片是否被点击
+      setTimeout(() => {
+        // 获取图片列表
+        let imageIds = document.getElementById("imageList")
+        // 遍历图片列表，检查图片是否被点击
+        imageIds?.querySelectorAll("#imageList img").forEach(item => {
+          // 预览的图片添加标记字段确保不进入全局click事件
+          item.dataset.clickFlag = 'Y'
+          // 默认点击一次图片
+          item.click()
+        })
+      }, 200)
 
+    }
+  })
+}
+
+getRecomList()
 
 onMounted(() => {
   if (process.client) {
@@ -118,6 +152,7 @@ onMounted(() => {
     //   container: "_cwvxpd9dl8s",
     //   async: true,
     // });
+    initImagePreview()
   }
 })
 </script>
@@ -265,7 +300,7 @@ onMounted(() => {
         background: #f5f5f5;
         word-break: break-all;
         border-radius: 5px;
-        border:1px dashed #ddd;
+        border: 1px dashed #ddd;
 
         div {
           font-size: 1rem;
