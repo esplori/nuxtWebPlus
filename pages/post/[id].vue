@@ -83,7 +83,6 @@ let state = reactive({
 })
 
 state.postId = route.params.id as any
-// const getList = async () => {
 // 通过异步请求回来的数据都会存储在页面 payload 中。意味着，可能会存在没有用在你的组件的数据也加载到了 payload 中。我们强烈推荐你只选取必须使用在组件上的数据
 let { data } = toReactive(await useFetch(getDetailApi + route.params.id)) as any;
 // 查不到数据时显示404
@@ -152,6 +151,8 @@ onMounted(() => {
     //   container: "_cwvxpd9dl8s",
     //   async: true,
     // });
+
+    // 浏览器端添加图片点击事件
     initImagePreview()
   }
 })

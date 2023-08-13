@@ -41,16 +41,18 @@ getList()
 
     .home-body {
         border-radius: 5px;
-        .topic-title{
+
+        .topic-title {
             font-size: 1.6rem;
             border-bottom: 1px solid #f2f2f2;
             font-weight: bold;
             padding-bottom: 10px;
             margin-bottom: 10px;
         }
+
         .post-item {
             font-size: 1.2rem;
-            
+
 
             &:hover {
                 text-decoration: underline;
