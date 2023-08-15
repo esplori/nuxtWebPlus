@@ -16,7 +16,7 @@
       <div class="_clzacg58dkb"></div>
       <li>
         <div class="module category">
-          <div class="cate">专题推荐</div>
+          <commonTitle :title="'专题推荐'"></commonTitle>
           <el-carousel indicator-position="outside" height="140px" class="car-item">
             <el-carousel-item v-for="(item, index) in state.topicList" :key="index">
               <div class="carousel-item-container">
@@ -31,7 +31,7 @@
       </li>
       <li>
         <div class="module">
-          <div class="cate">推荐阅读</div>
+          <commonTitle :title="'推荐阅读'"></commonTitle>
           <!-- <el-tabs v-model="state.activeName" @tab-click="handleClick">
             <el-tab-pane label="最近30天" name="30"></el-tab-pane>
             <el-tab-pane label="本年度" name="365"></el-tab-pane>
@@ -82,6 +82,7 @@ import { reactive, onMounted } from "vue"
 import { toReactive } from "@vueuse/shared";
 import { getRecomListApi, getCateApi, getTagsApi, getTopicListApi, } from "@/pages/post/index";
 import { ElMessage } from "element-plus"
+import commonTitle from "@/components/common/commonTitle.vue"
 const state = reactive({
   searchWords: "",
   activeName: "30",

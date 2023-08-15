@@ -19,6 +19,13 @@ export default defineNuxtConfig({
   ],
   vite: {
     logLevel: "info",
+    // css: {
+    //   preprocessorOptions: {
+    //     less: {
+    //       additionalData: '@use "@/assets/css/index.less" as *;'
+    //     }
+    //   }
+    // },
     server: {
       proxy: {
         '/portal-service': {

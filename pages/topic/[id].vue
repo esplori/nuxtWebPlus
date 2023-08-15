@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="home-body">
-            <p class="topic-title">专题</p>
+            <commonTitle :title="'专题'"></commonTitle>
             <ul class="topic-ul">
                 <li v-for="(item, index) in state.list" :key="index">
                     <a :href="'/post/' + (item.postId)" target="_blank" class="post-item">{{ item.name }}</a>
@@ -14,6 +14,7 @@
 <script lang="ts" setup>
 import { getTopicDetailList } from "./api";
 import { toReactive } from "@vueuse/shared";
+import commonTitle from "@/components/common/commonTitle.vue"
 const route = useRoute()
 
 let state = reactive({

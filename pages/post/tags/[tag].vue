@@ -2,7 +2,9 @@
   <div class="cate-id">
     <div class="home-body">
       <div class="left-body">
-        <h1 class="result-title">关键字：{{ route.params.tag }}</h1>
+        <div style="padding:0 20px">
+          <commonTitle :title="'关键字：' + route.params.tag"></commonTitle>
+        </div>
         <p class="devide"></p>
         <listBody :list="state.homeList.result"></listBody>
         <div class="home-pagination">
@@ -20,6 +22,7 @@ import { reactive } from "vue"
 import { toReactive } from "@vueuse/shared";
 import listBody from "@/components/common/pageListBody.vue"
 import nuxtPagination from "@/components/common/nuxtPagination.vue"
+import commonTitle from "@/components/common/commonTitle.vue"
 const route = useRoute()
 let state = reactive({
   homeList: {
