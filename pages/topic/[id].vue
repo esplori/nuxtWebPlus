@@ -35,7 +35,7 @@ const getList = async () => {
 getList()
 </script>
   
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .container {
     background: #fff;
     padding: 20px;

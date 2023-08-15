@@ -171,7 +171,7 @@ onMounted(() => {
 
 </script>
 
-<style lang="less">
+<style lang="scss">
 @media (max-width: 575.98px) {
   ._oi1z2s14bx {
     display: none;

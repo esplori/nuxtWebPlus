@@ -50,7 +50,7 @@ const getList = async () => {
 getList()
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .cate-id {
   width: 100%;
 

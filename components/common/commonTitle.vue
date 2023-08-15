@@ -10,7 +10,7 @@ const props = defineProps({
   title: { type: String, default: "" }
 })
 </script>
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .common-title {
   font-weight: bold;
   padding: 5px 0;
@@ -22,7 +22,7 @@ const props = defineProps({
     display: inline-block;
     width: 80px;
     height: 2px;
-    background-color: #056de8;
+    background-color: $primary;
     position: absolute;
     left: 0;
     bottom: -1px;

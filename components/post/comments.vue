@@ -96,7 +96,7 @@ if (process.client) {
 
 
 </script>
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .comments {
   width: 100%;
   margin-top: 20px;

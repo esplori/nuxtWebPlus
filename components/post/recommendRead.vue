@@ -17,7 +17,7 @@ const props = defineProps({
   }
 })
 </script>
-<style lang="less">
+<style lang="scss">
 .postRecommend {
   padding: 0 20px;
 

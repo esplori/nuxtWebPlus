@@ -114,7 +114,7 @@ getSiteInfo()
 getList()
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .home-container {
   width: 100%;
 

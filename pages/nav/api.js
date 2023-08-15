@@ -1,3 +1,3 @@
-import preFix from '@/plugins/baseUrl'
+import preFix from '/utils/baseUrl'
 
 export const getListApi = `${preFix}/nav/getList`

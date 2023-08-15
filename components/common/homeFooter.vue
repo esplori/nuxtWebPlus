@@ -40,7 +40,7 @@ onMounted(() => {
   }
 })
 </script>
-<style lang="less">
+<style lang="scss">
 .home-footer {
   padding: 40px 0 80px 0;
   color: #fff;

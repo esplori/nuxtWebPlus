@@ -65,7 +65,7 @@ const getRecommend = async () => {
 getRecommend()
 </script>
   
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .tbk-container {
     background: #fff;
     min-height: 768px;

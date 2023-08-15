@@ -26,7 +26,7 @@ export default {
   },
 };
 </script>
-<style scoped lang="less">
+<style scoped lang="scss">
 .not-found {
   text-align: center;
   background: #fff;

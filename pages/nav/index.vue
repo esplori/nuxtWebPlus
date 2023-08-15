@@ -55,7 +55,7 @@ const getSiteInfo = async () => {
 }
 getSiteInfo()
 </script>
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .navigation-container {
   .home-body {
     width: 100%;

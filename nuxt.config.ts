@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import {defineNuxtConfig} from "nuxt/config"
 export default defineNuxtConfig({
+  devtools: { enabled: true },
   app: {
     head: {
       charset: 'utf-8',
@@ -15,17 +15,18 @@ export default defineNuxtConfig({
   },
   css: [
     "element-plus/dist/index.css",
-    "/assets/css/common.css"
+    "/assets/css/common.css",
+    
   ],
   vite: {
     logLevel: "info",
-    // css: {
-    //   preprocessorOptions: {
-    //     less: {
-    //       additionalData: '@use "@/assets/css/index.less" as *;'
-    //     }
-    //   }
-    // },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "@/assets/css/common.scss" as *;'
+        }
+      }
+    },
     server: {
       proxy: {
         '/portal-service': {
