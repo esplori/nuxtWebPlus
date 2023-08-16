@@ -10,6 +10,7 @@ export default defineNuxtConfig({
         { "http-equiv": 'content-language', content: "zh-cn" },
         { name: 'keywords', content: 'javascript技术分享,js技术,vuejs,web前端,前端开发,前端面试,web开发,dsiab,个人博客,前端博客' },
       ],
+      script: ["https://hm.baidu.com/hm.js?96ab5c4cd236e8e96687d2dab55e7034"],
       htmlAttrs: {'lang': "zh-cn"}
     }
   },
