@@ -41,7 +41,7 @@
 
 - 能正常接入统计跟广告代码。
 
-### 使用nuxt的网站
+### 已知使用nuxt的网站
 - [掘金](https://juejin.cn/)
 - [爱奇艺](https://www.iqiyi.com/)
 
