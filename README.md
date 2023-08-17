@@ -14,7 +14,7 @@
 
 ### 主要技术栈:
 
- [nuxtjs 3.0](https://nuxt.com/docs/getting-started/introduction) 、[element-plus](https://element-plus.gitee.io/zh-CN/) 、typescript 、 less
+ [nuxtjs 3.0](https://nuxt.com/docs/getting-started/introduction) 、[element-plus](https://element-plus.gitee.io/zh-CN/) 、typescript 、highlight.js 、 sass
 
 ### 主要功能/页面：
 
