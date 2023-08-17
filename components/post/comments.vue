@@ -6,10 +6,10 @@
         <el-input v-model="state.form.username" placeholder="用于发表后名称显示"></el-input>
       </el-form-item>
       <el-form-item label="邮箱：" prop="mail">
-        <el-input v-model="state.form.mail" placeholder="用于接收回复邮件"></el-input>
+        <el-input v-model="state.form.mail" placeholder="用于接收回复邮件,不会公开展示"></el-input>
       </el-form-item>
       <el-form-item label="内容：" prop="content">
-        <el-input type="textarea" :rows="5" v-model="state.form.content" placeholder="平等交流，理解尊重"></el-input>
+        <el-input type="textarea" :rows="5" v-model="state.form.content" placeholder="写下你的问题"></el-input>
       </el-form-item>
 
       <el-form-item>
