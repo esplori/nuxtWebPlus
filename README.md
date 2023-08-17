@@ -61,11 +61,15 @@ $ npm run build
 # 生成静态项目
 $ npm run generate
 ```
+
+### 如何部署
+   参考文章： https://www.dsiab.com/post/d435197f-f03f-481b-9c4a-f33d2875d317
+
 ### 注意
 
 - 项目默认调用官网接口，数据跟官网同步
   
-- 如果要使用本地接口，请修改/plugins/baseUrl.js 文件中的baseUrl为自己服务地址
+- 如果要使用本地接口，请修改/utils/baseUrl.js 文件中的baseUrl为自己服务地址
 
 ### 感谢赞赏
 
