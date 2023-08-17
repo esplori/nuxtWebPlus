@@ -158,7 +158,7 @@ onMounted(() => {
 })
 </script>
 
-<style lang="less">
+<style lang="scss">
 #post-id {
   img {
     width: 70% !important;
@@ -201,7 +201,7 @@ onMounted(() => {
   }
 }
 </style>
-<style lang="less" scoped>
+<style lang="scss" scoped>
 @media (max-width: 760px) {
   ._cwvxpd9dl8s {
     display: none;
@@ -317,15 +317,6 @@ onMounted(() => {
           text-decoration: underline;
         }
       }
-    }
-
-    // .right-sidebar {
-    //   max-width: 385px;
-    // }
-    @media screen and(max-width: 1024px) {
-      // .right-sidebar {
-      //   display: none;
-      // }
     }
 
     .side-bar {

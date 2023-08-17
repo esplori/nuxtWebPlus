@@ -49,7 +49,7 @@ let pageList = computed(() => {
 })
 </script>
 
-<style lang="less">
+<style lang="scss">
 .nuxt-pagination {
   ul {
     li {

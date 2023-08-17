@@ -14,7 +14,7 @@
 
 ### 主要技术栈:
 
- [nuxtjs 3.0](https://nuxt.com/docs/getting-started/introduction) 、[element-plus](https://element-plus.gitee.io/zh-CN/) 、typescript 、 less
+ [nuxtjs 3.0](https://nuxt.com/docs/getting-started/introduction) 、[element-plus](https://element-plus.gitee.io/zh-CN/) 、typescript 、highlight.js 、 sass
 
 ### 主要功能/页面：
 
@@ -41,7 +41,7 @@
 
 - 能正常接入统计跟广告代码。
 
-### 使用nuxt的网站
+### 已知使用nuxt的网站
 - [掘金](https://juejin.cn/)
 - [爱奇艺](https://www.iqiyi.com/)
 
@@ -61,11 +61,15 @@ $ npm run build
 # 生成静态项目
 $ npm run generate
 ```
+
+### 如何部署
+   参考文章： https://www.dsiab.com/post/d435197f-f03f-481b-9c4a-f33d2875d317
+
 ### 注意
 
 - 项目默认调用官网接口，数据跟官网同步
   
-- 如果要使用本地接口，请修改/plugins/baseUrl.js 文件中的baseUrl为自己服务地址
+- 如果要使用本地接口，请修改/utils/baseUrl.js 文件中的baseUrl为自己服务地址
 
 ### 感谢赞赏
 

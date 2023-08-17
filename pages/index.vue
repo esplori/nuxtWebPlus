@@ -43,7 +43,9 @@
           </div>
         </div>
 
-        <h2 class="big-title common-big-title">综合资讯</h2>
+        <div style="padding: 0 20px">
+          <commonTitle :title="'综合资讯'"></commonTitle>
+        </div>
         <listBody :list="state.homeList.result"></listBody>
         <div class="home-pagination">
           <nuxtPagination :pageSize="10" :total="state.homeList.total" :currentPage="state.page" :prePath="'/post/page/'">
@@ -57,6 +59,7 @@
 <script lang="ts" setup>
 import listBody from "@/components/common/pageListBody.vue"
 import nuxtPagination from "@/components/common/nuxtPagination.vue"
+import commonTitle from "@/components/common/commonTitle.vue"
 import { reactive, onMounted } from "vue"
 import { toReactive } from "@vueuse/shared";
 import { getListApi, getSiteInfoApi } from "@/pages/post/index"
@@ -111,7 +114,7 @@ getSiteInfo()
 getList()
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .home-container {
   width: 100%;
 

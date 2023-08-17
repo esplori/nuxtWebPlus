@@ -81,7 +81,7 @@ const hasChildren = computed(() => {
 })
 </script>
 
-<style lang="less">
+<style lang="scss">
 .home-header {
   background: #fff;
   border-bottom: 1px solid #f5f5f5;

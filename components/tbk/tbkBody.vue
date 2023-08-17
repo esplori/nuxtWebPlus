@@ -21,7 +21,7 @@ let propState = defineProps({
     list: []
 })
 </script>
-<style lang="less">
+<style lang="scss">
 .goodBodyComp {
     display: flex;
     flex-wrap: wrap;

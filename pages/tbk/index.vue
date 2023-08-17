@@ -41,7 +41,7 @@ const getList = async () => {
 getList()
 </script>
   
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .container {
     .home-body {
         display: flex;

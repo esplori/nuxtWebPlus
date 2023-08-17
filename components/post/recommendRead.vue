@@ -1,6 +1,6 @@
 <template>
   <div class="postRecommend" v-show="props.list.length">
-    <h3>推荐阅读：</h3>
+    <commonTitle :title="'推荐阅读'"></commonTitle>
     <ul>
       <li v-for="(item, index) in props.list" :key="index">
         <a :href="'/post/' + (item.uid || item.id)" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>
@@ -9,6 +9,7 @@
   </div>
 </template>
 <script lang="ts" setup>
+import commonTitle from "@/components/common/commonTitle.vue"
 const props = defineProps({
   list: {
     type: Array, default: () => {
@@ -17,7 +18,7 @@ const props = defineProps({
   }
 })
 </script>
-<style lang="less">
+<style lang="scss">
 .postRecommend {
   padding: 0 20px;
 

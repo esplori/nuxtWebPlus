@@ -39,7 +39,7 @@ const props = defineProps({
 })
 
 </script>
-<style lang="less">
+<style lang="scss">
 @media (max-width: 575.98px) {
   .img-box {
     display: none;

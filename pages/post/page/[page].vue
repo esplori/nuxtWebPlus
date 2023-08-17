@@ -48,7 +48,7 @@ getList()
 
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .post-page {
   width: 100%;
   .home-body {
