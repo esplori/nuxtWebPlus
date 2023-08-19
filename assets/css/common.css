@@ -11,8 +11,8 @@ li {
 }
 
 * {
-  /* color: #434343; */
-  /* text-shadow: 0 0 .85px #828282; */
+  color: #4a4a4a;
+  text-shadow: 0 0 0.3px #4a4a4a;
 }
 
 ul,
@@ -53,4 +53,8 @@ pre code {
 .devide {
   background: #f9f9f9;
   height: 10px;
+}
+/* code标签文字 */
+pre code.hljs {
+  word-break: break-all;
 }
