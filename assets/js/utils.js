@@ -4,7 +4,11 @@
  * @returns 
  */
 export function delHtmlTag(str) {
-  // return str.replace(/<\/?.+?>/g, "").replace(/&nbsp;/g, "").replace(/&lt;/g, "").replace(/&gt;/g, "");
-  // return str.replace(/<[^>]*>/g, "").replace(/&nbsp;/g, "").replace(/&lt;/g, "").replace(/&gt;/g, "");
-  return str.replace(/[^(\u4e00-\u9fa5)。，,.]/g, "")
+  if (process.client) {
+    // 浏览器端通过js原生方法去除Html标签
+    return (new DOMParser().parseFromString(str, "text/html").body.textContent || '')
+  } else {
+    return str
+  }
+  // return str.replace(/[^(\u4e00-\u9fa5)。，,.]/g, "")
 }

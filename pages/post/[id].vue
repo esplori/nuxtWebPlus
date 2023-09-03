@@ -44,8 +44,8 @@
     </div>
 
     <div id="imageList" style="position: absolute;top: 9999px;left: -9999px;">
-      <el-image style="width: 100px; height: 100px;" :src="state.srcUrl" :zoom-rate="1.2"
-        :preview-src-list="state.srcList" :initial-index="4" fit="cover" />
+      <el-image style="width: 1px; height: 1px;" :src="state.srcUrl" :zoom-rate="1.2"
+        :preview-src-list="state.srcList" :initial-index="0" teleported hide-on-click-modal fit="contain" />
     </div>
 
   </div>
