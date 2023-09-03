@@ -5,7 +5,6 @@
         <div style="padding:0 20px">
           <commonTitle :title="'关键字：' + route.params.tag"></commonTitle>
         </div>
-        <p class="devide"></p>
         <listBody :list="state.homeList.result"></listBody>
         <div class="home-pagination">
           <nuxtPagination :pageSize="10" :total="state.homeList.total" :currentPage="state.page"

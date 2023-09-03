@@ -2,10 +2,9 @@
   <div class="cate-id">
     <div class="home-body">
       <div class="left-body">
-        <h1 class="result-title" v-if="state.homeList.result.length">
-          分类：{{ state.homeList.result[0].cateName }}
-        </h1>
-        <p class="devide"></p>
+        <div style="padding:0 20px" v-if="state.homeList.result.length">
+          <commonTitle :title="'分类：'+  state.homeList.result[0].cateName"></commonTitle>
+        </div>
         <listBody :list="state.homeList.result"></listBody>
         <div class="home-pagination">
           <nuxtPagination :pageSize="10" :total="state.homeList.total" :currentPage="state.page"

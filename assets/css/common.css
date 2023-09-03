@@ -50,10 +50,6 @@ pre code {
   padding: 0 20px;
 }
 
-.devide {
-  background: #f9f9f9;
-  height: 10px;
-}
 /* code标签文字 */
 pre code.hljs {
   word-break: break-all;
