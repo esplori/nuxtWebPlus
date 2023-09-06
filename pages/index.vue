@@ -166,9 +166,9 @@ getList()
 
               .carousel-item-desc {
                 width: 100%;
-                padding: 20px;
+                padding: 10px;
                 position: absolute;
-                bottom: 0;
+                bottom: 8px;
                 left: 0;
                 background: #000;
                 color: #fff;
@@ -206,7 +206,7 @@ getList()
                   text-align: center;
                   opacity: 0.8;
                   padding: 10px 0;
-                  font-size: 14px;
+                  font-size: 12px;
 
                   a {
                     color: #fff;
