@@ -30,7 +30,7 @@ const initWebStat = () => {
     },
   });
   setTimeout(() => {
-    webStats.setUserId();
+    webStats.setUserId('dsiab');
   }, 1000);
 }
 
