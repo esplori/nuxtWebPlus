@@ -14,7 +14,7 @@ const props = defineProps({
 .common-title {
   font-weight: bold;
   padding: 5px 0;
-  font-size: 20px;
+  font-size: 1.2rem;
   border-bottom: 1px solid #f5f5f5;
   position: relative;
   margin-bottom: 20px;

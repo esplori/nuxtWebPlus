@@ -3,7 +3,7 @@
     <commonTitle :title="'推荐阅读'"></commonTitle>
     <ul>
       <li v-for="(item, index) in props.list" :key="index">
-        <a :href="'/post/' + (item.uid || item.id)" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>
+        <span class="circle"></span><a :href="'/post/' + (item.uid || item.id)" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>
       </li>
     </ul>
   </div>
@@ -20,7 +20,6 @@ const props = defineProps({
 </script>
 <style lang="scss">
 .postRecommend {
-  padding: 0 20px;
 
   h3 {
     position: relative;
@@ -31,9 +30,16 @@ const props = defineProps({
   ul {
     li {
       font-size: 1.2rem;
-      list-style-type: disc;
-      padding: 2px 0;
-
+      padding: 2px 5px;
+      display: flex;
+      align-items: center;
+      .circle{
+        width: 4px;
+        height: 4px;
+        background-color: #2c2e3b;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
       a {
         text-decoration: none !important;
         ;

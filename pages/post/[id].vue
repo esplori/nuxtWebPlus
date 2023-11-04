@@ -23,7 +23,7 @@
           <div v-html="state.detailData.content" class="detail-post-content"></div>
           <!-- <div class="_cwvxpd9dl8s"></div> -->
         </div>
-        <div>
+        <div class="post-footer">
           <div class="tags" v-if="state.detailData.keywords">
             标签：<a :href="'/post/tags/' + item" v-for="(item, index) in state.detailData.keywords.split(',')" :key="index"
               target="_blank">{{ item }}</a>
@@ -188,7 +188,7 @@ onMounted(() => {
   .detail-post-content p {
     font-size: 1.2rem;
     // text-indent: 2rem;
-    padding-bottom: 2rem;
+    padding-bottom: 1.2rem;
   }
 
 
@@ -316,6 +316,9 @@ onMounted(() => {
           margin-right: 10px;
           text-decoration: underline;
         }
+      }
+      .post-footer{
+        margin-bottom: 2rem;
       }
     }
 

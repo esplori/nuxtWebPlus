@@ -1,6 +1,6 @@
 <template>
   <div class="comments">
-    <h3>发表评论<span style="color:gray;font-size: 1rem;">(审核通过后显示评论)</span>：</h3>
+    <h3>发表评论<span style="color:gray;font-size: 1rem;"> (审核通过后显示评论)：</span></h3>
     <el-form :model="state.form" label-width="70px" :rules="rules" ref="ruleFormRef">
       <el-form-item label="昵称：" prop="username">
         <el-input v-model="state.form.username" placeholder="用于发表后名称显示"></el-input>
@@ -100,7 +100,7 @@ if (process.client) {
 .comments {
   width: 100%;
   margin-top: 20px;
-  padding: 20px;
+  padding: 20px 0;
 
   .commentsList {
     margin-top: 40px;

@@ -14,7 +14,7 @@
     "nuxt": "^3.6.5"
   },
   "dependencies": {
-    "element-plus": "^2.3.9",
+    "element-plus": "^2.4.2",
     "highlight.js": "^11.8.0",
     "sass": "^1.65.1"
   }

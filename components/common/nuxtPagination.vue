@@ -1,8 +1,9 @@
 <template>
+  <el-divider></el-divider>
   <div class="nuxt-pagination">
     <ul>
       <li v-for="(item, index) in pageList" :key="index" :class="{ actived: propsState.currentPage === item }">
-        <a :href="propsState.prePath + item">{{ item }}</a>
+        <a v-if="item" :class="['num-item', item < 10 ? 'plus-width' : '']" :href="propsState.prePath + item">{{ item }}</a>
       </li>
     </ul>
   </div>
@@ -11,11 +12,11 @@
 import { computed } from "vue"
 let propsState = defineProps({
   total: {
-    type: Number,default: 0
+    type: Number, default: 0
   },
-  currentPage: {type: Number,default: 1},
-  pageSize: {type: Number,default: 10},
-  prePath: {type: String,default: ""}
+  currentPage: { type: Number, default: 1 },
+  pageSize: { type: Number, default: 10 },
+  prePath: { type: String, default: "" }
 })
 
 let pageList = computed(() => {
@@ -54,12 +55,23 @@ let pageList = computed(() => {
   ul {
     li {
       display: inline-block;
-      margin-left: 20px;
-      font-size: 1.2rem;
+      margin-right: 20px;
+      font-size: 0.8rem;
+
+      .num-item {
+        border: 1px solid $primary;
+        padding: 5px 5px;
+        border-radius: 2px;
+
+        &.plus-width {
+          padding: 5px 8px;
+        }
+      }
 
       &.actived {
         a {
-          color: #409eff;
+          color: #fff;
+          background-color: $primary;
         }
       }
     }
