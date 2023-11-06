@@ -107,8 +107,10 @@ const getRecomList = async () => {
   state.recommendPostList = data.data
 }
 const initImagePreview = () => {
+  // 只给文章页面添加图片点击事件
+  let dom = document.getElementById("post-id")
   // 监听点击事件
-  window.addEventListener("click", (e) => {
+  dom && dom.addEventListener("click", (e) => {
     // 阻止事件冒泡
     e.stopPropagation()
     // 获取点击的元素
