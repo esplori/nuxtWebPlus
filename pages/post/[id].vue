@@ -7,8 +7,6 @@
           <div class="post-info">
             <div class="head-info">
               <div class="title">
-                <!-- <span class="userName">
-                  {{ state.detailData.nickname || state.detailData.createBy }}</span> -->
               </div>
               <div class="other-info">
                 <span>作者: {{ state.detailData.nickname || state.detailData.createBy }} </span>
