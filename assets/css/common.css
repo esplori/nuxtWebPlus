@@ -12,7 +12,7 @@ li {
 
 * {
   /* color: #4a4a4a; */
-  text-shadow: 0 0 0.3px #4a4a4a;
+  /* text-shadow: 0 0 0.3px #4a4a4a; */
 }
 
 ul,
@@ -26,8 +26,8 @@ a {
 }
 
 body {
-  /* background-color: #f2f6f9; */
-  background-image: linear-gradient(#f9f9f9 50%, #fff);
+  background-color: #f5f5f5;
+  /* background-image: linear-gradient(#f9f9f9 50%, #fff); */
 }
 
 /* 修改富文本编辑器添加代码后样式 */

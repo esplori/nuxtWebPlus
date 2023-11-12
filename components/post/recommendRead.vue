@@ -20,7 +20,8 @@ const props = defineProps({
 </script>
 <style lang="scss">
 .postRecommend {
-
+  background-color: #fff;
+  padding: 10px 20px;
   h3 {
     position: relative;
     left: -20px;
