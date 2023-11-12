@@ -1,26 +1,28 @@
 <template>
   <div class="comments">
-    <h3>发表评论<span style="color:gray;font-size: 1rem;"> (审核通过后显示评论)：</span></h3>
-    <el-form :model="state.form" label-width="70px" :rules="rules" ref="ruleFormRef">
-      <el-form-item label="昵称：" prop="username">
-        <el-input v-model="state.form.username" placeholder="用于发表后名称显示"></el-input>
-      </el-form-item>
-      <el-form-item label="邮箱：" prop="mail">
-        <el-input v-model="state.form.mail" placeholder="用于接收回复邮件,不会公开展示"></el-input>
-      </el-form-item>
-      <el-form-item label="内容：" prop="content">
-        <el-input type="textarea" :rows="5" v-model="state.form.content" placeholder="写下你的问题"></el-input>
-      </el-form-item>
+    <div class="add-comment">
+      <h3>发表评论<span style="color:gray;font-size: 1rem;"> (审核通过后显示评论)：</span></h3>
+      <el-form :model="state.form" label-width="70px" :rules="rules" ref="ruleFormRef">
+        <el-form-item label="昵称：" prop="username">
+          <el-input v-model="state.form.username" placeholder="用于发表后名称显示"></el-input>
+        </el-form-item>
+        <el-form-item label="邮箱：" prop="mail">
+          <el-input v-model="state.form.mail"  placeholder="用于接收回复邮件,不会公开展示"></el-input>
+        </el-form-item>
+        <el-form-item label="内容：" prop="content">
+          <el-input type="textarea" :rows="5" v-model="state.form.content" placeholder="写下你的问题"></el-input>
+        </el-form-item>
 
-      <el-form-item>
-        <div style="text-align: right">
-          <el-button @click="submit" type="primary">发表评论</el-button>
-        </div>
-      </el-form-item>
-    </el-form>
+        <el-form-item>
+          <div style="text-align: right">
+            <el-button @click="submit" type="primary">发表评论</el-button>
+          </div>
+        </el-form-item>
+      </el-form>
+    </div>
 
     <div class="commentsList" v-show="state.commentsList.length">
-      <h4>文章评论：</h4>
+      <h3 style="text-align: center;">文章评论({{state.commentsList.length}})</h3>
       <div v-for="(item, index) in state.commentsList" :key="index" class="comment-item">
         <div>
           <i class="avatar"></i>
@@ -55,7 +57,12 @@ const rules = reactive({
     { required: true, message: '请输入昵称', trigger: 'blur' },
   ],
   mail: [
-    { required: true, message: '请输入邮箱', trigger: 'blur' },
+    { required: true, message: "请输入邮箱", trigger: "change" },
+    {
+      type: "email",
+      message: "请输入正确的邮箱地址",
+      trigger: ["blur", "change"],
+    },
   ],
   content: [
     { required: true, message: '请输入内容', trigger: 'blur' },
@@ -100,27 +107,31 @@ if (process.client) {
 .comments {
   width: 100%;
   margin-top: 20px;
-  padding: 20px 0;
+  
+  .add-comment{
+    background-color: #fff;
+    padding: 10px 20px;
+  }
 
   .commentsList {
-    margin-top: 40px;
-    background: #fff;
+    margin-top: 10px;
     border-top: 1px solid #f5f5f5;
 
     .comment-item {
-      padding: 10px;
+      padding: 20px;
       margin-bottom: 10px;
       border-radius: 5px;
       display: flex;
       justify-content: flex-start;
       align-items: flex-start;
+      background-color: #fff;
 
       .info {
         margin-left: 10px;
 
         .name {
-          font-size: 16px;
-          padding-bottom: 5px;
+          font-size: 14px;
+          // padding-bottom: 2px;
           font-weight: 600;
         }
 
@@ -130,7 +141,7 @@ if (process.client) {
 
         .content {
           padding: 10px 0;
-          font-size: 14px;
+          font-size: 16px;
         }
       }
 
@@ -140,6 +151,7 @@ if (process.client) {
         height: 36px;
         background: url("@/assets/img/avatar.png") no-repeat;
         background-size: contain;
+        border-radius: 50%;
       }
     }
   }

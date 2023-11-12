@@ -60,11 +60,11 @@ let pageList = computed(() => {
 
       .num-item {
         border: 1px solid $primary;
-        padding: 5px 5px;
+        padding: 6px 8px;
         border-radius: 2px;
 
         &.plus-width {
-          padding: 5px 8px;
+          padding: 6px 10px;
         }
       }
 

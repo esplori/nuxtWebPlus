@@ -2,7 +2,7 @@
   <div id="post-id">
     <div class="home-body">
       <div class="left-body">
-        <div>
+        <div class="post-body">
           <h1 class="detail-post-title">{{ state.detailData.title }}</h1>
           <div class="post-info">
             <div class="head-info">
@@ -23,16 +23,14 @@
         </div>
         <div class="post-footer">
           <div class="tags" v-if="state.detailData.keywords">
-            标签：<a :href="'/post/tags/' + item" v-for="(item, index) in state.detailData.keywords.split(',')" :key="index"
-              target="_blank">{{ item }}</a>
+            <a :href="'/post/tags/' + item" v-for="(item, index) in state.detailData.keywords.split(',')" :key="index"
+              target="_blank"># {{ item }}</a>
           </div>
           <div class="copy-desc">
+            <div>本文由作者创作或收集，内容引用如有问题请联系站长处理。</div>
             <div>
-              如若转载请注明原文及出处：<a :href="'https://www.dsiab.com/post/' + state.postId">https://www.dsiab.com/post/{{
-                state.postId }}</a>
-            </div>
-            <div>
-              本站文章由javascript技术分享原创和收集，内容引用如有问题请联系站长删除。
+              转载请注明原文及出处：<a class="quote" :href="'https://www.dsiab.com/post/' + state.postId">{{ state.detailData.title
+              }}</a>
             </div>
           </div>
         </div>
@@ -42,8 +40,8 @@
     </div>
 
     <div id="imageList" style="position: absolute;top: 9999px;left: -9999px;">
-      <el-image style="width: 1px; height: 1px;" :src="state.srcUrl" :zoom-rate="1.2"
-        :preview-src-list="state.srcList" :initial-index="0" teleported hide-on-click-modal fit="contain" />
+      <el-image style="width: 1px; height: 1px;" :src="state.srcUrl"  :preview-src-list="state.srcList"
+        :initial-index="0" teleported hide-on-click-modal fit="contain" />
     </div>
 
   </div>
@@ -161,12 +159,13 @@ onMounted(() => {
 <style lang="scss">
 #post-id {
   img {
-    width: 70% !important;
+    max-height: 70% !important;
+    max-width: 70% !important;
     margin: 20px auto;
     display: block;
     border: 1px dashed #ddd;
-    box-shadow: 5px 6px 20px #c4bebd;
-    border-radius: 10px;
+    // box-shadow: 5px 6px 20px #c4bebd;
+    border-radius: 5px;
   }
 
   a {
@@ -188,7 +187,7 @@ onMounted(() => {
   .detail-post-content p {
     font-size: 1.2rem;
     // text-indent: 2rem;
-    padding-bottom: 1.2rem;
+    padding-bottom: 1.4rem;
   }
 
 
@@ -222,14 +221,18 @@ onMounted(() => {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      background: #fff;
-      padding: 20px;
-      box-shadow: 0 0 20px rgba(210, 211, 216, 0.3);
-      border-radius: 5px;
+
+      // background: #fff;
+      // box-shadow: 0 0 20px rgba(210, 211, 216, 0.3);
+      .post-body {
+        background-color: #fff;
+        padding: 20px 20px 0 20px;
+        border-radius: 5px;
+      }
 
       .detail-post-title {
         color: #141414;
-        font-size: 1.5rem;
+        font-size: 2rem;
         margin-bottom: 5px;
       }
 
@@ -282,10 +285,10 @@ onMounted(() => {
       }
 
       .detail-post-content {
-        padding: 10px 0;
+        padding: 10px 0 0 0;
         font-size: 14px;
         // line-height: 32px;
-        margin-bottom: 24px;
+        // margin-bottom: 24px;
         margin-top: 15px;
         text-align: justify;
         color: #4a4a4a;
@@ -302,6 +305,7 @@ onMounted(() => {
         word-break: break-all;
         border-radius: 5px;
         border: 1px dashed #ddd;
+        color: #655e5e;
 
         div {
           font-size: 1rem;
@@ -309,16 +313,28 @@ onMounted(() => {
       }
 
       .tags {
-        font-size: 1.2rem;
-        padding: 20px 0;
+        margin-bottom: 20px;
 
         a {
           margin-right: 10px;
-          text-decoration: underline;
+          text-decoration: none;
+          font-size: 1rem;
+          line-height: 17px;
+          letter-spacing: .05em;
+          color: #655e5e;
+          padding: 5px 10px;
+          background: #f5f5f5;
         }
       }
-      .post-footer{
-        margin-bottom: 2rem;
+
+      .post-footer {
+        margin-bottom: 1rem;
+        padding: 20px;
+        background-color: #fff;
+
+        .quote {
+          color: #655e5e;
+        }
       }
     }
 

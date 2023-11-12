@@ -31,6 +31,7 @@ export default defineNuxtConfig({
     server: {
       proxy: {
         '/portal-service': {
+          // 本地代理，评论部分需开启本地代理
           target: 'http://localhost:8082',
           // target: 'http://admin.dsiab.com/',
           changeOrigin: true,
