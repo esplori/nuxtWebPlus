@@ -293,7 +293,7 @@ onMounted(() => {
         text-align: justify;
         color: #4a4a4a;
         font-weight: 400;
-        word-break: break-word;
+        word-break: break-all;
         white-space: normal;
         overflow-x: auto;
 
