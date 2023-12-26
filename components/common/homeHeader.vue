@@ -14,21 +14,21 @@
               <a :href="it.path" target="_self">{{ it.name }}</a>
             </el-menu-item>
           </el-sub-menu>
-          <el-menu-item index="tbk">
+          <!-- <el-menu-item index="tbk">
             <a href="/tbk" target="_self">优乐购</a>
-          </el-menu-item>
-          <el-menu-item index="games">
+          </el-menu-item> -->
+          <!-- <el-menu-item index="games">
             <a href="https://source.dsiab.com/games/index.html" target="_blank">在线游戏</a>
-          </el-menu-item>
+          </el-menu-item> -->
           <el-menu-item index="about">
             <a href="/post/13">关于</a>
           </el-menu-item>
           <el-menu-item index="updateLog">
             <a href="https://gitee.com/wilkwo/nuxt-web-plus/releases" target="_blank">更新日志</a>
           </el-menu-item>
-          <el-menu-item index="login">
+          <!-- <el-menu-item index="login">
             <a href="https://admin.dsiab.com/#/login" target="_blank">登录</a>
-          </el-menu-item>
+          </el-menu-item> -->
         </el-menu>
       </div>
     </div>
@@ -41,32 +41,32 @@ let state = reactive({
   menList: [
     { name: "首页", path: "/" },
     { name: "网站导航", path: "/nav" },
-    {
-      name: "前端教程",
-      path: "",
-      children: [
-        {
-          name: "w3school教程",
-          path: "http://source.dsiab.com/course/w3c/",
-        },
-        {
-          name: "less教程",
-          path: "http://source.dsiab.com/course/less/less.bootcss.com/index.html",
-        },
-        {
-          name: "react教程",
-          path: "http://source.dsiab.com/course/react/react.docschina.org/index.html",
-        },
-      ],
-    },
-    {
-      name: "后端教程",
-      path: "",
-      children: [
-        { name: "c语言教程", path: "http://source.dsiab.com/course/C/" },
-        { name: "mysql教程", path: "http://source.dsiab.com/course/mysql/" },
-      ],
-    }
+    // {
+    //   name: "前端教程",
+    //   path: "",
+    //   children: [
+    //     {
+    //       name: "w3school教程",
+    //       path: "http://source.dsiab.com/course/w3c/",
+    //     },
+    //     {
+    //       name: "less教程",
+    //       path: "http://source.dsiab.com/course/less/less.bootcss.com/index.html",
+    //     },
+    //     {
+    //       name: "react教程",
+    //       path: "http://source.dsiab.com/course/react/react.docschina.org/index.html",
+    //     },
+    //   ],
+    // },
+    // {
+    //   name: "后端教程",
+    //   path: "",
+    //   children: [
+    //     { name: "c语言教程", path: "http://source.dsiab.com/course/C/" },
+    //     { name: "mysql教程", path: "http://source.dsiab.com/course/mysql/" },
+    //   ],
+    // }
   ],
 })
 const noChildren = computed(() => {
