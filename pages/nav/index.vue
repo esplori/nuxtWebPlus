@@ -4,20 +4,19 @@
       <el-row :gutter="10">
         <el-col :span="24">
           <div class="left-body">
-            <el-tabs :tab-position="state.tabPosition" type="border-card" style="height: 100vh">
-              <el-tab-pane :label="item.name" v-for="(item, index) in state.list" :key="index">
-                <div class="child-cate">
-                  <div class="cate-item" v-for="(it, ix) in item.children" :key="ix">
-                    <el-card shadow="always">
-                      <div class="title">
-                        <a :href="it.url" target="_blank"> {{ it.title }}</a>
-                      </div>
-                      <div class="content">{{ it.content }}</div>
-                    </el-card>
-                  </div>
+            <div v-for="(item, index) in state.list" :key="index">
+              <div class="module-name">{{ item.name }}</div>
+              <div class="child-cate">
+                <div class="cate-item" v-for="(it, ix) in item.children" :key="ix">
+                  <el-card shadow="none">
+                    <div class="title">
+                      <a :href="it.url" target="_blank"> {{ it.title }}</a>
+                    </div>
+                    <div class="content">{{ it.content }}</div>
+                  </el-card>
                 </div>
-              </el-tab-pane>
-            </el-tabs>
+              </div>
+            </div>
           </div>
         </el-col>
       </el-row>
@@ -63,10 +62,19 @@ getSiteInfo()
     .left-body {
       background: #fff;
       box-shadow: 0 1px 3px rgba(27, 95, 160, 0.1);
-
+      .module-name{
+        padding: 14px;
+        font-size: 18px;
+        font-weight: bold;
+        // color: #fff;
+        background-color: var(--el-color-info-light-8);
+        position: sticky;
+        top: 0;
+        z-index: 1001;
+      }
       .child-cate {
         width: 100%;
-        padding: 10px 0;
+        padding: 0;
         display: flex;
         flex-wrap: wrap;
 
@@ -75,9 +83,6 @@ getSiteInfo()
           font-size: 16px;
           padding: 10px;
           border-radius: 5px;
-          // margin-right: 10px;
-          // margin-bottom: 10px;
-          // border: 1px solid #f5f5f5;
 
           .title {
             font-size: 14px;

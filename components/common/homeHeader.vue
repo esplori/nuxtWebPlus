@@ -86,6 +86,9 @@ const hasChildren = computed(() => {
   background: #fff;
   border-bottom: 1px solid #f5f5f5;
   box-shadow: 0 0 20px rgba(210, 211, 216, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 
   .el-menu--horizontal.el-menu {
     border-bottom: none;
