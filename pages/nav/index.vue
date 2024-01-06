@@ -66,7 +66,7 @@ getSiteInfo()
         padding: 14px;
         font-size: 18px;
         font-weight: bold;
-        // color: #fff;
+        color: rgba(0, 0, 0, 0.8);
         background-color: var(--el-color-info-light-8);
         position: sticky;
         top: 0;
