@@ -4,14 +4,20 @@
       <li v-for="(item, index) in props.list" :key="index">
         <div class="post-item">
           <div class="item-info">
-            <div class="home-post-title">
-              <a :href="'/post/' + (item.uid || item.id)" target="_self">{{
-                item.title
-              }}</a>
-            </div>
+            <div class="image-post-sperate">
+              <div>
+                <div class="home-post-title">
+                  <a :href="'/post/' + (item.uid || item.id)" target="_self">{{
+                    item.title
+                  }}</a>
+                </div>
 
-            <div class="home-post-excerpt">
-              {{ delHtmlTag(item.content) }} ...
+                <div class="home-post-excerpt">
+                  {{ delHtmlTag(item.content) }} ...
+                </div>
+              </div>
+              <div class="cover-img-box" v-if="item.coverImageUrl"><img :src="item.coverImageUrl" alt=""
+                  class="cover-image"></div>
             </div>
             <div class="home-post-info">
               <span class="cate-name" v-show="item.cateName">
@@ -85,7 +91,7 @@ const props = defineProps({
 
       .home-post-info {
         padding: 5px 0;
-        font-size: .8rem;
+        font-size: 1rem;
         opacity: 0.65;
         // color: #8c8c8c;
         border-bottom: 1px dashed #ddd;
@@ -106,6 +112,22 @@ const props = defineProps({
 
         .item-info {
           width: 100%;
+
+          .image-post-sperate {
+            display: flex;
+            align-items: center;
+          }
+
+          .cover-img-box {
+            // overflow: hidden;
+            padding-left: 20px;
+          }
+
+          .cover-image {
+            // width: 220px;
+            height: 140px;
+            max-width: 140px;
+          }
         }
 
         .img-box {
