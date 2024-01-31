@@ -125,8 +125,9 @@ const props = defineProps({
 
           .cover-image {
             // width: 220px;
-            height: 140px;
-            max-width: 140px;
+            height: 180px;
+            max-width: 180px;
+            object-fit: contain;
           }
         }
 
