@@ -5,7 +5,7 @@
         <div class="search">
           <el-input size="large" placeholder="请输入关键字" v-model="state.searchWords">
             <template #append>
-              <el-button :icon="Search" @click="search" @keypress.enter="search"/>
+              <el-button :icon="Search" @click="search" @keypress.enter="search" />
             </template>
           </el-input>
         </div>
@@ -38,7 +38,7 @@
             <el-tab-pane label="总排行" name="all"></el-tab-pane>
           </el-tabs> -->
           <ul>
-            <li v-for="(item, index) in state.recommandList" :key="index">
+            <li v-for="(item, index) in state.recommandList" :key="index" class="li-item">
               <div class="title">
                 <a :href="'/post/' + (item.uid || item.id)" target="_self">
                   <span class="list-index">{{ index + 1 }}</span>{{ item.title }}
@@ -171,7 +171,7 @@ onMounted(() => {
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @media (max-width: 575.98px) {
   ._oi1z2s14bx {
     display: none;
@@ -221,6 +221,27 @@ onMounted(() => {
       // font-weight: 600;
       font-size: 1.6rem;
       color: #2c2e3b;
+    }
+
+    .li-item {
+      &:first-child {
+        .list-index {
+          background-color: #f00606;
+          color: #fff;
+        }
+      }
+      &:nth-child(2) {
+        .list-index {
+          background-color: #f24808;
+          color: #fff;
+        }
+      }
+      &:nth-child(3) {
+        .list-index {
+          background-color: #fb7818;
+          color: #fff;
+        }
+      }
     }
   }
 
