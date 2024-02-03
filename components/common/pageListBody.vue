@@ -4,14 +4,20 @@
       <li v-for="(item, index) in props.list" :key="index">
         <div class="post-item">
           <div class="item-info">
-            <div class="home-post-title">
-              <a :href="'/post/' + (item.uid || item.id)" target="_self">{{
-                item.title
-              }}</a>
-            </div>
+            <div class="image-post-sperate">
+              <div>
+                <div class="home-post-title">
+                  <a :href="'/post/' + (item.uid || item.id)" target="_self">{{
+                    item.title
+                  }}</a>
+                </div>
 
-            <div class="home-post-excerpt">
-              {{ delHtmlTag(item.content) }} ...
+                <div class="home-post-excerpt">
+                  {{ delHtmlTag(item.content) }} ...
+                </div>
+              </div>
+              <div class="cover-img-box" v-if="item.coverImageUrl"><img :src="item.coverImageUrl" alt=""
+                  class="cover-image"></div>
             </div>
             <div class="home-post-info">
               <span class="cate-name" v-show="item.cateName">
@@ -41,7 +47,9 @@ const props = defineProps({
 </script>
 <style lang="scss">
 @media (max-width: 575.98px) {
-  .img-box {
+
+  .img-box,
+  .cover-img-box {
     display: none;
   }
 }
@@ -62,7 +70,7 @@ const props = defineProps({
 
       .home-post-title a {
         color: #424242;
-        font-size: 1.4rem;
+        font-size: 1.6rem;
         line-height: 1.6rem;
         text-overflow: ellipsis;
       }
@@ -74,8 +82,8 @@ const props = defineProps({
       // 文字超出显示...
       .home-post-excerpt {
         padding: 10px 0;
-        line-height: 22px;
-        font-size: 1rem;
+        line-height: 2rem;
+        font-size: 1.1rem;
         // color: #8c8c8c;
         // text-overflow: ellipsis;
         overflow: hidden;
@@ -85,7 +93,7 @@ const props = defineProps({
 
       .home-post-info {
         padding: 5px 0;
-        font-size: .8rem;
+        font-size: 1rem;
         opacity: 0.65;
         // color: #8c8c8c;
         border-bottom: 1px dashed #ddd;
@@ -106,6 +114,23 @@ const props = defineProps({
 
         .item-info {
           width: 100%;
+
+          .image-post-sperate {
+            display: flex;
+            align-items: center;
+          }
+
+          .cover-img-box {
+            // overflow: hidden;
+            padding-left: 20px;
+          }
+
+          .cover-image {
+            max-height: 120px;
+            max-width: 140px;
+            width: 120px;
+            object-fit: contain;
+          }
         }
 
         .img-box {
