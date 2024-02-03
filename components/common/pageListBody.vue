@@ -47,7 +47,9 @@ const props = defineProps({
 </script>
 <style lang="scss">
 @media (max-width: 575.98px) {
-  .img-box {
+
+  .img-box,
+  .cover-img-box {
     display: none;
   }
 }
@@ -81,7 +83,7 @@ const props = defineProps({
       .home-post-excerpt {
         padding: 10px 0;
         line-height: 2rem;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         // color: #8c8c8c;
         // text-overflow: ellipsis;
         overflow: hidden;
