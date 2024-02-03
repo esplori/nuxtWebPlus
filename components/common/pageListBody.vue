@@ -68,7 +68,7 @@ const props = defineProps({
 
       .home-post-title a {
         color: #424242;
-        font-size: 1.4rem;
+        font-size: 1.6rem;
         line-height: 1.6rem;
         text-overflow: ellipsis;
       }
@@ -80,8 +80,8 @@ const props = defineProps({
       // 文字超出显示...
       .home-post-excerpt {
         padding: 10px 0;
-        line-height: 22px;
-        font-size: 1rem;
+        line-height: 2rem;
+        font-size: 1.2rem;
         // color: #8c8c8c;
         // text-overflow: ellipsis;
         overflow: hidden;
@@ -124,9 +124,9 @@ const props = defineProps({
           }
 
           .cover-image {
-            // width: 220px;
-            height: 180px;
-            max-width: 180px;
+            max-height: 120px;
+            max-width: 140px;
+            width: 120px;
             object-fit: contain;
           }
         }
