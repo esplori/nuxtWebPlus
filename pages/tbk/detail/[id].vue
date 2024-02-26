@@ -1,7 +1,7 @@
 <template>
     <div class="tbk-container">
         <div class="home-body">
-            <div class="tbk-item">
+            <div class="big-tbk-item">
                 <div>
                     <a :href="state.item.pict_url"><img :src="state.item.pict_url" alt="" width="197px"
                             height="197px" /></a>
@@ -73,16 +73,8 @@ getRecommend()
     .home-body {
         display: flex;
         margin: 0 10px;
-
-        .tbk-item:hover {
-            border: 1px solid #ff5000;
-        }
-
-        .tbk-item {
-            display: inline-block;
-            width: 235px;
-            padding: 20px;
-            // border: 1px solid #f4f4f4;
+        .big-tbk-item{
+            margin-top: 10px;
         }
 
         .item-info {
