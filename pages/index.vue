@@ -54,7 +54,8 @@ const state = reactive({
     result: [],
     total: 0
   },
-  page: 1
+  page: 1,
+  menuList: []
 })
 
 const getList = async () => {
@@ -77,7 +78,10 @@ onMounted(() => {
 const getSiteInfo = async () => {
   let { data } = toReactive(await useFetch(getSiteInfoApi, { method: 'get' })) as any;
   state.siteInfo = data.data
+  // 轮播列表
   state.carouselList = JSON.parse(data.data.carouselUrl);
+  // 菜单
+  state.menuList = JSON.parse(data.data.menuList);
 }
 // 查询轮播
 getSiteInfo()

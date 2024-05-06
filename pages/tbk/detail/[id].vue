@@ -28,7 +28,7 @@
         </div>
     </div>
 </template>
-  
+
 <script lang="ts" setup>
 import { getTbkDetailApi, getRecommendApi } from "../api";
 import { reactive } from "vue"
@@ -64,7 +64,7 @@ const getRecommend = async () => {
 
 getRecommend()
 </script>
-  
+
 <style lang="scss" scoped>
 .tbk-container {
     background: #fff;
@@ -73,7 +73,8 @@ getRecommend()
     .home-body {
         display: flex;
         margin: 0 10px;
-        .big-tbk-item{
+
+        .big-tbk-item {
             margin-top: 10px;
         }
 
@@ -120,10 +121,25 @@ getRecommend()
         }
     }
 
+    // 适配移动端
+    @media screen and (max-width: 1024px) {
+        .home-body {
+            flex-wrap: wrap;
+        }
+
+        .big-tbk-item {
+            margin: 0 auto;
+        }
+
+        .order-btn {
+            width: 100%;
+            text-align: center
+        }
+    }
+
     .more {
         margin: 10px;
         border-bottom: 1px solid #f4f4f4;
     }
 }
 </style>
-  
