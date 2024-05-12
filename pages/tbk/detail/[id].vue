@@ -136,7 +136,7 @@ getRecommend()
             text-align: center
         }
     }
-
+    
     .more {
         margin: 10px;
         border-bottom: 1px solid #f4f4f4;

@@ -12,7 +12,7 @@ import commonHeader from "@/components/common/homeHeader.vue";
 import commonfooter from "@/components/common/homeFooter.vue";
 // import sideBar from "@/components/common/sideBar.vue";
 </script>
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .cus-nuxt-router-no-side {
   .router-box {
     max-width: 1200px;
