@@ -1,7 +1,7 @@
 <template>
     <div class="tbk-container">
         <div class="home-body">
-            <div class="tbk-item">
+            <div class="big-tbk-item">
                 <div>
                     <a :href="state.item.pict_url"><img :src="state.item.pict_url" alt="" width="197px"
                             height="197px" /></a>
@@ -28,7 +28,7 @@
         </div>
     </div>
 </template>
-  
+
 <script lang="ts" setup>
 import { getTbkDetailApi, getRecommendApi } from "../api";
 import { reactive } from "vue"
@@ -64,7 +64,7 @@ const getRecommend = async () => {
 
 getRecommend()
 </script>
-  
+
 <style lang="scss" scoped>
 .tbk-container {
     background: #fff;
@@ -74,15 +74,8 @@ getRecommend()
         display: flex;
         margin: 0 10px;
 
-        .tbk-item:hover {
-            border: 1px solid #ff5000;
-        }
-
-        .tbk-item {
-            display: inline-block;
-            width: 235px;
-            padding: 20px;
-            // border: 1px solid #f4f4f4;
+        .big-tbk-item {
+            margin-top: 10px;
         }
 
         .item-info {
@@ -128,10 +121,25 @@ getRecommend()
         }
     }
 
+    // 适配移动端
+    @media screen and (max-width: 1024px) {
+        .home-body {
+            flex-wrap: wrap;
+        }
+
+        .big-tbk-item {
+            margin: 0 auto;
+        }
+
+        .order-btn {
+            width: 100%;
+            text-align: center
+        }
+    }
+    
     .more {
         margin: 10px;
         border-bottom: 1px solid #f4f4f4;
     }
 }
 </style>
-  

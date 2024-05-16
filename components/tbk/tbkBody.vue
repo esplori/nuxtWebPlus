@@ -21,7 +21,7 @@ let propState = defineProps({
     list: []
 })
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .goodBodyComp {
     display: flex;
     flex-wrap: wrap;
@@ -79,6 +79,13 @@ let propState = defineProps({
                 font-size: 12px;
             }
         }
+    }
+    // 适配移动端
+    @media screen and (max-width: 1024px) {
+      .tbk-item {
+        width: 100%;
+        text-align:center
+      }
     }
 }
 </style>

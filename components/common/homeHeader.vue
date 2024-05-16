@@ -3,82 +3,32 @@
     <div class="site-info">
       <div class="menu">
         <el-menu mode="horizontal">
-          <el-menu-item v-for="(item, index) in noChildren" :index="String(item.name)">
-            <a :href="item.path" target="_self">{{ item.name }}</a>
+          <el-menu-item v-show="item.enabled === 'Y'" v-for="(item, index) in state.menuList"
+            :index="String(item.menuUrl)">
+            <a :href="item.menuUrl" target="_self">{{ item.menuName }}</a>
           </el-menu-item>
-          <el-sub-menu v-for="(item, id) in hasChildren" :index="String(id)">
-            <template #title>
-              {{ item.name }}
-            </template>
-            <el-menu-item v-for="(it, idx) in item.children" :index="String(it.name)">
-              <a :href="it.path" target="_self">{{ it.name }}</a>
-            </el-menu-item>
-          </el-sub-menu>
-          <!-- <el-menu-item index="tbk">
-            <a href="/tbk" target="_self">优乐购</a>
-          </el-menu-item> -->
-          <!-- <el-menu-item index="games">
-            <a href="https://source.dsiab.com/games/index.html" target="_blank">在线游戏</a>
-          </el-menu-item> -->
-          <el-menu-item index="about">
-            <a href="/post/13">关于</a>
-          </el-menu-item>
-          <el-menu-item index="updateLog">
-            <a href="https://gitee.com/wilkwo/nuxt-web-plus/releases" target="_blank">更新日志</a>
-          </el-menu-item>
-          <!-- <el-menu-item index="login">
-            <a href="https://admin.dsiab.com/#/login" target="_blank">登录</a>
-          </el-menu-item> -->
         </el-menu>
       </div>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
-import { reactive, computed } from "vue"
+import { reactive } from "vue"
+import { toReactive } from "@vueuse/shared";
+import { getSiteInfoApi } from "@/pages/post/index"
 let state = reactive({
-  activeIndex: "",
-  menList: [
-    { name: "首页", path: "/" },
-    { name: "网站导航", path: "/nav" },
-    // {
-    //   name: "前端教程",
-    //   path: "",
-    //   children: [
-    //     {
-    //       name: "w3school教程",
-    //       path: "http://source.dsiab.com/course/w3c/",
-    //     },
-    //     {
-    //       name: "less教程",
-    //       path: "http://source.dsiab.com/course/less/less.bootcss.com/index.html",
-    //     },
-    //     {
-    //       name: "react教程",
-    //       path: "http://source.dsiab.com/course/react/react.docschina.org/index.html",
-    //     },
-    //   ],
-    // },
-    // {
-    //   name: "后端教程",
-    //   path: "",
-    //   children: [
-    //     { name: "c语言教程", path: "http://source.dsiab.com/course/C/" },
-    //     { name: "mysql教程", path: "http://source.dsiab.com/course/mysql/" },
-    //   ],
-    // }
+  menuList: [
+    // { name: "首页", path: "/" },
+    // { name: "网站导航", path: "/nav" },
   ],
 })
-const noChildren = computed(() => {
-  return state.menList.filter((item) => {
-    return !item.children;
-  });
-})
-const hasChildren = computed(() => {
-  return state.menList.filter((item) => {
-    return item.children;
-  });
-})
+const getSiteInfo = async () => {
+  let { data } = toReactive(await useFetch(getSiteInfoApi, { method: 'get' })) as any;
+  // 菜单
+  state.menuList = JSON.parse(data.data.menuList);
+}
+// 查询轮播
+getSiteInfo()
 </script>
 
 <style lang="scss">

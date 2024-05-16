@@ -38,12 +38,11 @@
         <comments></comments>
       </div>
     </div>
-
-    <div id="imageList" style="position: absolute;top: 9999px;left: -9999px;">
-      <el-image style="width: 1px; height: 1px;" :src="state.srcUrl"  :preview-src-list="state.srcList"
-        :initial-index="0" teleported hide-on-click-modal fit="contain" />
-    </div>
-
+  </div>
+  <!-- 图片弹窗放到文章容器外，防止点击图片预览后再次点击图片后页面无法滚动 -->
+  <div id="imageList" style="position: absolute;top: 9999px;left: -9999px;">
+    <el-image style="width: 1px; height: 1px;" :src="state.srcUrl" :preview-src-list="state.srcList" :initial-index="0"
+      teleported hide-on-click-modal fit="contain" />
   </div>
 </template>
 

@@ -28,9 +28,9 @@ import { getListApi } from "./api";
 import { reactive } from "vue"
 import { toReactive } from "@vueuse/shared";
 // layout 需使用中划线
-definePageMeta({
-  layout: 'no-side',
-});
+// definePageMeta({
+//   layout: 'default',
+// });
 useHead({
   title: "网站导航 - javascript技术分享",
   meta: [
@@ -67,10 +67,11 @@ getSiteInfo()
         font-size: 18px;
         font-weight: bold;
         color: rgba(0, 0, 0, 0.8);
-        background-color: var(--el-color-info-light-8);
+        background-color: #f5f5f5;
         position: sticky;
         top: 0;
         z-index: 1001;
+        border: 1px dashed #ddd;
       }
       .child-cate {
         width: 100%;
