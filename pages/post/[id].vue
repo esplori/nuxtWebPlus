@@ -344,5 +344,9 @@ onMounted(() => {
       // box-shadow: 0 1px 3px rgba(27, 95, 160, 0.1);
     }
   }
+  ._utrtw8kq5so{
+    border: 1px dashed #ddd;
+    padding: 2px
+  }
 }
 </style>
