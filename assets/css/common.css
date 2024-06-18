@@ -7,13 +7,13 @@ li {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font: 14px/1.8 "Microsoft YaHei", "PingFang SC", "微软雅黑", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 14px/1.6 "Microsoft YaHei", "PingFang SC", "微软雅黑", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-* {
-  /* color: #4a4a4a; */
-  /* text-shadow: 0 0 0.3px #4a4a4a; */
-}
+/* * {
+  color: #4a4a4a;
+  text-shadow: 0 0 0.3px #4a4a4a;
+} */
 
 ul,
 li {
@@ -28,6 +28,14 @@ a {
 body {
   background-color: #f5f5f5;
   /* background-image: linear-gradient(#f9f9f9 50%, #fff); */
+}
+
+.no-text-decoration {
+  text-decoration: none;
+}
+
+.text-decoration {
+  text-decoration: underline;
 }
 
 /* 修改富文本编辑器添加代码后样式 */
