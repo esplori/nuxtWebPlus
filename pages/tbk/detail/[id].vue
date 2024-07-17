@@ -109,12 +109,13 @@ getRecommend()
 
             .order-btn {
                 background: #ff5000;
-                padding: 5px 70px;
+                padding: 5px 0;
                 border-radius: 2px;
                 display: inline-block;
 
                 .order {
-                    color: #fff
+                    color: #fff;
+                    padding: 8px 70px;
                 }
             }
 
