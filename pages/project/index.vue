@@ -227,7 +227,7 @@ const tabChange = (item) => {
     background-size: contain;
     position: absolute;
     top: 20px;
-    left: 20px;
+    left: 0;
     overflow: visible;
     z-index: 1;
     height: 100%;
