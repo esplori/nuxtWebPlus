@@ -3,43 +3,40 @@
     <div class="top-container">
       <header>
         <div class="nav">
-          <span class="nav-item">nuxt-web-plus</span>
-          <span class="nav-item">vue-admin-plus</span>
-          <span class="nav-item">springbootadmin</span>
+          <span class="nav-item" @click="tabChange(item)" v-for="(item, index) in state.list">{{ item.name }}</span>
+          <!-- <span class="nav-item">vue-admin-plus</span>
           <span class="nav-item">statistics</span>
-          <span class="nav-item">cleanads</span>
+          <span class="nav-item">cleanads</span> -->
         </div>
       </header>
       <div class="project-content">
         <div class="title">
-          基于NUXT的开发的博客系统
+          {{ state.currentItem.h1 }}
         </div>
-        <div class="sub-title">基于NUXT的开发的博客系统</div>
+        <div class="sub-title">{{ state.currentItem.h2 }}</div>
       </div>
       <div class="project-description">
         <div class="desc">
-          <div class="first-title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-          <div class="second-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor cum,</div>
+          <div class="first-title">{{ state.currentItem.h3 }}</div>
+          <div class="second-title">{{ state.currentItem.h4 }}</div>
         </div>
         <div class="img-container">
-          <img src="../../assets/img/project/nuxt-web.png" alt=""
-            style="width: 100%;border-radius: 10px;">
+          <img src="../../assets/img/project/nuxt-web.png" alt="" style="width: 100%;border-radius: 10px;">
         </div>
       </div>
     </div>
     <div class="bottom-container">
       <div class="project-info">
-        <div class="first-title">轻便、简洁</div>
-        <div class="second-title">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque cupiditate voluptas corporis enim vero fuga ut soluta deleniti sequi distinctio? Ipsa, repudiandae! Quia eveniet labore, tempora temporibus sapiente dolorum exercitationem.</div>
+        <div class="first-title">{{ state.currentItem.h5 }}</div>
+        <div class="second-title">{{ state.currentItem.h6 }}</div>
       </div>
       <div class="project-description2">
         <div class="desc">
-          <div class="first-title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-          <div class="second-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor cum,</div>
+          <div class="first-title">{{ state.currentItem.h7 }}</div>
+          <div class="second-title">{{ state.currentItem.h8 }}</div>
         </div>
         <div class="img-container">
-          <img src="../../assets/img/project/nuxt-web.png" alt=""
-          style="width: 100%;border-radius: 10px;">
+          <img src="../../assets/img/project/nuxt-web.png" alt="" style="width: 100%;border-radius: 10px;">
         </div>
         <div class="aspect-radius-contaner"></div>
       </div>
@@ -47,30 +44,84 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { reactive } from "vue"
-import { toReactive } from "@vueuse/shared";
+import { reactive, onMounted } from "vue"
 // layout 需使用中划线
 definePageMeta({
   layout: 'full_screen',
 });
 useHead({
-  title: "网站导航 - javascript技术分享",
+  title: "项目分享 - javascript技术分享",
   meta: [
-    { name: 'description', content: "网站导航 - javascript技术分享" },
-    { name: 'keywords', content: "网站导航" }
+    { name: 'description', content: "项目分享 - javascript技术分享" },
+    { name: 'keywords', content: "项目分享" }
   ]
 })
 const state = reactive({
-  tabPosition: "left",
+  currentItem: {},
+  list: [
+    {
+      name: "nuxtWebPlus",
+      h1: "认识 nuxtWebPlus",
+      h2: "全球数百万网站（从创作者、小型企业到大型企业）的选择发布平台。",
+      h3: "简洁友好",
+      h4: "精心打磨的视觉语言，让网站内容更自然，更流畅。",
+      h5: "轻量高效",
+      h6: "加载快速，瞬间渲染，无需等待。",
+      h7: "为你所用",
+      h8: "让您的网站做任何您需要它做的事情",
+    },
+    {
+      name: "vueAdminPlus",
+      h1: "基于NUXT的开发的博客系统",
+      h2: "基于NUXT的开发的博客系统",
+      h3: "基于NUXT的开发的博客系统",
+      h4: "基于NUXT的开发的博客系统",
+      h5: "基于NUXT的开发的博客系统",
+      h6: "基于NUXT的开发的博客系统",
+      h7: "基于NUXT的开发的博客系统",
+      h8: "基于NUXT的开发的博客系统",
+    },
+    {
+      name: "statistics",
+      h1: "基于NUXT的开发的博客系统",
+      h2: "基于NUXT的开发的博客系统",
+      h3: "基于NUXT的开发的博客系统",
+      h4: "基于NUXT的开发的博客系统",
+      h5: "基于NUXT的开发的博客系统",
+      h6: "基于NUXT的开发的博客系统",
+      h7: "基于NUXT的开发的博客系统",
+      h8: "基于NUXT的开发的博客系统",
+    },
+    {
+      name: "cleanads",
+      h1: "基于NUXT的开发的博客系统",
+      h2: "基于NUXT的开发的博客系统",
+      h3: "基于NUXT的开发的博客系统",
+      h4: "基于NUXT的开发的博客系统",
+      h5: "基于NUXT的开发的博客系统",
+      h6: "基于NUXT的开发的博客系统",
+      h7: "基于NUXT的开发的博客系统",
+      h8: "基于NUXT的开发的博客系统",
+    }
+  ]
 })
 
+onMounted(() => {
+  state.currentItem = state.list[0]
+})
+const tabChange = (item) => {
+  state.currentItem = item
+}
 
 </script>
 <style lang="scss" scoped>
 .project-container {
   min-height: 100vh;
+  transition: all 2s linear;
+
   .top-container {
-    background-color: #0000ff;
+    // background-color: #0000ff;
+    background: linear-gradient(to bottom, #0000ff, #7b84e6, );
     padding-bottom: 80px;
   }
 
@@ -87,6 +138,7 @@ const state = reactive({
 
       .first-title {
         font-size: 34px;
+
       }
 
       .second-title {
@@ -109,6 +161,7 @@ const state = reactive({
       .nav-item {
         display: inline-block;
         padding: 10px 15px;
+        cursor: pointer;
       }
     }
   }
@@ -135,12 +188,14 @@ const state = reactive({
     height: 800px;
     background-color: #f2f6fdeb;
     border-radius: 20px;
-    padding: 80px;
+    padding: 60px;
     display: flex;
     align-items: center;
 
     .desc {
       width: 40%;
+      padding-right: 20px;
+
       .first-title {
         font-size: 34px;
       }
@@ -167,7 +222,7 @@ const state = reactive({
 
   }
 
-  .aspect-radius-contaner{
+  .aspect-radius-contaner {
     background-image: url("../../assets/img/project/wangge.png");
     background-size: contain;
     position: absolute;
