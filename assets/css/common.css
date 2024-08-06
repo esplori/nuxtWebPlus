@@ -62,3 +62,12 @@ pre code {
 pre code.hljs {
   word-break: break-all;
 }
+
+/* 安装按钮 */
+.install-btn-container{
+  margin-top: 40px;
+}
+.install-btn{
+  color: rgba(0, 78, 235, 1);
+  padding: 20px 30px!important;
+}

@@ -13,6 +13,9 @@
           {{ state.currentItem.h1 }}
         </div>
         <div class="sub-title">{{ state.currentItem.h2 }}</div>
+        <div class="install-btn-container">
+          <el-button class="install-btn" round size="large"> 开始使用</el-button>
+        </div>
       </div>
       <div class="project-description">
         <div class="desc">
