@@ -124,10 +124,11 @@ let index = pathObj[path] || 0
 state.currentItem = state.list[index]
 
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .project-container {
   min-height: 100vh;
   transition: all 2s linear;
+
   .top-container {
     // background-color: #0000ff;
     background: linear-gradient(to bottom, #0000ff, #7b84e6, );
