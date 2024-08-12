@@ -1,51 +1,11 @@
 <template>
   <div class="project-container">
-    <div class="top-container">
-      <header>
-        <div class="nav">
-          <span class="nav-item" v-for="(item, index) in state.list">
-            <a :href="item.path">{{ item.name }}</a>
-          </span>
-        </div>
-      </header>
-      <div class="project-content">
-        <div class="title">
-          {{ state.currentItem.h1 }}
-        </div>
-        <div class="sub-title">{{ state.currentItem.h2 }}</div>
-        <div class="install-btn-container">
-          <el-button class="install-btn" round size="large"> 开始使用</el-button>
-        </div>
-      </div>
-      <div class="project-description">
-        <div class="desc">
-          <div class="first-title">{{ state.currentItem.h3 }}</div>
-          <div class="second-title">{{ state.currentItem.h4 }}</div>
-        </div>
-        <div class="img-container">
-          <img src="../../assets/img/project/vue-admin-plus.png" alt="" style="width: 100%;border-radius: 10px;">
-        </div>
-      </div>
-    </div>
-    <div class="bottom-container">
-      <div class="project-info">
-        <div class="first-title">{{ state.currentItem.h5 }}</div>
-        <div class="second-title">{{ state.currentItem.h6 }}</div>
-      </div>
-      <div class="project-description2">
-        <div class="desc">
-          <div class="first-title">{{ state.currentItem.h7 }}</div>
-          <div class="second-title">{{ state.currentItem.h8 }}</div>
-        </div>
-        <div class="img-container">
-          <img src="../../assets/img/project/vue-admin-plus-2.png" alt="" style="width: 100%;border-radius: 10px;">
-        </div>
-        <div class="aspect-radius-contaner"></div>
-      </div>
-    </div>
+    <common></common>
   </div>
 </template>
 <script lang="ts" setup>
+import Index from "pages/index.vue";
+import common from "./components/common.vue"
 import { reactive, onMounted } from "vue"
 // layout 需使用中划线
 definePageMeta({
@@ -59,36 +19,8 @@ useHead({
   ]
 })
 const state = reactive({
-  currentItem: {},
-  list: [
-    {
-      path: "/project",
-      name: "nuxtWebPlus",
-    },
-    {
-      path: "/project/vueAdminPlus",
-      name: "vueAdminPlus",
-      h1: "认识 vueAdminPlus",
-      h2: "全球数百万网站（从创作者、小型企业到大型企业）的选择发布平台。",
-      h3: "简洁友好",
-      h4: "精心打磨的视觉语言，让网站内容更自然，更流畅。",
-      h5: "轻量高效",
-      h6: "加载快速，瞬间渲染，无需等待。",
-      h7: "为你所用",
-      h8: "让您的网站做任何您需要它做的事情",
-    },
-    {
-      path: "/project/statistics",
-      name: "statistics",
-    },
-    {
-      path: "/project/cleanads",
-      name: "cleanads",
-    }
-  ]
+  currentItem: {}
 })
-
-state.currentItem = state.list[1]
 </script>
 <style lang="scss" scoped>
 .project-container {
