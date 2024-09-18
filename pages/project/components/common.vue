@@ -182,7 +182,7 @@ state.currentItem = state.list[index]
 
   .project-content {
     padding-top: 120px;
-    width: 70%;
+    width: 50%;
     color: #fff;
     margin: 0 auto;
 
@@ -197,7 +197,7 @@ state.currentItem = state.list[index]
 
   .project-description,
   .project-description2 {
-    width: 70%;
+    width: 60%;
     margin: 0 auto;
     height: 800px;
     background-color: #f2f6fdeb;
