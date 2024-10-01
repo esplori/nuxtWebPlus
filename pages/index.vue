@@ -81,14 +81,14 @@ const getList = async () => {
 // 在组件挂载后执行的函数，主要用于客户端的初始化操作
 onMounted(() => {
   // 客户端环境下，加载广告代码
-  if (process.client) {
-    // 广告代码
-    (window.slotbydup = window.slotbydup || []).push({
-      id: "u6611132",
-      container: "_lrzdvi6yazm",
-      async: true,
-    });
-  }
+  // if (process.client) {
+  //   // 广告代码
+  //   (window.slotbydup = window.slotbydup || []).push({
+  //     id: "u6611132",
+  //     container: "_lrzdvi6yazm",
+  //     async: true,
+  //   });
+  // }
 })
 
 /**

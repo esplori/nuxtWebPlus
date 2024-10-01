@@ -67,7 +67,7 @@ pre code.hljs {
 .install-btn-container {
   margin-top: 40px;
 }
-
+/* 安装按钮样式 */
 .install-btn {
   color: rgba(0, 78, 235, 1);
   padding: 10px 40px;
@@ -77,4 +77,9 @@ pre code.hljs {
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
+}
+/* 图片预览器样式调整 */
+.el-image-viewer__canvas img{
+  max-height: 60% !important;
+  max-width: 60% !important;
 }
