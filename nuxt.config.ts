@@ -20,7 +20,7 @@ export default defineNuxtConfig({
     
   ],
   vite: {
-    logLevel: "info",
+    // logLevel: "info",
     css: {
       preprocessorOptions: {
         scss: {
