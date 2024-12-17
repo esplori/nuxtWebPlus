@@ -80,7 +80,7 @@ getSiteInfo()
         flex-wrap: wrap;
 
         .cate-item {
-          width: 33%;
+          width: 50%;
           font-size: 16px;
           padding: 10px;
           border-radius: 5px;

@@ -80,6 +80,7 @@ getRecommend()
 
         .item-info {
             padding: 0 20px;
+            width: 100%;
 
             .item-title {
                 display: block;
@@ -109,12 +110,17 @@ getRecommend()
 
             .order-btn {
                 background: #ff5000;
-                padding: 5px 70px;
+                padding: 5px 0;
                 border-radius: 2px;
                 display: inline-block;
+                width: 100%;
 
                 .order {
-                    color: #fff
+                    color: #fff;
+                    padding: 5px 0;
+                    text-align: center;
+                    width: 100%;
+                    display: inline-block;
                 }
             }
 
@@ -133,7 +139,11 @@ getRecommend()
 
         .order-btn {
             width: 100%;
-            text-align: center
+            text-align: center;
+            .order {
+                display: inline-block;
+                width: 100%;
+            }
         }
     }
     

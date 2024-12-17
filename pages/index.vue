@@ -7,8 +7,8 @@
             <div class="carousel-item" v-if="state.siteInfo.carouselEnable === 'Y'">
               <homeCarousel :state="state"></homeCarousel>
             </div>
-            <div class="_lrzdvi6yazm"></div>
-            <a href="https://curl.qcloud.com/tcHI6pAl"><img src="../assets/img/tencent_tg.jpg" width="100%" alt=""></a>
+            <!-- <div class="_lrzdvi6yazm"></div> -->
+            <!-- <a href="https://curl.qcloud.com/tcHI6pAl"><img src="../assets/img/tencent_tg.jpg" width="100%" alt=""></a> -->
           </div>
         </div>
 
@@ -17,7 +17,8 @@
         </div>
         <listBody :list="state.homeList.result"></listBody>
         <div class="home-pagination">
-          <nuxtPagination :pageSize="10" :total="state.homeList.total" :currentPage="state.page" :prePath="'/post/page/'">
+          <nuxtPagination :pageSize="10" :total="state.homeList.total" :currentPage="state.page"
+            :prePath="'/post/page/'">
           </nuxtPagination>
         </div>
       </div>
@@ -26,13 +27,20 @@
 </template>
 
 <script lang="ts" setup>
+// 引入组件，用于页面布局和分页显示
 import listBody from "@/components/common/pageListBody.vue"
 import nuxtPagination from "@/components/common/nuxtPagination.vue"
 import commonTitle from "@/components/common/commonTitle.vue"
 import homeCarousel from "@/components/common/home-carousel.vue"
+
+// 引入 Vue 重新响应化工具和 VueUse 的 toReactive 函数
 import { reactive, onMounted } from "vue"
-import { toReactive } from "@vueuse/shared";
+import { toReactive } from "@vueuse/shared"
+
+// 引入后端 API 接口
 import { getListApi, getSiteInfoApi } from "@/pages/post/index"
+
+// 设置页面头部信息
 useHead({
   title: "javascript技术分享",
   meta: [
@@ -40,6 +48,8 @@ useHead({
     { name: 'keywords', content: "javascript技术分享,js技术,vuejs,web前端,前端开发,前端面试,web开发,dsiab,个人博客,前端博客" }
   ]
 })
+
+// 定义状态对象，包含网站信息、轮播图列表、首页文章列表等数据
 const state = reactive({
   siteInfo: {
     beianNo: '',
@@ -58,31 +68,45 @@ const state = reactive({
   menuList: []
 })
 
+/**
+ * 异步获取文章列表数据，并更新 state 中的 homeList
+ */
 const getList = async () => {
+  // 使用 VueUse 的 useFetch 函数获取数据，并转换为 reactive 对象
   // 通过异步请求回来的数据都会存储在页面 payload 中。意味着，可能会存在没有用在你的组件的数据也加载到了 payload 中。我们强烈推荐你只选取必须使用在组件上的数据
   let { data } = toReactive(await useFetch(getListApi + '1')) as any;
   state.homeList = data.data
 }
 
+// 在组件挂载后执行的函数，主要用于客户端的初始化操作
 onMounted(() => {
-  if (process.client) {
-    // 在浏览器端调接口，需要服务端做反向代理
-    // 广告代码
-    (window.slotbydup = window.slotbydup || []).push({
-      id: "u6611132",
-      container: "_lrzdvi6yazm",
-      async: true,
-    });
-  }
+  // 客户端环境下，加载广告代码
+  // if (process.client) {
+  //   // 广告代码
+  //   (window.slotbydup = window.slotbydup || []).push({
+  //     id: "u6611132",
+  //     container: "_lrzdvi6yazm",
+  //     async: true,
+  //   });
+  // }
 })
+
+/**
+ * 异步获取网站配置信息，并更新 state 中的相关数据
+ */
 const getSiteInfo = async () => {
+  // 使用 VueUse 的 useFetch 函数获取数据，并转换为 reactive 对象
   let { data } = toReactive(await useFetch(getSiteInfoApi, { method: 'get' })) as any;
   state.siteInfo = data.data
+  // 解析并更新轮播图列表
   // 轮播列表
   state.carouselList = JSON.parse(data.data.carouselUrl);
+  // 解析并更新菜单列表
   // 菜单
   state.menuList = JSON.parse(data.data.menuList);
 }
+
+// 初始化，获取网站信息和文章列表
 // 查询轮播
 getSiteInfo()
 getList()

@@ -3,7 +3,7 @@
     <div class="home-body">
       <div class="left-body">
         <div style="padding:0 20px" v-if="state.homeList.result.length">
-          <commonTitle :title="'分类：'+  state.homeList.result[0].cateName"></commonTitle>
+          <commonTitle class="post-cate-title" :title="'分类：'+  state.homeList.result[0].cateName"></commonTitle>
         </div>
         <listBody :list="state.homeList.result"></listBody>
         <div class="home-pagination">
@@ -67,6 +67,9 @@ getList()
         padding: 20px;
         background: #fff;
         text-align: center;
+      }
+      .post-cate-title{
+        padding: 10px 0;
       }
     }
   }

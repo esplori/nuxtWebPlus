@@ -10,7 +10,7 @@
               </div>
               <div class="other-info">
                 <span>作者: {{ state.detailData.nickname || state.detailData.createBy }} </span>
-                <span>分类: {{ state.detailData.cateName }} </span>
+                <span>分类: <a class="no-text-decoration" :href="'/post/category/' +state.detailData.cate" target="_blank" rel="noopener noreferrer">{{ state.detailData.cateName }}</a></span>
                 <span>阅读: {{ state.detailData.views }} </span>
                 <span v-if="state.detailData.wordsNum">字数: {{ state.detailData.wordsNum }} </span>
                 <span class="createDate">发布时间： {{ state.detailData.createDate }}</span>
@@ -168,9 +168,6 @@ onMounted(() => {
     cursor: zoom-in;
   }
 
-  a {
-    text-decoration: underline;
-  }
 
   .image-container-fill {
     padding-bottom: 0 !important;
@@ -334,6 +331,7 @@ onMounted(() => {
 
         .quote {
           color: #655e5e;
+          text-decoration: underline
         }
       }
     }
@@ -343,6 +341,10 @@ onMounted(() => {
       background: #fff;
       // box-shadow: 0 1px 3px rgba(27, 95, 160, 0.1);
     }
+  }
+  ._utrtw8kq5so{
+    border: 1px dashed #ddd;
+    padding: 2px
   }
 }
 </style>
