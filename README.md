@@ -4,8 +4,8 @@
 <h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">nuxtWebPlus</h1>
 <h4 align="center">基于nuxtjs3.0开发的博客系统</h4>
 <p align="center">
-	<a href="https://gitee.com/wilkwo/nuxt-web.git"><img src="https://gitee.com/wilkwo/nuxt-web/badge/star.svg?theme=dark"></a>
-	<a href="https://gitee.com/wilkwo/nuxt-web.git"><img src="https://gitee.com/wilkwo/nuxt-web/badge/fork.svg?theme=dark"></a>
+	<a href="https://gitee.com/wilkwo/nuxt-web-plus.git"><img src="https://gitee.com/wilkwo/nuxt-web-plus/badge/star.svg?theme=dark"></a>
+	<a href="https://gitee.com/wilkwo/nuxt-web-plus.git"><img src="https://gitee.com/wilkwo/nuxt-web-plus/badge/fork.svg?theme=dark"></a>
 </p>
 
 
@@ -14,7 +14,7 @@
 
 ### 主要技术栈:
 
- [nuxtjs 3.0](https://nuxt.com/docs/getting-started/introduction) 、[element-plus](https://element-plus.gitee.io/zh-CN/) 、typescript 、highlight.js 、 sass
+ [nuxtjs 3.0](https://nuxt.com/docs/getting-started/introduction) 、[element-plus](https://element-plus.gitee.io/zh-CN/) 、typescript 、 sass
 
 ### 主要功能/页面：
 
@@ -28,7 +28,6 @@
 ### 关联项目
 - 官网：[https: //www.dsiab.com](https://www.dsiab.com)
 - 博客首页开源项目: nuxtWebPlus (https://gitee.com/wilkwo/nuxt-web-plus.git) 
-- 博客前后台微服务开源项目: springCloudAdmin (https://gitee.com/wilkwo/spring-cloud-admin.git) 
 - 后台管理体验地址： https://admin.dsiab.com , 体验账号：test/test
 - 加qq群一起交流：514450699
 
@@ -67,7 +66,7 @@ $ npm run generate
 ```
 
 ### 如何部署
-   参考文章： https://www.dsiab.com/post/d435197f-f03f-481b-9c4a-f33d2875d317
+   参考文章： [如何通过pm2部署nuxt3应用？](https://www.dsiab.com/post/d435197f-f03f-481b-9c4a-f33d2875d317)
 
 ### 注意
 

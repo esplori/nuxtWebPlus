@@ -1,6 +1,7 @@
 {
   "name": "nuxt-app",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -8,14 +9,11 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
-  "devDependencies": {
-    "@nuxt/devtools": "latest",
-    "@types/node": "^18.17.3",
-    "nuxt": "^3.6.5"
-  },
   "dependencies": {
-    "element-plus": "^2.4.2",
-    "highlight.js": "^11.8.0",
-    "sass": "^1.65.1"
+    "@element-plus/nuxt": "^1.1.2",
+    "nuxt": "^3.17.5",
+    "sass": "^1.89.1",
+    "vue": "^3.5.16",
+    "vue-router": "^4.5.1"
   }
 }
