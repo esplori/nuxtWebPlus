@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  modern: "client",
   app: {
     head: {
       charset: 'utf-8',
@@ -10,14 +11,21 @@ export default defineNuxtConfig({
         { "http-equiv": 'content-language', content: "zh-cn" },
         { name: 'keywords', content: 'javascript技术分享,js技术,vuejs,web前端,前端开发,前端面试,web开发,dsiab,个人博客,前端博客' },
       ],
-      script: ["https://hm.baidu.com/hm.js?96ab5c4cd236e8e96687d2dab55e7034"],
-      htmlAttrs: {'lang': "zh-cn"}
+      script: [
+        {
+          src: "https://hm.baidu.com/hm.js?96ab5c4cd236e8e96687d2dab55e7034",
+          defer: true  // 添加defer属性延迟加载
+        }
+      ],
+      htmlAttrs: { 'lang': "zh-cn" }
     }
   },
   css: [
-    "element-plus/dist/index.css",
     "/assets/css/common.css",
-    
+
+  ],
+  modules: [
+    '@element-plus/nuxt'
   ],
   vite: {
     // logLevel: "info",
