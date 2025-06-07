@@ -54,8 +54,8 @@ import recommendRead from "@/components/post/recommendRead.vue"
 import { useRoute } from "vue-router"
 import comments from "@/components/post/comments.vue"
 // 引入highlightjs代碼高亮插件
-import 'highlight.js/styles/stackoverflow-light.css'
-import hljs from "highlight.js"
+// import 'highlight.js/styles/stackoverflow-light.css'
+// import hljs from "highlight.js"
 
 const route = useRoute()
 let state = reactive({
@@ -92,9 +92,9 @@ useHead({
     { name: 'keywords', content: state.detailData.keywords || state.detailData.title }
   ]
 })
-setTimeout(() => {
-  hljs.highlightAll()
-}, 200)
+// setTimeout(() => {
+//   hljs.highlightAll()
+// }, 200)
 
 const getRecomList = async () => {
   // 通过异步请求回来的数据都会存储在页面 payload 中。意味着，可能会存在没有用在你的组件的数据也加载到了 payload 中。我们强烈推荐你只选取必须使用在组件上的数据
