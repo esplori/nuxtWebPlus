@@ -10,10 +10,10 @@
           </el-input>
         </div>
       </li>
-      <!-- <li>
+      <li>
         <div class="_oi1z2s14bx"></div>
-      </li> -->
-      <!-- <div class="_clzacg58dkb"></div> -->
+      </li>
+      <div class="_clzacg58dkb"></div>
       <li>
         <div class="module category">
           <commonTitle :title="'专题推荐'"></commonTitle>
@@ -230,12 +230,14 @@ onMounted(() => {
           color: #fff;
         }
       }
+
       &:nth-child(2) {
         .list-index {
           background-color: #f24808;
           color: #fff;
         }
       }
+
       &:nth-child(3) {
         .list-index {
           background-color: #fb7818;
