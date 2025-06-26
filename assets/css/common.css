@@ -17,7 +17,7 @@ li {
 
 ul,
 li {
-  list-style: none;
+  list-style: auto;
 }
 
 a {
