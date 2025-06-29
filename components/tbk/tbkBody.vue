@@ -10,7 +10,7 @@
                         <a class="zk_final_price"><span class="rmbicon">¥</span>{{ item.zk_final_price }}</a>
                         <a class="reserve_price"><span class="rmbicon">¥</span>{{ item.reserve_price }}</a>
                     </div>
-                    <div class="volume">月销{{ item.volume }}+笔</div>
+                    <div class="volume">月销{{ item.volume }}笔</div>
                 </div>
             </div>
         </a>

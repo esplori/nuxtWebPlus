@@ -3,7 +3,7 @@
     <ul>
       <li>
         <div class="search">
-          <el-input size="large" placeholder="请输入关键字" v-model="state.searchWords">
+          <el-input size="large" placeholder="请输入关键字搜索" v-model="state.searchWords">
             <template #append>
               <el-button :icon="Search" @click="search" @keypress.enter="search" />
             </template>

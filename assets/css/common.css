@@ -17,7 +17,7 @@ li {
 
 ul,
 li {
-  list-style: auto;
+  list-style: none;
 }
 
 a {
@@ -67,6 +67,7 @@ pre code.hljs {
 .install-btn-container {
   margin-top: 40px;
 }
+
 /* 安装按钮样式 */
 .install-btn {
   color: rgba(0, 78, 235, 1);
@@ -78,8 +79,13 @@ pre code.hljs {
   font-size: 16px;
   font-weight: bold;
 }
+
 /* 图片预览器样式调整 */
-.el-image-viewer__canvas img{
+.el-image-viewer__canvas img {
   max-height: 60% !important;
   max-width: 60% !important;
+}
+
+.detail-post-content li {
+  list-style: auto !important;
 }

@@ -45,7 +45,7 @@ getSiteInfo()
   }
 
   .site-info {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     display: flex;
     justify-content: flex-start;

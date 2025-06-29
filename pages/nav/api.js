@@ -1,3 +1,3 @@
-import preFix from '/utils/baseUrl'
+import { baseUrl } from '@/utils/baseUrl.ts'
 
-export const getListApi = `${preFix}/nav/getList`
+export const getListApi = `${baseUrl}/nav/getList`
