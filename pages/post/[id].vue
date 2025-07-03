@@ -199,7 +199,7 @@ onMounted(() => {
   .detail-post-content p {
     font-size: 1.2rem;
     // text-indent: 2rem;
-    padding-bottom: 1.4rem;
+    padding-bottom: 1rem;
   }
 
 

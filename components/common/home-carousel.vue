@@ -72,7 +72,7 @@ defineProps({
     position: relative;
 
     .small-carousel-img {
-      width: 245px;
+      /*width: 245px;*/
       height: 160px;
     }
 
