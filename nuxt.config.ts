@@ -27,7 +27,12 @@ export default defineNuxtConfig({
           src: "https://cpro.baidustatic.com/cpro/ui/cm.js",
           defer: true,
           body: true,
-        }
+        },
+         {
+          src: "https://www.googletagmanager.com/gtag/js?id=G-HX495VD0E0",
+          defer: true,
+          body: true,
+        },
       ],
       htmlAttrs: { 'lang': "zh-cn" }
     }
