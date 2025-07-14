@@ -5,7 +5,7 @@
         <div class="recommand">
           <div class="carousel">
             <div class="carousel-item" v-if="state.siteInfo.carouselEnable === 'Y'">
-              <ClientOnly><homeCarousel :state="state"></homeCarousel></ClientOnly>
+              <homeCarousel :state="state"></homeCarousel>
             </div>
             <!-- <div class="_lrzdvi6yazm"></div> -->
             <a v-if="state.siteInfo.ad_switch == 'Y'" href="https://curl.qcloud.com/tcHI6pAl"><img src="../assets/img/tencent_tg.jpg" width="100%" alt=""></a>

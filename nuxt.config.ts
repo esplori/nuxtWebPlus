@@ -14,21 +14,22 @@ export default defineNuxtConfig({
       ],
       script: [
         {
+          src: "https://source.dsiab.com/plugins/webstatistics.js",
+          defer: true,
+          body: false,
+        },
+        {
           src: "https://hm.baidu.com/hm.js?96ab5c4cd236e8e96687d2dab55e7034",
           async: true,  // 添加defer属性延迟加载
           body: true, // 让js在body中加载 
         },
-        {
-          src: "https://source.dsiab.com/plugins/webstatistics.js",
-          defer: true,
-          body: true,
-        },
+
         {
           src: "https://cpro.baidustatic.com/cpro/ui/cm.js",
           defer: true,
           body: true,
         },
-         {
+        {
           src: "https://www.googletagmanager.com/gtag/js?id=G-HX495VD0E0",
           defer: true,
           body: true,
