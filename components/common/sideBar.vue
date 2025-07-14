@@ -3,17 +3,17 @@
     <ul>
       <li>
         <div class="search">
-          <el-input size="large" placeholder="请输入关键字" v-model="state.searchWords">
+          <el-input size="large" placeholder="请输入关键字搜索" v-model="state.searchWords">
             <template #append>
               <el-button :icon="Search" @click="search" @keypress.enter="search" />
             </template>
           </el-input>
         </div>
       </li>
-      <!-- <li>
+      <li v-show="state.siteInfo.ad_switch == 'Y'">
         <div class="_oi1z2s14bx"></div>
-      </li> -->
-      <!-- <div class="_clzacg58dkb"></div> -->
+      </li>
+      <div v-show="state.siteInfo.ad_switch == 'Y'" class="_clzacg58dkb"></div>
       <li>
         <div class="module category">
           <commonTitle :title="'专题推荐'"></commonTitle>
@@ -80,16 +80,17 @@
 import { Search } from '@element-plus/icons-vue'
 import { reactive, onMounted } from "vue"
 import { toReactive } from "@vueuse/shared";
-import { getRecomListApi, getCateApi, getTagsApi, getTopicListApi, } from "@/pages/post/index";
+import { getRecomListApi, getCateApi, getTagsApi, getTopicListApi,getSiteInfoApi } from "@/pages/post/index";
 import { ElMessage } from "element-plus"
 import commonTitle from "@/components/common/commonTitle.vue"
 const state = reactive({
   searchWords: "",
-  activeName: "30",
+  activeName: "6month",
   recommandList: [],
   cateList: [],
   tagsList: [],
   topicList: [],
+  siteInfo:{}
 })
 
 const getRecomList = async (activeName: any) => {
@@ -142,6 +143,19 @@ const randomRgbColor = () => {
   let min = 0;
   return colorList[Math.floor(Math.random() * (max - min + 1) + min)];
 }
+
+/**
+ * 异步获取网站配置信息，并更新 state 中的相关数据
+ */
+const getSiteInfo = async () => {
+  // 使用 VueUse 的 useFetch 函数获取数据，并转换为 reactive 对象
+  let { data } = toReactive(await useFetch(getSiteInfoApi, { method: 'get' })) as any;
+  state.siteInfo = data.data
+  
+}
+
+// 获取网站配置信息
+getSiteInfo()
 
 onMounted(() => {
   if (process.client) {
@@ -230,12 +244,14 @@ onMounted(() => {
           color: #fff;
         }
       }
+
       &:nth-child(2) {
         .list-index {
           background-color: #f24808;
           color: #fff;
         }
       }
+
       &:nth-child(3) {
         .list-index {
           background-color: #fb7818;

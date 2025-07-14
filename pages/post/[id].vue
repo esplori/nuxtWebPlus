@@ -17,7 +17,7 @@
               </div>
             </div>
           </div>
-          <div class="_utrtw8kq5so"></div>
+          <div class="_utrtw8kq5so" v-show="state.siteInfo.ad_switch == 'Y'"></div>
           <div v-html="state.detailData.content" class="detail-post-content"></div>
           <!-- <div class="_cwvxpd9dl8s"></div> -->
         </div>
@@ -35,7 +35,7 @@
           </div>
         </div>
         <recommendRead :list="state.recommendPostList"></recommendRead>
-        <comments></comments>
+        <comments v-if="state.siteInfo.post_comment_switch == 'Y'"></comments>
       </div>
     </div>
   </div>
@@ -47,7 +47,7 @@
 </template>
 
 <script lang="ts" setup>
-import { getDetailApi, getRecommendPostBySameTagsApi } from "@/pages/post/index"
+import { getDetailApi, getRecommendPostBySameTagsApi,getSiteInfoApi } from "@/pages/post/index"
 import { reactive, onMounted } from "vue"
 import { toReactive } from "@vueuse/shared";
 import recommendRead from "@/components/post/recommendRead.vue"
@@ -74,7 +74,8 @@ let state = reactive({
   postId: "",
   recommendPostList: [],
   srcUrl: "",
-  srcList: []
+  srcList: [],
+  siteInfo:{}
 })
 
 state.postId = route.params.id as any
@@ -134,6 +135,20 @@ const initImagePreview = () => {
 
 getRecomList()
 
+
+/**
+ * 异步获取网站配置信息，并更新 state 中的相关数据
+ */
+const getSiteInfo = async () => {
+  // 使用 VueUse 的 useFetch 函数获取数据，并转换为 reactive 对象
+  let { data } = toReactive(await useFetch(getSiteInfoApi, { method: 'get' })) as any;
+  state.siteInfo = data.data
+  
+}
+
+// 获取网站配置信息
+getSiteInfo()
+
 onMounted(() => {
   if (process.client) {
     // 顶部广告
@@ -184,7 +199,7 @@ onMounted(() => {
   .detail-post-content p {
     font-size: 1.2rem;
     // text-indent: 2rem;
-    padding-bottom: 1.4rem;
+    padding-bottom: 1rem;
   }
 
 

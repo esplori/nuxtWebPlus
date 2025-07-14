@@ -2,12 +2,15 @@
   <div class="home-header">
     <div class="site-info">
       <div class="menu">
-        <el-menu mode="horizontal">
+        <!-- <el-menu mode="horizontal">
           <el-menu-item v-show="item.enabled === 'Y'" v-for="(item, index) in state.menuList"
             :index="String(item.menuUrl)">
             <a :href="item.menuUrl" target="_self">{{ item.menuName }}</a>
           </el-menu-item>
-        </el-menu>
+        </el-menu> -->
+        <div class="menu-item" v-show="item.enabled === 'Y'" v-for="(item, index) in state.menuList">
+          <a :href="item.menuUrl" target="_self">{{ item.menuName }}</a>
+        </div>
       </div>
     </div>
   </div>
@@ -40,33 +43,28 @@ getSiteInfo()
   top: 0;
   z-index: 1000;
 
-  .el-menu--horizontal.el-menu {
-    border-bottom: none;
-  }
 
   .site-info {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     display: flex;
     justify-content: flex-start;
     align-items: center;
 
-    .menu {
-      width: 100%;
-      // display: flex;
-      align-items: center;
+    .menu-item {
+      font-size: 1.2rem;
+      display: inline-block;
 
-      .el-menu-item {
-        font-size: 1.2rem;
+      a {
+        padding: 20px 15px;
+        display: inline-block;
+
+        &:hover {
+          background: #f5f5f5;
+          color: #409eff;
+        }
       }
 
-      .el-sub-menu__title {
-        font-size: 1.2rem;
-      }
-
-      .el-menu--horizontal>.el-submenu .el-submenu__title {
-        line-height: 65px;
-      }
     }
   }
 }

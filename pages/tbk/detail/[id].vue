@@ -7,9 +7,13 @@
                             height="197px" /></a>
                 </div>
             </div>
+
             <div class="item-info">
                 <div>
                     <h1 class="item-title">{{ state.item.title }}</h1>
+                </div>
+                <div class="volume">
+                    月销量：<span>{{ state.item.volume }}</span> 笔
                 </div>
                 <div class="reserve_price">
                     原价：<span class="rmbicon">¥</span><span class="line-through">{{ state.item.reserve_price }}</span>
@@ -34,10 +38,24 @@ import { getTbkDetailApi, getRecommendApi } from "../api";
 import { reactive } from "vue"
 import { toReactive } from "@vueuse/shared";
 import tbkBody from "@/components/tbk/tbkBody.vue"
+
+interface TbkItem {
+    title?: string;
+    pict_url?: string;
+    reserve_price?: string;
+    zk_final_price?: string;
+    volume?: number;
+    url?: string;
+}
+
 const route = useRoute()
-let state = reactive({
+// 使用泛型绑定类型，并初始化为空对象
+let state = reactive<{
+    list: any[];
+    item: TbkItem;
+}>({
     list: [],
-    item: { pict_url: "", title: "" }
+    item: {} // 初始化为空对象
 })
 
 const getDetail = async () => {
@@ -94,26 +112,30 @@ getRecommend()
             }
 
             .reserve_price {
-                font-size: 20px;
+                font-size: 16px;
                 color: #999;
 
                 .line-through {
                     text-decoration: line-through;
                 }
             }
+            .volume{
+                font-size: 16px;
+                color: #999;
+            }
 
             .zk_final_price {
-                line-height: 60px;
-                font-size: 28px;
+                line-height: 40px;
+                font-size: 20px;
                 color: #ff5000;
             }
 
             .order-btn {
                 background: #ff5000;
                 padding: 5px 0;
-                border-radius: 2px;
+                border-radius: 4px;
                 display: inline-block;
-                width: 100%;
+                width: 50%;
 
                 .order {
                     color: #fff;
@@ -140,13 +162,14 @@ getRecommend()
         .order-btn {
             width: 100%;
             text-align: center;
+
             .order {
                 display: inline-block;
                 width: 100%;
             }
         }
     }
-    
+
     .more {
         margin: 10px;
         border-bottom: 1px solid #f4f4f4;

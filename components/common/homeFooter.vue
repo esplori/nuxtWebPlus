@@ -34,9 +34,18 @@ const initWebStat = () => {
   }, 1000);
 }
 
+const initGoogleAnalytics = () => { 
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HX495VD0E0');
+}
+
 onMounted(() => {
   if (process.client) {
     initWebStat()
+    initGoogleAnalytics()
   }
 })
 </script>

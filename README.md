@@ -1,5 +1,5 @@
 
-<div><a href="https://github.com/esplori/nuxtWebPlus/blob/dev/README.md">中文</a>  |  <a href="https://github.com/esplori/nuxtWebPlus/blob/dev/README.en.md">english</a></div>
+<div><a href="https://github.com/esplori/nuxtWebPlus/blob/dev/README.md">中文</a>  |  <a href="https://github.com/esplori/nuxtWebPlus/blob/dev/README.en.md">English</a></div>
 
 <h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">nuxtWebPlus</h1>
 <h4 align="center">基于nuxtjs3.0开发的博客系统</h4>
@@ -55,6 +55,12 @@ tip: 通过浏览器检查功能可以看到[id="__nuxt"]元素
 ```bash
 # 下载代码
 git clone https://gitee.com/wilkwo/nuxt-web-plus.git
+
+或者
+
+git clone https://github.com/wilkwo/nuxt-web-plus.git
+
+
 # 安装依赖
 $ npm install
 # 本地启动在 localhost:3000
