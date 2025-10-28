@@ -18,7 +18,8 @@
             </div>
           </div>
           <div class="_utrtw8kq5so" v-show="state.siteInfo.ad_switch == 'Y'"></div>
-          <div v-html="state.detailData.content" class="detail-post-content"></div>
+          <div v-if="state.detailData.tag == 'ai'" v-html="md.render(state.detailData.content)"></div>
+          <div v-else v-html="state.detailData.content" class="detail-post-content"></div>
           <!-- <div class="_cwvxpd9dl8s"></div> -->
         </div>
         <div class="post-footer">
@@ -56,6 +57,7 @@ import comments from "@/components/post/comments.vue"
 // 引入highlightjs代碼高亮插件
 // import 'highlight.js/styles/stackoverflow-light.css'
 // import hljs from "highlight.js"
+import MarkdownIt from 'markdown-it'
 
 const route = useRoute()
 let state = reactive({
@@ -69,7 +71,8 @@ let state = reactive({
     content: "",
     keywords: "",
     id: "",
-    cateName: ""
+    cateName: "",
+    tag:""
   },
   postId: "",
   recommendPostList: [],
@@ -77,6 +80,8 @@ let state = reactive({
   srcList: [],
   siteInfo:{}
 })
+
+let md = new MarkdownIt()
 
 state.postId = route.params.id as any
 // 通过异步请求回来的数据都会存储在页面 payload 中。意味着，可能会存在没有用在你的组件的数据也加载到了 payload 中。我们强烈推荐你只选取必须使用在组件上的数据
