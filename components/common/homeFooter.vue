@@ -29,9 +29,9 @@ const initWebStat = () => {
       id: "visitorId",
     },
   });
-  setTimeout(() => {
+  // setTimeout(() => {
     webStats.setUserId('dsiab');
-  }, 1000);
+  // }, 20);
 }
 
 const initGoogleAnalytics = () => { 
@@ -45,7 +45,7 @@ const initGoogleAnalytics = () => {
 onMounted(() => {
   if (process.client) {
     initWebStat()
-    initGoogleAnalytics()
+    // initGoogleAnalytics()
   }
 })
 </script>

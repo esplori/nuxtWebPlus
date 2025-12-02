@@ -22,7 +22,7 @@
                     现价：<span class="rmbicon">¥</span>{{ state.item.zk_final_price }}
                 </div>
                 <div>
-                    <div class="order-btn"><a class="order" :href="state.item.url" target="_blank">去下单</a></div>
+                    <div class="order-btn"><a class="order" :href="state.item.url" target="_blank" data-umami-event="go to order">去下单</a></div>
                 </div>
             </div>
         </div>

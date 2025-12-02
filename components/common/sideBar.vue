@@ -40,7 +40,7 @@
           <ul>
             <li v-for="(item, index) in state.recommandList" :key="index" class="li-item">
               <div class="title">
-                <a :href="'/post/' + (item.uid || item.id)" target="_self">
+                <a :href="'/post/' + (item.uid || item.id)" target="_self" data-umami-event="recommend click">
                   <span class="list-index">{{ index + 1 }}</span>{{ item.title }}
                 </a>
               </div>

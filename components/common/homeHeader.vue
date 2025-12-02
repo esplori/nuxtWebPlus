@@ -1,5 +1,5 @@
 <template>
-  <div class="home-header">
+  <header class="home-header">
     <div class="site-info">
       <div class="menu">
         <!-- <el-menu mode="horizontal">
@@ -9,11 +9,11 @@
           </el-menu-item>
         </el-menu> -->
         <div class="menu-item" v-show="item.enabled === 'Y'" v-for="(item, index) in state.menuList">
-          <a :href="item.menuUrl" target="_self">{{ item.menuName }}</a>
+          <a :href="item.menuUrl" target="_self" data-umami-event="menu click">{{ item.menuName }}</a>
         </div>
       </div>
     </div>
-  </div>
+  </header>
 </template>
 <script lang="ts" setup>
 import { reactive } from "vue"
@@ -45,7 +45,7 @@ getSiteInfo()
 
 
   .site-info {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
     display: flex;
     justify-content: flex-start;

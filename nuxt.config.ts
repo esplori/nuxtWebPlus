@@ -30,9 +30,10 @@ export default defineNuxtConfig({
           body: true,
         },
         {
-          src: "https://www.googletagmanager.com/gtag/js?id=G-HX495VD0E0",
+          src: "https://umami.dsiab.com/script.js",
           defer: true,
           body: true,
+          "data-website-id": "c2253e5e-5e13-473d-9c8f-6f4eb7c3a091"
         },
       ],
       htmlAttrs: { 'lang': "zh-cn" }

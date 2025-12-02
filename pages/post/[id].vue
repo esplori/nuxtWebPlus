@@ -18,13 +18,13 @@
             </div>
           </div>
           <div class="_utrtw8kq5so" v-show="state.siteInfo.ad_switch == 'Y'"></div>
-          <div v-if="state.detailData.tag == 'ai'" v-html="md.render(state.detailData.content)"></div>
-          <div v-else v-html="state.detailData.content" class="detail-post-content"></div>
+          <article class="detail-post-content" v-if="state.detailData.tag == 'ai'" v-html="md.render(state.detailData.content)"></article>
+          <article v-else v-html="state.detailData.content" class="detail-post-content"></article>
           <!-- <div class="_cwvxpd9dl8s"></div> -->
         </div>
         <div class="post-footer">
           <div class="tags" v-if="state.detailData.keywords">
-            <a :href="'/post/tags/' + item" v-for="(item, index) in state.detailData.keywords.split(',')" :key="index"
+            <a :href="'/post/tags/' + item" v-for="(item, index) in state.detailData.keywords.split(',')" :key="index" data-umami-event="post detail tags click"
               target="_blank"># {{ item }}</a>
           </div>
           <div class="copy-desc">
@@ -202,9 +202,12 @@ onMounted(() => {
   }
 
   .detail-post-content p {
-    font-size: 1.2rem;
+    font-size: 18px;
     // text-indent: 2rem;
-    padding-bottom: 1rem;
+    margin: 2rem 0;
+    letter-spacing: 1px;
+    line-height: 2rem;
+    font-family: 'Merriweather';
   }
 
 

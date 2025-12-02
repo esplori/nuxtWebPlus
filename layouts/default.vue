@@ -19,7 +19,7 @@ import sideBar from "@/components/common/sideBar.vue";
 .cus-nuxt-router {
   .router-box {
     width:100%;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 10px auto;
     display: flex;
     justify-content: space-between;

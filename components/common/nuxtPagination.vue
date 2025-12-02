@@ -3,7 +3,7 @@
   <div class="nuxt-pagination">
     <ul>
       <li v-for="(item, index) in pageList" :key="index" :class="{ actived: propsState.currentPage === item }">
-        <a v-if="item" :class="['num-item', item < 10 ? 'plus-width' : '']" :href="propsState.prePath + item">{{ item }}</a>
+        <a v-if="item" :class="['num-item', item < 10 ? 'plus-width' : '']" :href="propsState.prePath + item" data-umami-event="pagination click">{{ item }}</a>
       </li>
     </ul>
   </div>

@@ -7,7 +7,7 @@
             <div class="image-post-sperate">
               <div>
                 <div class="home-post-title">
-                  <a :href="'/post/' + (item.uid || item.id)" target="_self">{{
+                  <a data-umami-event="body list item click" :href="'/post/' + (item.uid || item.id)" target="_self">{{
                     item.title
                   }}</a>
                 </div>
@@ -21,7 +21,7 @@
             </div>
             <div class="home-post-info">
               <span class="cate-name" v-show="item.cateName">
-                <a :href="'/post/category/' + item.cate">
+                <a :href="'/post/category/' + item.cate" data-umami-event="body cate click">
                   分类：{{ item.cateName || "" }}</a>
               </span>
               <span class="views"> 阅读：{{ item.views }} </span>
@@ -61,7 +61,7 @@ const props = defineProps({
 
   ul {
     li {
-      padding: 10px 20px;
+      padding: 20px 20px;
 
       // border-bottom: 1px solid #f5f5f5;
       .home-post-title {
@@ -83,20 +83,22 @@ const props = defineProps({
       .home-post-excerpt {
         padding: 10px 0;
         line-height: 2rem;
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         // color: #8c8c8c;
         // text-overflow: ellipsis;
         overflow: hidden;
         // white-space: nowrap;
         opacity: 0.5;
+        letter-spacing: 1px;
       }
 
       .home-post-info {
-        padding: 5px 0;
+        padding: 10px 0;
         font-size: 1rem;
         opacity: 0.65;
         // color: #8c8c8c;
-        border-bottom: 1px dashed #ddd;
+        // border-bottom: 1px dashed #ddd;
+
 
         span {
           margin-right: 15px;

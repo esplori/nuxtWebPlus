@@ -1,6 +1,6 @@
 <template>
     <div class="goodBodyComp">
-        <a class="tbk-item" v-for="(item, index) in propState.list" :key="index" :href="'/tbk/detail/' + item.pid"
+        <a class="tbk-item" v-for="(item, index) in propState.list" :key="index" :href="'/tbk/detail/' + item.pid" data-umami-event="tabk query detail"
             target="_blank">
             <div>
                 <img :src="item.pict_url" alt="" class="item-img" />
