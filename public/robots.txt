@@ -1,2 +1,5 @@
 User-Agent: *
-Disallow:
+Disallow: /_nuxt/
+
+User-Agent: SemrushBot
+Disallow: /
