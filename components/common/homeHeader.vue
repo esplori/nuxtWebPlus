@@ -19,6 +19,7 @@
 import { reactive } from "vue"
 import { toReactive } from "@vueuse/shared";
 import { getSiteInfoApi } from "@/pages/post/index"
+const siteInfoStore = useState('siteInfoStore')
 let state = reactive({
   menuList: [
     // { name: "首页", path: "/" },
@@ -29,9 +30,38 @@ const getSiteInfo = async () => {
   let { data } = toReactive(await useFetch(getSiteInfoApi, { method: 'get' })) as any;
   // 菜单
   state.menuList = JSON.parse(data.data.menuList);
+  siteInfoStore.value = data.data
 }
 // 查询轮播
 getSiteInfo()
+function removeAdSenseScript() {
+  // 查找包含 AdSense URL 的 script 标签
+  const existingScript = document.querySelector('script[src*="adsbygoogle"]');
+
+  if (existingScript) {
+    console.log('AdSense script found, removing it...');
+    existingScript.remove();
+
+    // 同时清除全局变量
+    if (window.adsbygoogle) {
+      delete window.adsbygoogle;
+    }
+
+    return true;
+  } else {
+    console.log('AdSense script not found');
+    return false;
+  }
+}
+
+onMounted(() => {
+  // 调用函数删除脚本
+  if (process.client) {
+    if (siteInfoStore.value.ad_switch == 'N') {
+      removeAdSenseScript()
+    }
+  }
+})
 </script>
 
 <style lang="scss">

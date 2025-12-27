@@ -13,11 +13,18 @@
                 <span>分类: <a class="no-text-decoration" :href="'/post/category/' +state.detailData.cate" target="_blank" rel="noopener noreferrer">{{ state.detailData.cateName }}</a></span>
                 <span>阅读: {{ state.detailData.views }} </span>
                 <span v-if="state.detailData.wordsNum">字数: {{ state.detailData.wordsNum }} </span>
-                <span class="createDate">发布时间： {{ state.detailData.createDate }}</span>
+                <span class="createDate">发布时间： {{ formatDate(state.detailData.createDate) }}</span>
               </div>
             </div>
           </div>
-          <div class="_utrtw8kq5so" v-show="state.siteInfo.ad_switch == 'Y'"></div>
+          <ClientOnly>
+            <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-1742175360307803"
+          data-ad-slot="1815052574"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+          </ClientOnly>
           <article class="detail-post-content" v-if="state.detailData.tag == 'ai'" v-html="md.render(state.detailData.content)"></article>
           <article v-else v-html="state.detailData.content" class="detail-post-content"></article>
           <!-- <div class="_cwvxpd9dl8s"></div> -->
@@ -36,7 +43,7 @@
           </div>
         </div>
         <recommendRead :list="state.recommendPostList"></recommendRead>
-        <comments v-if="state.siteInfo.post_comment_switch == 'Y'"></comments>
+        <comments v-if="siteInfoStore.post_comment_switch == 'Y'"></comments>
       </div>
     </div>
   </div>
@@ -58,6 +65,8 @@ import comments from "@/components/post/comments.vue"
 // import 'highlight.js/styles/stackoverflow-light.css'
 // import hljs from "highlight.js"
 import MarkdownIt from 'markdown-it'
+import { formatDate } from "@/assets/js/utils";
+const siteInfoStore = useState('siteInfoStore')
 
 const route = useRoute()
 let state = reactive({
@@ -137,7 +146,6 @@ const initImagePreview = () => {
     }
   })
 }
-
 getRecomList()
 
 
@@ -148,20 +156,26 @@ const getSiteInfo = async () => {
   // 使用 VueUse 的 useFetch 函数获取数据，并转换为 reactive 对象
   let { data } = toReactive(await useFetch(getSiteInfoApi, { method: 'get' })) as any;
   state.siteInfo = data.data
-  
+
 }
 
-// 获取网站配置信息
-getSiteInfo()
+
 
 onMounted(() => {
+  
   if (process.client) {
+    if (siteInfoStore.value.ad_switch=='Y') {
+        setTimeout(() => {
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      }, 100)
+    }
+    
     // 顶部广告
-    (window.slotbydup = window.slotbydup || []).push({
-      id: "u6324930",
-      container: "_utrtw8kq5so",
-      async: true,
-    });
+    // (window.slotbydup = window.slotbydup || []).push({
+    //   id: "u6324930",
+    //   container: "_utrtw8kq5so",
+    //   async: true,
+    // });
     // 底部广告
     // (window.slotbydup = window.slotbydup || []).push({
     //   id: "u6324927",
@@ -171,6 +185,7 @@ onMounted(() => {
 
     // 浏览器端添加图片点击事件
     initImagePreview()
+    // getRecomList()
   }
 })
 </script>
@@ -207,7 +222,7 @@ onMounted(() => {
     margin: 2rem 0;
     letter-spacing: 1px;
     line-height: 2rem;
-    font-family: 'Merriweather';
+    // font-family: 'Merriweather';
   }
 
 

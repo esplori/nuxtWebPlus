@@ -4,11 +4,19 @@
       <div class="left-body">
         <div class="recommand">
           <div class="carousel">
-            <div class="carousel-item" v-if="state.siteInfo.carouselEnable === 'Y'">
+            <!-- <div class="carousel-item" v-if="state.siteInfo.carouselEnable === 'Y'">
               <homeCarousel :state="state"></homeCarousel>
-            </div>
+            </div> -->
             <!-- <div class="_lrzdvi6yazm"></div> -->
-            <a v-if="state.siteInfo.ad_switch == 'Y'" href="https://curl.qcloud.com/tcHI6pAl"><img src="../assets/img/tencent_tg.jpg" width="100%" alt=""></a>
+             <ClientOnly>
+              <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-1742175360307803"
+            data-ad-slot="7777819523"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+             </ClientOnly>
+            
           </div>
         </div>
 
@@ -31,7 +39,7 @@
 import listBody from "@/components/common/pageListBody.vue"
 import nuxtPagination from "@/components/common/nuxtPagination.vue"
 import commonTitle from "@/components/common/commonTitle.vue"
-import homeCarousel from "@/components/common/home-carousel.vue"
+// import homeCarousel from "@/components/common/home-carousel.vue"
 
 // 引入 Vue 重新响应化工具和 VueUse 的 toReactive 函数
 import { reactive, onMounted } from "vue"
@@ -39,7 +47,7 @@ import { toReactive } from "@vueuse/shared"
 
 // 引入后端 API 接口
 import { getListApi, getSiteInfoApi } from "@/pages/post/index"
-
+const siteInfoStore = useState('siteInfoStore')
 // 设置页面头部信息
 useHead({
   title: "javascript技术分享",
@@ -81,14 +89,20 @@ const getList = async () => {
 // 在组件挂载后执行的函数，主要用于客户端的初始化操作
 onMounted(() => {
   // 客户端环境下，加载广告代码
-  // if (process.client) {
-  //   // 广告代码
-  //   (window.slotbydup = window.slotbydup || []).push({
-  //     id: "u6611132",
-  //     container: "_lrzdvi6yazm",
-  //     async: true,
-  //   });
-  // }
+  if (process.client) {
+      if (siteInfoStore.value.ad_switch=='Y') {
+        setTimeout(() => {
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      }, 100)
+    }
+    
+    // 广告代码
+    // (window.slotbydup = window.slotbydup || []).push({
+    //   id: "u6611132",
+    //   container: "_lrzdvi6yazm",
+    //   async: true,
+    // });
+  }
 })
 
 /**
@@ -108,7 +122,7 @@ const getSiteInfo = async () => {
 
 // 初始化，获取网站信息和文章列表
 // 查询轮播
-getSiteInfo()
+// getSiteInfo()
 getList()
 </script>
 
@@ -157,58 +171,58 @@ getList()
         }
       }
 
-      ul {
-        li {
-          padding: 30px 20px;
-          border-bottom: 1px solid #f5f5f5;
+      // ul {
+      //   li {
+      //     padding: 30px 20px;
+      //     border-bottom: 1px solid #f5f5f5;
 
-          .home-post-title {
-            font-size: 22px;
-            text-overflow: ellipsis;
-          }
+      //     .home-post-title {
+      //       font-size: 22px;
+      //       text-overflow: ellipsis;
+      //     }
 
-          .home-post-title:hover {
-            color: #06c;
-          }
+      //     .home-post-title:hover {
+      //       color: #06c;
+      //     }
 
-          .home-post-excerpt {
-            line-height: 30px;
-            padding: 15px 0;
-            font-size: 16px;
-            color: #828a92;
-            word-break: break-all;
-          }
+      //     .home-post-excerpt {
+      //       line-height: 30px;
+      //       padding: 15px 0;
+      //       font-size: 16px;
+      //       color: #828a92;
+      //       word-break: break-all;
+      //     }
 
-          .home-post-info {
-            padding-top: 10px;
-            font-size: 12px;
-            color: #828a92;
+      //     .home-post-info {
+      //       padding-top: 10px;
+      //       font-size: 12px;
+      //       color: #828a92;
 
-            span {
-              margin-right: 10px;
-            }
+      //       span {
+      //         margin-right: 10px;
+      //       }
 
-            .cate-name {
-              // background: #e6f1fb;
-              color: #828a92;
-              font-weight: 400;
-              line-height: 18px;
-            }
+      //       .cate-name {
+      //         // background: #e6f1fb;
+      //         color: #828a92;
+      //         font-weight: 400;
+      //         line-height: 18px;
+      //       }
 
-            .create-date {
-              color: #828a92;
-            }
+      //       .create-date {
+      //         color: #828a92;
+      //       }
 
-            .views {
-              color: #828a92;
-            }
-          }
-        }
+      //       .views {
+      //         color: #828a92;
+      //       }
+      //     }
+      //   }
 
-        li:hover {
-          background: #f9fafb;
-        }
-      }
+      //   li:hover {
+      //     background: #f9fafb;
+      //   }
+      // }
 
       .home-pagination {
         padding: 20px;

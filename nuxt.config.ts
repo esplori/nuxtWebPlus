@@ -23,17 +23,24 @@ export default defineNuxtConfig({
           async: true,  // 添加defer属性延迟加载
           body: true, // 让js在body中加载 
         },
-
         {
-          src: "https://cpro.baidustatic.com/cpro/ui/cm.js",
+          src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1742175360307803",
+          async: true,  // 添加defer属性延迟加载
+          body: true, // 让js在body中加载
+          crossorigin:"anonymous",
           defer: true,
-          body: true,
         },
+
+        // {
+        //   src: "https://cpro.baidustatic.com/cpro/ui/cm.js",
+        //   defer: true,
+        //   body: true,
+        // },
         {
           src: "https://umami.dsiab.com/script.js",
           defer: true,
           body: true,
-          "data-website-id": "c2253e5e-5e13-473d-9c8f-6f4eb7c3a091"
+          "data-website-id": "842dd3f9-1e34-44a2-931f-d79d9677d80a"
         },
       ],
       htmlAttrs: { 'lang': "zh-cn" }
@@ -42,9 +49,7 @@ export default defineNuxtConfig({
   css: [
     "/assets/css/common.css",
   ],
-  modules: [
-    '@element-plus/nuxt'
-  ],
+  modules: ['@element-plus/nuxt', '@pinia/nuxt'],
   vite: {
     // logLevel: "info",
     css: {
@@ -58,8 +63,8 @@ export default defineNuxtConfig({
       proxy: {
         '/portal-service': {
           // 本地代理，评论部分需开启本地代理
-          target: 'http://localhost:8082',
-          // target: 'http://admin.dsiab.com/',
+          // target: 'http://localhost:8082',
+          target: 'http://admin.dsiab.com/',
           changeOrigin: true,
           rewrite: path => path.replace('portal-service', '')
         }

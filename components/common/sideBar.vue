@@ -155,28 +155,28 @@ const getSiteInfo = async () => {
 }
 
 // 获取网站配置信息
-getSiteInfo()
+// getSiteInfo()
 
 onMounted(() => {
-  if (process.client) {
-    (window.slotbydup = window.slotbydup || []).push({
-      id: "u6324348",
-      container: "_oi1z2s14bx",
-      async: true,
-    });
-    // side 2
-    (window.slotbydup = window.slotbydup || []).push({
-      id: "u6324827",
-      container: "_clzacg58dkb",
-      async: true,
-    });
-    // 监听键盘enter键，回车就执行搜索
-    window.addEventListener("keypress", (key) => {
-      if (key.code === "Enter") {
-        search();
-      }
-    });
-  }
+  // if (process.client) {
+  //   (window.slotbydup = window.slotbydup || []).push({
+  //     id: "u6324348",
+  //     container: "_oi1z2s14bx",
+  //     async: true,
+  //   });
+  //   // side 2
+  //   (window.slotbydup = window.slotbydup || []).push({
+  //     id: "u6324827",
+  //     container: "_clzacg58dkb",
+  //     async: true,
+  //   });
+  //   // 监听键盘enter键，回车就执行搜索
+  //   window.addEventListener("keypress", (key) => {
+  //     if (key.code === "Enter") {
+  //       search();
+  //     }
+  //   });
+  // }
 })
 
 

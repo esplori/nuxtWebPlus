@@ -7,7 +7,7 @@
             <div class="image-post-sperate">
               <div>
                 <div class="home-post-title">
-                  <a data-umami-event="body list item click" :href="'/post/' + (item.uid || item.id)" target="_self">{{
+                  <a data-umami-event="body list item click" :href="'/post/' + (item.uid || item.id)" target="_blank">{{
                     item.title
                   }}</a>
                 </div>
@@ -26,7 +26,7 @@
               </span>
               <span class="views"> 阅读：{{ item.views }} </span>
               <span class="create-date">
-                发布时间：{{ item.createDate }}
+                发布时间：{{ formatDate(item.createDate) }}
               </span>
             </div>
           </div>
@@ -39,7 +39,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { delHtmlTag } from "@/assets/js/utils";
+import { delHtmlTag,formatDate } from "@/assets/js/utils";
 const props = defineProps({
   list: { type: Array, default: [] }
 })
@@ -83,12 +83,12 @@ const props = defineProps({
       .home-post-excerpt {
         padding: 10px 0;
         line-height: 2rem;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         // color: #8c8c8c;
         // text-overflow: ellipsis;
         overflow: hidden;
         // white-space: nowrap;
-        opacity: 0.5;
+        opacity: 0.8;
         letter-spacing: 1px;
       }
 
